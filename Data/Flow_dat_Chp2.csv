@@ -1,0 +1,663 @@
+Sub-region,Management Area,Stream_Number,StreamName,STAT_AREA_NAME,AWC_CODE,LATITUDE,LONGITUDE,Watershed_ID,Watershed_km2,mean_flow,CV_flow,Stream_spans_2_WSheds,Scenario_A,Scenario_B,Notes,Triple-checked
+SSE,Ketchikan,103-70-011,11 Mile Creek,11-Mile,103-70-10110,55.58487972,-133.2770951,"4141, 4105",51,3.15,0.55,X,,X,Same 2nd WShed as Picnic Bay (4105),X
+SSE,Ketchikan,102-60-039,142F Creek,Kasaan Bay,102-60-10390,55.35556911,-132.5182465,4147,192,16.94,0.46,,,X,"Same WShed as Cabin Creek-Polk Inlet, Dog Salmon Creek-Kasaan Bay, Goose Bay Creek, and Rock Creek",X
+SSE,Petersburg,107-40-057,1st E of Hoya Creek,Blake Channel,107-40-10570,56.18684297,-131.6993936,7919,57,5.28,0.61,,X,,,X
+NSE Inside,Petersburg,110-34-013,1st E of Negro Creek,Port Houghton,110-34-10130,57.28460026,-133.3608301,9929,12,0.48,0.58,,,X,Shares WShed with Placer Creek,X
+NSE Inside,Petersburg,110-16-013,1st E Schooner Island,Schooner Is/Big Creek/Portage Bay,110-16-10130,57.07941572,-133.7796834,"9286, 9287",61,3.3,0.6,,X,,Same WShed as Schooner Island (9286),X
+NSE Inside,Petersburg,110-23-012,1st East of Bowman,Gambier Bay,110-23-10120,57.49884815,-134.0797678,10121,118,5.66,0.52,,,X,Same WShed as Johnston Creek,X
+NSE Inside,Juneau,112-73-030,1st NW of Weir Creek,S Arm Hood Bay,112-73-10300,57.3505396,-134.386129,9710,172,11.1,0.48,,,X,"Same WShed as Hood Bay N Arm E Head, Hood Bay S Arm Head, Hood Bay S Arm Head N, Narrows Creek, Weir Creek N Arm Hood Bay, Weir Creek S Arm Hood Bay",X
+NSE Inside,Petersburg,109-62-13A,1st S Alecks Creek,Tebenkof Bay,109-62-10134,56.50035739,-134.0398925,7501,9,0.4,0.58,,,X,Same WShed as Alecks Creek,X
+NSE Inside,Juneau,111-31-036,1st S of Twin Point,Point Arden to Midway Islands,111-31-10360,57.89749587,-134.0050604,11197,14,0.23,0.63,,,X,Same WShed as Twin Point Creek,X
+NSE Inside,Juneau,111-41-012,1st W Admiralty Creek,Youngs Bay,111-41-10120,58.16353043,-134.6289851,11763,6,0.21,0.58,,X,,,X
+SSE,Petersburg,105-10-003,2nd N Louise Cove,Affleck Canal/Spanish Is/Louise Cove,105-10-10092,56.21106755,-133.915286,6278,6,0.25,0.57,,,X,Same WShed as West of Pt Amelius ,X
+NSE Inside,Petersburg,109-63-003,2nd W Joyce Creek,Port Malmsbury,109-63-10030,56.32594514,-134.2028114,6558,6,0.36,0.55,,,X,Same WShed as Gods Pocket North and Tavin Creek,X
+NSE Inside,Petersburg,110-16-007,2nd W of West Point,Schooner Is/Big Creek/Portage Bay,110-16-10070,57.01653069,-133.4464548,9261,18,0.72,0.58,,X,,,X
+SSE,Petersburg,105-32-073,3 Mile Arm NW Arm Hd,Rocky Pass/Threemile Arm/Seclusion Hbr,105-32-10730,56.61791271,-133.9401826,7985,24,1.58,0.52,,,X,,X
+NSE Inside,Juneau,111-31-030,3rd S of Twin Point,Point Arden to Midway Islands,111-31-10300,57.85837903,-133.9768246,11064,11,0.52,0.53,,X,,,X
+NSE Inside,Petersburg,109-62-009,4th NE of Gap Pt,Tebenkof Bay,109-62-10090,56.51515098,-134.1051093,7580,6,0.3,0.54,,,X,Same WShed as Elena Bay NW Side,X
+NSE Inside,Juneau,111-41-005,Admiralty Creek,Youngs Bay,111-41-10050,58.17570195,-134.5609103,11825,83,6.85,0.56,,X,,,X
+SSE,Petersburg,105-10-018,Affleck Canal NE,Affleck Canal/Spanish Is/Louise Cove,105-10-10185,56.32102209,-134.0692955,6604,25,1.42,0.54,,,X,Same WShed as Kathleen Creek-Affleck Canal,X
+SSE,Ketchikan,102-30-087,Aiken Cove,Moira Sound,102-30-10870,55.11965203,-132.2046547,3494,77,5.7,0.51,,,X,Same WShed as Kitkun Bay and Miller Lake Creek,X
+SSE,Ketchikan,103-60-043,Airport Creek S Klawock,Big Salt/Trocadero Bay,103-60-10430,55.57041129,-133.0883748,"4262, 4143",150,11.04,0.51,X,,X,Same WShed as Port St Nicholas Head (4143),X
+SSE,Petersburg,106-41-044,Alder Creek,Sumner Strait/Pt Baker/Macnamara,106-41-10440,56.34075155,-133.5357637,7190,42,3.14,0.49,,X,,,X
+NSE Inside,Petersburg,109-62-013,Alecks Creek,Tebenkof Bay,109-62-10130,56.50434398,-134.0431637,7501,9,0.4,0.58,,,X,"Same WShed as 1st of S Alecks Creek, >25% of stream is in other WShed, but that Wshed drains to other side of peninsula so I did not combine them",X
+NSE Inside,Juneau,114-50-020,Althrop Creek,Port Althorp,114-50-10200,58.10115548,-136.2677675,10734,31,2.63,0.49,,,X,Same 2nd WShed as Humpie Creek-Port Althorp,X
+SSE,Petersburg,105-31-020,Alvin Bay Head,Reid Bay/No Name Bay/Point Barrie,105-31-10200,56.43561251,-133.9521044,"7276, 7220",20,1.14,0.57,X,,X,Same WShed as Alvin Bay North Side (7276),X
+SSE,Petersburg,105-31-019,Alvin Bay North Side,Reid Bay/No Name Bay/Point Barrie,105-31-10190,56.43964752,-133.9384232,7276,15,1,0.56,,,X,Same 2nd WShed as Alvin Bay Head,X
+NSE Inside,Petersburg,110-22-004,Amber Creek,Pybus Bay,110-22-10040,57.362871,-134.083609,9784,42,1.7,0.55,,X,,,X
+SSE,Petersburg,107-20-001,Anan Creek,Anan/Fools/Menefee/Deer Is/N Ernest Sd,107-20-10010,56.1826847,-131.8909033,"7781, 7819",126,10.62,0.62,X,X,,,X
+NSE Inside,Juneau,114-50-010,Anchor Bight Creek,Port Althorp,114-50-10100,58.14830148,-136.2726666,10862,10,0.57,0.47,,,X,Same WShed as S Anchor Bight Creek,X
+SSE,Petersburg,108-40-020,Andrews Creek,Wrangell,108-40-10150-2008,56.66931379,-132.2534571,NA,NA,NA,NA,,,X,Part of mega-WShed,X
+SSE,Petersburg,107-30-078,Anita Bay Head W,Zimovia Strait/Anita Bay,107-30-10780,56.18647214,-132.5092019,7424,162,13,0.49,,,X,"Same WShed as Brad Creek NW Anita Bay, Flat Creek-Mosman Inlet, Mosman Creek E Head, Mosman Inlet NW Head, and Mosman Inlet SE Head",X
+NSE Inside,Sitka,113-54-005,Appleton Cove W Head,Rodman Bay,113-54-10050,57.46768588,-135.3097324,9574,21,2.08,0.47,,X,,,X
+SSE,Ketchikan,101-30-012,Badger Bay Head,Boca De Quadra,101-30-10120,55.19715102,-130.8211457,4317,75,5.69,0.53,,,X,Same WShed as Weasel Cove Head,X
+SSE,Ketchikan,101-55-060,Bakewell Creek,Smeaton Bay,101-55-10600,55.30432232,-130.6253288,5009,797,73.71,0.53,,,X,Same WShed as Wilson River-Smeaton Bay and Blossom River,X
+NSE Inside,Juneau,111-50-092,Barlow Cove W Shore,Auke Bay,111-50-10920,58.33348564,-134.8983524,"12212, 12127, 12184",24,1.31,0.67,X,X,,Same WShed as Barlow Head Creek (12184),X
+NSE Inside,Juneau,111-50-088,Barlow Head Creek,Auke Bay,111-50-10880,58.31943236,-134.8761178,12184,11,0.67,0.61,,,X,Same 2nd WShed as Barlow Cove W Shore,X
+SSE,Ketchikan,103-40-001,Barry Creek,Tlevak Strait,103-40-10010,55.28294781,-133.1015679,3145,22,1.42,0.53,,,X,Same 2nd WShed as E of Waterfall Creek and Ulloa Bay,X
+NSE Inside,Juneau,112-50-032,Bay Head Creek,Freshwater Bay,112-50-10320,57.95154159,-135.2182318,10710,114,1.26,0.52,,,X,Same 2nd WShed as Freshwater Creek ,X
+SSE,Petersburg,105-42-008,Bear Creek-Dry Pass,Shakan Bay/Calder Bay/El Capitan Pass,105-42-10080,56.17329626,-133.4072541,"6435, 6436",20,1.09,0.57,X,,X,Same 2nd WShed as Marble Creek-Shakan (6435),X
+NSE Inside,Juneau,114-32-006,Bear Creek-Midway Rocks,Port Frederick Head,114-32-10060,58.00077848,-135.5800516,"10709, 10563",22,1.58,0.53,X,,X,,X
+NSE Inside,Juneau,111-11-020,Bear Creek-Seymour Canal,South Central Seymour Canal,111-11-10200,57.69498851,-134.0704771,"10567, 10568, 10448",24,0.99,0.62,X,,X,3 WSheds included. Same 2nd WShed as Mole Harbor N Side (10448),X
+NSE Inside,Juneau,111-50-080,Bear Creek-Stephens Pas,Auke Bay,111-50-10800,58.28049452,-134.7815385,12094,23,1.75,0.58,,X,,,X
+SSE,Petersburg,105-10-024,Bear Harbor Creek,Affleck Canal/Spanish Is/Louise Cove,105-10-10240,56.26056526,-134.1326544,6276,19,1.17,0.53,,X,,,X
+NSE Inside,Juneau,115-10-065,Beardslee River,Central Lynn Canal,115-10-10650,58.70511454,-135.2392012,13165,34,1.67,0.66,,,X,,X
+NSE Inside,Petersburg,110-22-009,Beautiful Creek,Pybus Bay,110-22-10090,57.37157689,-134.1842988,9809,6,0.26,0.58,,X,,,X
+SSE,Petersburg,107-40-022,Berg Creek,Blake Channel,107-40-10220,56.39149778,-131.9477186,7914,465,40.53,0.57,,,X,Same WShed as Oerns Creek,X
+NSE Inside,Petersburg,109-30-013,Bergmann Creek,Eliza Harbor/Herring Bay/Tyee,109-30-10130,57.12117227,-134.4013202,9165,27,1.35,0.51,,X,,Same 2nd WShed as Herring Bay Middle,X
+SSE,Ketchikan,101-60-030,Big Goat Creek,Rudyerd Bay,101-60-10300,55.54744747,-130.6768252,5877,329,29.48,0.56,,,X,"Same WShed as Nooya Creek, Sandpiper Creek, and Valentine Creek",X
+NSE Inside,Juneau,112-48-015,Big Goose Creek,Tenakee Head,112-48-10150,57.914283,-135.75456,10439,92,9.78,0.5,,,X,Same WShed as Little Goose Creek,X
+SSE,Ketchikan,103-60-027,Big Salt Lake N Side M,Big Salt/Trocadero Bay,103-60-10270,55.63486529,-132.9885334,4529,160,13.39,0.46,,,X,"Same WShed as Blackbear Creek Big Salt, Dog Salmon Creek, and Steelhead Creek",X
+SSE,Ketchikan,103-60-037,Big Salt Lake SW Side,Big Salt/Trocadero Bay,103-60-10370,55.59892658,-133.0412159,4481,7,0.51,0.52,,,X,,X
+NSE Outside,Sitka,113-81-010,Black Bay North Head,Portlock Harbor,113-81-10100,57.71613976,-136.121746,9823,106,8.8,0.46,,,X,Same WShed as Black River,X
+SSE,Petersburg,107-10-030,Black Bear Creek,Union Bay/Emerald Bay/S Ernest Sound,107-10-10300,55.72591689,-132.1684038,5565,41,3.38,0.49,,,X,,X
+NSE Outside,Sitka,113-81-011,Black River,Portlock Harbor,113-81-10110,57.70696859,-136.115897,9823,106,8.8,0.46,,X,,Same WShed as Black Bay North Head,X
+SSE,Ketchikan,103-60-031,Blackbear Creek Big Salt,Big Salt/Trocadero Bay,103-60-10310,55.62362204,-132.9398006,4529,160,13.39,0.46,,,X,"Same WShed as Big Salt Lake N Side M, Dog Salmon Creek, and Steelhead Creek",X
+SSE,Ketchikan,101-55-040,Blossom River,Smeaton Bay,101-55-10400,55.40200803,-130.6074118,5009,797,73.71,0.53,,,X,Same WShed as Bakewell Creek and Wilson River-Smeaton Bay,X
+SSE,Ketchikan,101-90-072,Bond Bay North,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10720,55.5323137,-131.9603244,4921,13,0.81,0.53,,,X,Same WShed as Bond Bay South,X
+SSE,Ketchikan,101-90-071,Bond Bay South,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10710,55.52396608,-131.9655302,4921,13,0.81,0.53,,,X,Same WShed as Bond Bay North,X
+SSE,Ketchikan,101-27-026,Bostwick Bay SW Side,Nichols Passage,101-27-10260,55.21537372,-131.7470303,3882,7,0.26,0.56,,X,,"Doesn't fall within any Wshed, but is small and is adjacent to small Wshed (to which it is now assigned)",X
+SSE,Ketchikan,101-27-036,Bostwick Creek,Nichols Passage,101-27-10360,55.26448451,-131.7686209,"3991, 3951",64,4.68,0.55,X,X,,,X
+NSE Inside,Petersburg,110-23-010,Bowman Creek,Gambier Bay,110-23-10150,57.46684303,-134.1108068,10045,48,2.39,0.5,,X,,,X
+SSE,Petersburg,107-30-080,Brad Creek NW Anita Bay,Zimovia Strait/Anita Bay,107-30-10800,56.2003873,-132.4976631,7424,162,13,0.49,,,X,"Same WShed as Anita Bay Head W, Flat Creek-Mosman Inlet, Mosman Creek E Head, Mosman Inlet NW Head, and Mosman Inlet SE Head",X
+SSE,Petersburg,107-40-064,Bradfield Canal SW E,Blake Channel,107-40-10640,56.19109833,-131.8200718,7885,11,0.75,0.55,,,X,Same 2nd WShed as Bradfield Canal SW W,X
+SSE,Petersburg,107-40-065,Bradfield Canal SW W,Blake Channel,107-40-10650,56.18945614,-131.8245296,"7884, 7885",17,1.08,0.62,X,,X,Same WShed as Bradfield Canal SW E (7885),X
+SSE,Petersburg,107-40-053,Bradfield River E Fork,Blake Channel,107-40-10530,56.21205209,-131.5421788,8191,911,79.82,0.61,,,X,,X
+SSE,Ketchikan,103-40-080,Breezy Bay Head,Tlevak Strait,103-40-10800,55.15707138,-133.1141701,2689,23,1.09,0.51,,X,,,X
+NSE Inside,Sitka,113-51-001,Broad Creek,East Peril Straits,113-51-10010,57.59173051,-135.3735727,9864,39,3.65,0.51,,X,,,X
+SSE,Petersburg,106-41-042,Buster Creek,Sumner Strait/Pt Baker/Macnamara,106-41-10420,56.32472994,-133.4404227,7191,48,3.33,0.5,,X,,,X
+NSE Inside,Juneau,111-41-017,Cabin Creek-Admiralty Island,Youngs Bay,111-41-10170,58.16002265,-134.6786498,11724,28,2.47,0.59,,,X,Same WShed as West Cabin Creek,X
+NSE Inside,Juneau,114-80-050,Cabin Creek-Excursion Inlet,Excursion Inlet,114-80-10500,58.38000922,-135.4242007,12091,6,0.48,0.5,,X,,,X
+NSE Inside,Juneau,114-40-025,Cabin Creek-Idaho Inlet,Idaho Inlet,114-40-10250,58.12270712,-136.182351,"10832, 10803",12,1,0.49,X,,X,,X
+SSE,Ketchikan,102-60-042,Cabin Creek-Polk Inlet,Kasaan Bay,102-60-10420,55.42202133,-132.4795061,4147,192,16.94,0.46,,,X,"Same WShed as 142F Creek, Dog Salmon Creek-Kasaan Bay, Goose Bay Creek, and Rock Creek",X
+SSE,Petersburg,105-42-005,Calder Creek,Shakan Bay/Calder Bay/El Capitan Pass,105-42-10050,56.1998,-133.5222,6476,45,3.21,0.47,,X,,,X
+NSE Outside,Sitka,113-41-034,Camp Coogan,Sitka Sound,113-41-10344,57.003894,-135.22678,"8581, 8607",15,1.16,0.5,X,X,,,X
+NSE Inside,Petersburg,110-22-014,Cannery Cove-Pybus Bay,Pybus Bay,110-22-10140,57.306248,-134.15955,9659,12,0.32,0.54,,X,,,X
+SSE,Petersburg,105-20-008,Cannery Creek Beauclerc,Port Beauclerc,105-20-10080,56.30625466,-133.9943288,6692,10,0.49,0.54,,X,,,X
+SSE,Ketchikan,102-40-052,Cannery Creek W Arm,Cholmondeley Sound,102-40-10520,55.24386177,-132.326137,"3583, 3490",196,17.91,0.48,X,,X,"Same WShed as W Arm Chol Sd Head (3583), W Arm Chol Sd Head S (3583), Disappearance Creek (3490), and W of Disappearance (3490)",X
+SSE,Petersburg,107-20-020,Canoe Pass-Etolin Island,Anan/Fools/Menefee/Deer Is/N Ernest Sd,107-20-10200,56.02164766,-132.2127363,"6920, 6741",42,3.16,0.58,X,,X,,X
+SSE,Ketchikan,101-45-078,Carroll Creek,Mountain Point to Carroll Point,101-45-10780,55.64054412,-131.3652275,4673,544,48.72,0.43,,,X,Same WShed as Nigelius Creek and Spit Creek,X
+NSE Inside,Petersburg,110-15-003,Cat Creek Point Highland,Cape Fanshaw to Bay Point,110-15-10030,57.1450271,-133.4243039,9532,72,3.71,0.55,,X,,,X
+NSE Inside,Petersburg,109-42-009,Cathedral Falls Creek,Kake/Kadake Bay/Keku Strait,109-42-10090,56.89466196,-133.7426522,8942,114,3.63,0.6,,X,,,X
+NSE Inside,Juneau,112-80-028,Chaik Bay Creek,Chaik Bay,112-80-10280,57.306752,-134.443918,9528,55,4.17,0.48,,X,,,X
+NSE Inside,Petersburg,109-30-008,Chapin Bay Head,Eliza Harbor/Herring Bay/Tyee,109-30-10080,57.16242539,-134.3545726,9225,17,0.79,0.51,,X,,,X
+SSE,Ketchikan,103-90-058,Charley Creek,Sea Otter Sound,103-90-10580,55.96116228,-133.6432618,5390,24,1.01,0.56,,X,,Same WShed as Edna Bay Head,X
+SSE,Ketchikan,101-51-006,Checats Creek,Fox Point/Winstanley,101-51-10060,55.48429046,-130.8729508,5603,33,3.05,0.54,,X,,,X
+NSE Inside,Juneau,114-23-035,Chicken Creek,Point Adolphus Area,114-23-10350,58.2333444,-135.7158323,11447,72,5.04,0.52,,X,,,X
+NSE Inside,Juneau,115-32-025,Chilkat River,Chilkat Inlet,115-32-10250,59.22620966,-135.5098265,NA,NA,NA,NA,NA,NA,NA,,X
+SSE,Ketchikan,101-71-04E,Choca Creek,Walker Cove/Chichamin,101-71-10040-2004,55.83273279,-130.8555603,7049,1709,184.19,0.6,,,X,"Same WShed as Clear Creek, Humpy Creek, and King Creek",X
+SSE,Ketchikan,103-80-031,Chuck Lake Creek,St Phillips/Warmchuck,103-80-10310,55.75864687,-133.4721135,4733,8,0.44,0.54,,X,,,X
+NSE Inside,Petersburg,110-32-009,Chuck River,Windham Bay,110-32-10090,57.57833247,-133.3517429,10527,169,8.91,0.54,,X,,"~40% of the upper FW channels of Chuck River are in another WShed (>25%), but that WShed drains to the other side of the island so its outlet isn’t close to the Chuck River. Además, the Chuck River WShed has a few other smaller channels that likely compensate for the missed flow in the other WShed",X
+SSE,Petersburg,107-10-071,Chum Creek S Etolin Mid,Union Bay/Emerald Bay/S Ernest Sound,107-10-10720,55.93543118,-132.2635994,6395,8,0.59,0.57,,,X,Same WShed as S Etolin Island East and Kudays Creek S Etolin,X
+SSE,Petersburg,106-30-012,Chum Creek-Coffman,Steamer Bay/Kindergarten/Quiet Harbor,106-30-10120,56.0127096,-132.8221475,"6291, 6233",21,1.3,0.57,X,,X ,Same 2nd WShed as Coffman Creek,X
+SSE,Ketchikan,101-71-04C,Clear Creek,Walker Cove/Chichamin,101-71-10060,55.82516465,-130.9280627,7049,1709,184.19,0.6,,,X,"Same WShed as Choca Creek, Humpy Creek, and King Creek",X
+NSE Inside,Sitka,112-21-005,Clear River Kelp Bay,Kelp Bay,112-21-10050,57.25887042,-135.0096435,9339,151,18.49,0.54,,,X,,X
+SSE,Petersburg,106-30-015,Coffman Creek,Steamer Bay/Kindergarten/Quiet Harbor,106-30-10160,55.9986386,-132.8557882,6291,15,0.91,0.57,,,X,"Same WShed as Chum Creek-Coffman. Upper ~40% of channels are in 2nd WShed, but that WShed drains distantly",X
+NSE Inside,Juneau,112-42-016,Corner Bay Creek,Tenakee Springs,112-42-10160,57.73083989,-135.1208444,10200,30,2.07,0.51,,X,,,X
+SSE,Ketchikan,101-80-003,Cow Creek,Bell Island/North Behm Canal,101-80-10030,55.93472405,-131.3810675,7237,368,32.37,0.56,,,X,,X
+NSE Inside,Juneau,115-20-062,Cowee Creek-Berners Bay,Berners Bay,115-20-10620,58.68069662,-134.9556172,13132,107,6.9,0.58,,X,,,X
+NSE Inside,Juneau,112-43-012,Crab Bay Head,Crab Bay,112-43-10100,57.73817981,-135.4604041,10152,118,11.7,0.49,,,X,Same WShed as Saltery Bay,X
+NSE Inside,Juneau,112-43-002,Crab Bay South Side,Crab Bay,112-43-10020,57.72558232,-135.3639209,10138,40,3.79,0.51,,X,,,X
+SSE,Ketchikan,103-60-050,Crab Creek,Big Salt/Trocadero Bay,103-60-10500,55.48380123,-133.1261318,3907,20,1.47,0.49,,X,,,X
+SSE,Petersburg,107-45-005,Crittenden Creek,Earl West Cove Special Harvest Area,107-40-10050,56.4915572,-132.260092,8574,99,7.8,0.58,,,X,Same WShed as E of Crittenden Creek,X
+NSE Inside,Petersburg,109-30-017,Curtiss Creek,Eliza Harbor/Herring Bay/Tyee,109-30-10170,57.05884579,-134.5421016,8937,45,3.47,0.5,,,X,Same WShed as Surprise Harbor East and Tyee Head East ,X
+NSE Inside,Petersburg,110-14-008,Dale Creek-Francis Anch,Farragut Bay,110-14-10080,57.15824483,-133.1292077,9688,20,0.64,0.55,,X,,,X
+SSE,Ketchikan,101-27-019,Dall Head Creek,Nichols Passage,101-27-10190,55.16375527,-131.7422864,3641,9,0.71,0.54,,X,,,X
+SSE,Ketchikan,103-11-041,Datzkoo Harbor Head,Lower Cordova Bay,103-11-10410,54.74733711,-132.7762798,"1865, 1844",21,0.51,0.54,X,,X,,X
+SSE,Ketchikan,101-90-090,Deanna Creek,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10900,55.71495212,-131.8651295,5756,28,1.96,0.55,,X,,,X
+SSE,Ketchikan,103-60-087,Deep Bay,Big Salt/Trocadero Bay,103-60-10850,55.34237445,-133.0401691,3458,16,0.68,0.51,,,X,Same WShed as Perlas Point Creek,X
+NSE Outside,Sitka,113-64-001,Deep Bay Head,Deep Bay,113-64-10010,57.45492631,-135.653757,9419,48,4.12,0.5,,X,,,X
+NSE Inside,Sitka,109-10-023,Deep Cove NW Head,Southeast Baranof Island,109-10-10230,56.55058469,-134.7415396,7140,96,9.21,0.45,,,X,,X
+SSE,Ketchikan,103-25-015,Deer Creek,Hetta Inlet/Sukkwan Strait,103-25-10150,55.24144029,-132.6935666,3354,105,9.08,0.48,,,X,Same WShed as Portage Creek-Sulzer Passage,X
+SSE,Ketchikan,103-90-080,Devilfish Bay Head,Sea Otter Sound,103-90-10800,56.08155473,-133.390781,6229,51,3.58,0.49,,,X,Same WShed as Devilfish Bay N Side,X
+SSE,Ketchikan,103-90-081,Devilfish Bay N Side,Sea Otter Sound,103-90-10810,56.10199895,-133.328961,6229,51,3.58,0.49,,,X,Same WShed as Devilfish Bay Head ,X
+SSE,Ketchikan,102-30-063,Dickman Bay,Moira Sound,102-30-10630,55.05583,-132.2840461,2768,29,2.02,0.51,,,X,Same WShed as Dickman Bay Head and Kugel Creek,X
+SSE,Ketchikan,102-30-061,Dickman Bay Head,Moira Sound,102-30-10610,55.05544103,-132.3022599,2768,29,2.02,0.51,,,X,Same WShed as Dickman Bay and Kugel Creek,X
+SSE,Ketchikan,102-40-043,Disappearance Creek,Cholmondeley Sound,102-40-10430,55.1311821,-132.333369,3490,88,7.92,0.48,,,X,Same WShed as Cannery Creek W Arm and W of Disappearance,X
+SSE,Ketchikan,103-60-035,Dog Salmon Creek,Big Salt/Trocadero Bay,103-60-10350,55.62512337,-132.9893171,4529,160,13.39,0.46,,,X,"Same WShed as Big Salt Lake N Side M, Blackbear Creek Big Salt, and Steelhead Creek. ~50% of creek falls into other WShed, but other streams in assigned WShed (4529) more than compensate for that flow and Dog Salmon Creek should not have greater flow than other creeks in 4529",X
+SSE,Ketchikan,102-60-038,Dog Salmon Creek-Kasaan Bay,Kasaan Bay,102-60-10380,55.34757716,-132.5042072,4147,192,16.94,0.46,,,X,"Same WShed as 142F Creek, Cabin Creek-Polk Inlet, Goose Bay Creek, and Rock Creek",X
+SSE,Petersburg,107-30-090,Dog Salmon NE Etolin,Zimovia Strait/Anita Bay,107-30-10900,56.25394677,-132.4010629,"7632, 7743",33,2.5,0.62,X,X,,,X
+NSE Inside,Petersburg,110-22-012,Donkey Creek,Pybus Bay,110-22-10100,57.33787121,-134.1715599,9736,23,1.35,0.49,,X,,,X
+SSE,Petersburg,106-41-065,Douglas Bay,Sumner Strait/Pt Baker/Macnamara,106-41-10650,56.48208161,-133.3099912,7905,13,0.69,0.59,,X,,,X
+SSE,Ketchikan,103-60-066,Doyle Bay East Side,Big Salt/Trocadero Bay,103-60-10660,55.41257091,-133.0357307,3667,20,1.54,0.5,,X,,Same WShed as Doyle Creek,X
+SSE,Ketchikan,103-60-065,Doyle Creek,Big Salt/Trocadero Bay,103-60-10650,55.4181245,-133.0338517,3667,20,1.54,0.5,,,X,Same WShed as Doyle Bay East Side,X
+NSE Inside,Petersburg,110-13-004,Dry Bay Creek,Dry Bay/Tohdahl Creek,110-13-10040,57.06871,-133.02373,"9484, 9513",37,2.62,0.61,X,X,,,X
+SSE,Petersburg,107-45-006,E of Crittenden Creek,Earl West Cove Special Harvest Area,107-40-10060,56.49110238,-132.2575258,8574,99,7.8,0.58,,,X,Same WShed as Crittenden Creek,X
+NSE Inside,Juneau,112-45-036,E of Seal Bay Ent,Central Tenakee Inlet,112-45-10360,57.83292129,-135.497957,"10311, 10268",11,0.98,0.51,X,X,,Same 2nd WShed as E Side Seal Bay (10268),X
+SSE,Ketchikan,103-50-032,E of Waterfall Creek,Bucareli Bay,103-50-10320,55.28440873,-133.1362841,"3145, 3109",27,1.62,0.53,X,,X,Same WSheds as Ulloa Bay and Barry Creek (3145),X
+NSE Inside,Juneau,112-46-004,E Side Seal Bay,Seal Bay,112-46-10040,57.82578855,-135.5497976,"10268, 10245",86,8.02,0.51,X,,X,Same 2nd WShed as E of Seal Bay Ent (10268) and Seal Bay Head (10245),X
+SSE,Petersburg,106-10-030,Eagle Creek-Luck Lake,Ratz Harbor Shore,106-10-10300,55.96747569,-132.7215032,6130,101,8.99,0.47,,X,,,X
+SSE,Petersburg,107-40-055,Eagle River,Blake Channel,107-40-10550,56.15469772,-131.5882798,NA,NA,NA,NA,NA,NA,NA,,X
+NSE Inside,Juneau,114-25-012,East Homeshore Creek,Homeshore,114-25-10120,58.30922257,-135.3731028,11852,9,0.68,0.55,,,X,Same 2nd WShed as Homeshore Creek,X
+NSE Inside,Juneau,114-23-024,East Kahtaheena River,Point Adolphus Area,114-23-10240,58.40670564,-135.5654953,"12124, 12088",24,1.9,0.54,X,,X,Same 2nd WShed as Kahtaheena River (12124),X
+SSE,Petersburg,105-10-017,East of Bear Harbor,Affleck Canal/Spanish Is/Louise Cove,105-10-10170,56.22663627,-134.0553782,NA,NA,NA,NA,NA,NA,NA,No assignable WShed ,X
+SSE,Ketchikan,103-60-090,East of Caldera,Big Salt/Trocadero Bay,103-60-10900,55.37473964,-133.1031754,3523,9,0.57,0.5,,X,,,X
+NSE Inside,Petersburg,109-52-001,East of Pt Sullivan,Rowan Bay and Bay of Pillars,109-52-10010,56.67427305,-134.3455146,7937,8,0.43,0.48,,X,,,X
+NSE Inside,Petersburg,110-23-040,East of Snug Cove,Gambier Bay,110-23-10210,57.41776032,-133.9329938,"10023, 9965",17,0.65,0.58,X,X,,,X
+NSE Inside,Juneau,112-45-032,Eaton Creek,Central Tenakee Inlet,112-45-10320,57.81494657,-135.4249088,"10292, 10291",19,1.7,0.51,X,X,,,X
+SSE,Ketchikan,103-90-057,Edna Bay,Sea Otter Sound,103-90-10570,55.95282372,-133.6625629,NA,NA,NA,NA,NA,NA,NA,Would be too inaccurate compared to neighboring streams in 2nd WShed,X
+SSE,Ketchikan,103-90-059,Edna Bay Head,Sea Otter Sound,103-90-10590,55.96905093,-133.6341921,5390,24,1.01,0.56,,,X,Same WShed as Charley Creek,X
+SSE,Petersburg,105-42-009,El Capitan Creek,Shakan Bay/Calder Bay/El Capitan Pass,105-42-10090,56.16250447,-133.3405966,6281,103,7.32,0.49,,,X,Same WShed as El Capitan-Aneskett and El Capitan Dry Pass,X
+SSE,Petersburg,105-42-012,El Capitan Dry Pass,Shakan Bay/Calder Bay/El Capitan Pass,105-42-10120,56.14600519,-133.3498305,6281,103,7.32,0.49,,,X,"Same WShed as El Capitan Creek and El Capitan-Aneskett. Most of the stream is within other 2nd WShed, but that WShed drains distantly and the missing flow for this stream should be accounted for by its large WShed which it shares with other streams",X
+SSE,Ketchikan,103-90-006,El Capitan East Side,Sea Otter Sound,103-90-10060,56.0211896,-133.2522839,5908,7,0.5,0.53,,X,,,X
+SSE,Petersburg,105-42-011,El Capitan-Aneskett,Shakan Bay/Calder Bay/El Capitan Pass,105-42-10110,56.15282637,-133.2740063,6281,103,7.32,0.49,,,X,Same WShed as El Capitan Creek and El Capitan Dry Pass,X
+NSE Inside,Petersburg,109-62-012,Elena Bay Head,Tebenkof Bay,109-62-10120,56.55179317,-134.0815839,7662,32,2.62,0.51,,X,,Same WShed as Elena Bay NW Head,X
+NSE Inside,Petersburg,109-62-011,Elena Bay NW Head,Tebenkof Bay,109-62-10110,56.54730062,-134.0898432,7662,32,2.62,0.51,,,X,Same WShed as Elena Bay Head,X
+NSE Inside,Petersburg,109-62-010,Elena Bay NW Side,Tebenkof Bay,109-62-10100,56.53873506,-134.1040622,"7623, 7580",14,0.91,0.54,X,,X,Same WShed as 4th NE of Gap Pt (7580),X
+NSE Inside,Petersburg,109-30-003,Eliza Creek,Eliza Harbor/Herring Bay/Tyee,109-30-10030,57.25648595,-134.2961503,9394,76,5.46,0.47,,,X,Same WShed as Eliza Harbor Head West,X
+NSE Inside,Petersburg,109-30-004,Eliza Harbor Head West,Eliza Harbor/Herring Bay/Tyee,109-30-10040,57.25296402,-134.2998375,9394,76,5.46,0.47,,,X,Same WShed as Eliza Creek,X
+NSE Inside,Petersburg,109-30-005,Eliza Harbor West Side,Eliza Harbor/Herring Bay/Tyee,109-30-10050,57.21193767,-134.311578,9379,29,1.68,0.48,,X,,Same 2nd WShed as Eliza Lake Creek,X
+NSE Inside,Petersburg,109-30-006,Eliza Lake Creek,Eliza Harbor/Herring Bay/Tyee,109-30-10060,57.19768033,-134.305045,"9347, 9379",34,1.91,0.51,X,,X,Same WShed as Eliza Harbor West Side (9379),X
+SSE,Petersburg,107-10-010,Emerald Creek,Union Bay/Emerald Bay/S Ernest Sound,107-10-10100,55.88569021,-132.040209,"6398, 6347",18,1.39,0.58,X,,X,,X
+NSE Inside,Juneau,115-10-080,Endicott River,Central Lynn Canal,115-10-10800,58.78227208,-135.2531394,"13377, 13447",279,22.61,0.65,X,X,,,X
+SSE,Ketchikan,101-75-015,Eulachon River,Back Behm Canal,101-75-10150,56.05640471,-131.1262379,NA,NA,NA,NA,NA,NA,NA,,X
+SSE,Petersburg,106-30-085,Exchange Cove Creek,Steamer Bay/Kindergarten/Quiet Harbor,106-30-10850,56.18996988,-133.0749295,6805,24,1.6,0.55,,,X,,X
+NSE Inside,Juneau,114-80-020,Excursion River,Excursion Inlet,114-80-10200,58.51427506,-135.5226604,12441,263,27.94,0.59,,X,,,X
+SSE,Ketchikan,101-90-076,Falls Creek,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10760,55.59692867,-131.9771346,5257,52,4.18,0.52,,,X,Same WShed as Smugglers Creek,X
+NSE Inside,Petersburg,110-21-004,False Point Pybus Creek,False Point Pybus/Brothers Island,110-21-10040,57.34922776,-133.9047578,9869,18,0.76,0.59,,X,,,X
+SSE,Ketchikan,103-40-084,Farallon Bay W Head,Tlevak Strait,103-40-10840,55.19017964,-133.1093677,2787,7,0.2,0.5,,X,,,X
+NSE Inside,Petersburg,110-14-005,Farragut Bay N Arm,Farragut Bay,110-14-10050,57.18242847,-133.2546295,9687,51,2.39,0.58,,X,,,X
+NSE Inside,Petersburg,110-14-007,Farragut River,Farragut Bay,110-14-10070,57.15803981,-133.1552315,9718,421,39.27,0.56,,X,,,X
+NSE Inside,Juneau,112-67-080,Favorite Creek,Kootznahoo Inlet,112-67-10800,57.46071283,-134.5023889,9943,71,4.78,0.49,,X,,,X
+NSE Inside,Sitka,113-57-001,Fick Cove Head,South Arm Hoonah Sound,113-57-10010,57.62875989,-135.683543,"9842, 9880",41,3.13,0.51,X,,X,Same 2nd WShed as Hoonah Sound S Arm SW (9880),X
+SSE,Ketchikan,101-11-079,Fillmore Creek,Revilla Channel to Pearse Canal,101-11-10790,54.94537322,-130.4737136,3305,147,11.43,0.47,,,X,Same WShed as Fillmore Inlet NW Hd,X
+SSE,Ketchikan,101-11-078,Fillmore Inlet NW Hd,Revilla Channel to Pearse Canal,101-11-10780,54.91887415,-130.4759041,3305,147,11.43,0.47,,,X,Same WShed as Fillmore Creek,X
+NSE Inside,Sitka,113-55-001,Finger River,Hoonah Sound,113-55-10010,57.65145054,-135.5246028,"9940, 9922",27,2.56,0.49,X,X,,,X
+NSE Outside,Sitka,113-65-004,Fish Bay Creek,Fish Bay,113-65-10040,57.35729656,-135.4834374,9277,147,13.46,0.45,,,X,Same WShed as Fish Bay S Side Head,X
+NSE Outside,Sitka,113-65-005,Fish Bay S Side Head,Fish Bay,113-65-10050,57.35310622,-135.4959135,9277,147,13.46,0.45,,,X,Same WShed as Fish Bay Creek,X
+NSE Inside,Juneau,111-50-069,Fish Creek,Auke Bay,111-50-10690,58.332728,-134.601756,"12335, 12370",36,2.91,0.64,X,X,,,X
+SSE,Ketchikan,101-15-085,Fish Creek-Portland Canal,Portland Canal,101-15-10500-2028,55.93555454,-130.042258,NA,NA,NA,NA,NA,NA,NA,,X
+SSE,Ketchikan,101-43-033,Fish Creek-Thorne Arm,Thorne Arm,101-43-10330,55.39126987,-131.1968475,5037,45,3.11,0.55,,X,,Same WShed as Pop Creek,X
+SSE,Petersburg,107-20-023,Fisherman Chuck,Anan/Fools/Menefee/Deer Is/N Ernest Sd,107-20-10230,56.050162,-132.218515,7003,6,0.31,0.53,,X,,,X
+NSE Inside,Juneau,112-17-030,Fishery Creek,Angoon to Hepburn,112-17-10300,57.76554965,-134.7151522,10447,151,12.69,0.53,,X,,,X
+SSE,Petersburg,108-60-006,Fivemile Creek Sukoi Island,Pt Frederick/Pt Agassiz,108-60-10060,56.88356332,-132.9647222,9189,16,1.11,0.57,,X,,,X
+SSE,Ketchikan,103-40-030,Flat Creek - Natzuhini,Tlevak Strait,103-40-10300,55.27089646,-132.8665418,3291,21,1.39,0.53,,X,,,X
+SSE,Petersburg,106-22-006,Flat Creek-Mosman Inlet,"Burnett,Mosman,McHenry Inlet",106-22-10060,56.1603066,-132.5906586,7424,162,13,0.49,,,X,"Same WShed as Anita Bay Head W, Brad Creek NW Anita Bay, Mosman Creek E Head, Mosman Inlet NW Head, and Mosman Inlet SE Head",X
+SSE,Petersburg,107-20-071,Fools Inlet Head E,Anan/Fools/Menefee/Deer Is/N Ernest Sd,107-20-10710,56.23406123,-132.0596786,7848,70,4.74,0.57,,,X,Same WShed as Fools Inlet Head W,X
+SSE,Petersburg,107-20-070,Fools Inlet Head W,Anan/Fools/Menefee/Deer Is/N Ernest Sd,107-20-10700,56.23373907,-132.0617681,7848,70,4.74,0.57,,,X,Same WShed as Fools Inlet Head E,X
+NSE Outside,Sitka,113-73-003,Ford Arm Creek,Slocum Arm,113-73-10030,57.58191834,-135.9152674,"9644, 9597",62,4.38,0.47,X,X,,Same WShed as South Ford Arm (9597),X
+NSE Inside,Juneau,111-41-018,Fowler Creek-Young Bay,Youngs Bay,111-41-10180,58.16276677,-134.692287,"11723, 11722",83,6.55,0.56,X,,X,"Same WShed as Hawk Inlet Head (11722), Hawk Inlet Head NW (11722), and Jimmy Green Creek (11722)",X
+SSE,Petersburg,107-40-040,Franks Creek-Bradfield Canal,Blake Channel,107-40-10400,56.21843965,-131.7266976,8002,12,0.88,0.61,,X,,,X
+SSE,Ketchikan,102-30-051,Frederick Creek,Moira Sound,102-30-10510,54.99542092,-132.285189,2735,23,1.93,0.51,,,X,,X
+NSE Inside,Juneau,112-50-030,Freshwater Creek,Freshwater Bay,112-50-10300,57.94332536,-135.2097,"10682, 10710",124,1.53,0.56,X,X,,Same 2nd WShed as Bay Head Creek (10710),X
+NSE Inside,Juneau,112-63-012,Funter Bay S Side,Funter Bay,112-63-10120,58.23914544,-134.8938801,11855,9,0.73,0.58,,,X,Same WShed as Funter Creek,X
+NSE Inside,Juneau,112-63-013,Funter Creek,Funter Bay,112-63-10130,58.23688581,-134.8962208,11855,9,0.73,0.58,,,X,Same WShed as Funter Bay S Side,X
+SSE,Petersburg,105-20-010,Gail Creek S Arm SE Hd,Port Beauclerc,105-20-10100,56.25145697,-133.9761315,6515,19,1.24,0.53,,,X,Same WShed as P Beauclerc S Arm Hd,X
+NSE Inside,Petersburg,110-23-005,Gambier Bay N Arm West,Gambier Bay,110-23-10050,57.51996392,-133.9608784,10219,19,0.81,0.53,,,X,Same WShed as Last Chance Creek-Gambier Bay,X
+NSE Inside,Juneau,114-31-013,Game Creek,Hoonah Area,114-31-10130,58.09042416,-135.4709212,"11011, 10772",154,15.63,0.55,X,,X,Same WShed as Seagull Creek (10772),X
+NSE Inside,Petersburg,109-62-038,Gedney Harbor S Head,Tebenkof Bay,109-62-10380,56.35894502,-134.2326525,6730,13,0.53,0.49,,,X,Same WShed as Neal Creek,X
+NSE Inside,Juneau,111-35-032,Gilbert Creek,Gilbert Bay,111-35-10320,57.93134547,-133.6825823,11488,40,0.23,0.63,,,X,,X
+NSE Inside,Petersburg,110-34-006,Glen Creek,Port Houghton,110-34-10060,57.31786558,-133.0979205,10096,309,23.03,0.57,,,X,Same WShed as Rusty River,X
+NSE Inside,Petersburg,110-32-002,Goat Creek-Windham Bay,Windham Bay,110-32-10020,57.57712811,-133.5162821,10473,22,0.8,0.52,,X,,,X
+NSE Inside,Petersburg,109-63-002,Gods Pocket North,Port Malmsbury,109-63-10020,56.31254292,-134.2395346,6558,6,0.36,0.55,,,X,Same WShed as 2nd W Joyce Creek and Tavin Creek,X
+NSE Inside,Petersburg,109-63-001,Gods Pocket West,Port Malmsbury,109-63-10010,56.30660974,-134.2468319,6510,7,0.31,0.54,,,X,,X
+SSE,Ketchikan,103-70-008,Goodrow Creek,11-Mile,103-70-10080,55.60758089,-133.3458353,4180,16,0.91,0.55,,,X,Same WShed as James Creek,X
+SSE,Ketchikan,102-60-030,Goose Bay Creek,Kasaan Bay,102-60-10300,55.37766763,-132.4652638,4147,192,16.94,0.46,,,X,"Same WShed as 142F Creek, Cabin Creek-Polk Inlet, Dog Salmon Creek-Kasaan Bay, and Rock Creek",X
+NSE Inside,Juneau,114-23-080,Goose Creek,Point Adolphus Area,114-23-10800,58.20132178,-136.0428047,11145,50,4.61,0.51,,X,,,X
+NSE Inside,Petersburg,109-62-018,Goose Trap Creek,Tebenkof Bay,109-62-10180,56.42172163,-134.039536,7064,18,1.25,0.55,,X,,Same 2nd WShed as W of Long Island,X
+NSE Outside,Sitka,113-81-003,Goulding Harbor Head,Portlock Harbor,113-81-10030,57.79712615,-136.2260168,9956,77,6.67,0.45,,X,,,X
+SSE,Ketchikan,101-71-050,Grace Creek,Walker Cove/Chichamin,101-71-10500,55.66093904,-130.9646531,"6358, 6404",94,8.29,0.58,X,X,,,X
+SSE,Ketchikan,103-30-040,Grace Harbor Creek,Kaigani Strait,103-30-10400,54.90947249,-132.9317223,2127,25,1,0.53,,X,,Same WShed as Vesta Bay,X
+SSE,Ketchikan,101-90-086,Granite Creek,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10859,55.64550537,-131.8656206,5503,7,0.51,0.59,,,X,,X
+NSE Inside,Sitka,113-58-003,Granite Creek N Arm,North Arm Hoonah Sound,113-58-10400,57.75934717,-135.8442103,10015,134,12.23,0.45,,,X,Same WShed as Hoonah Sound N Head and Hoonah Sound N Arm West,X
+SSE,Ketchikan,101-75-010,Grant Creek-Behm Canal,Back Behm Canal,101-75-10100,56.03852209,-131.2144058,7637,190,18.24,0.61,,X,,,X
+SSE,Ketchikan,101-29-011,Grant Creek-Gravina,Gravina Shore,101-29-10110,55.35065536,-131.853009,4404,21,1.44,0.56,,,X,Same WShed as Vallenar Creek,X
+NSE Inside,Juneau,112-65-024,Greens Creek,Hawk Inlet,112-65-10240,58.099966,-134.76091,"11453, 11382",67,5.78,0.58,X,X,,Same 2nd WShed as Piledriver Cove Creek (11382),X
+NSE Inside,Sitka,109-20-007,Gut Bay Head,Red Bluff Area,109-20-10070,56.70238835,-134.7524926,8054,78,7.3,0.44,,,X,,X
+SSE,Ketchikan,103-90-027,Gutchie Creek,Sea Otter Sound,103-90-10270,55.8805197,-133.1336714,5467,134,9,0.52,,,X,Same WShed as Naukati Creek and Yatuk Creek,X
+NSE Inside,Juneau,112-12-046,Gypsum Creek,W Chatham Peril to Wukuktook,112-12-10460,57.89632814,-134.980803,10685,12,0.89,0.55,,X,,,X
+SSE,Ketchikan,103-30-035,Ham Cove Creek,Kaigani Strait,103-30-10350,54.8734483,-132.861189,2090,15,0.79,0.53,,X,,,X
+NSE Inside,Petersburg,109-42-010,Hamilton River,Kake/Kadake Bay/Keku Strait,109-42-10100,56.89386321,-133.743278,NA,NA,NA,NA,NA,NA,NA,"Drains through 4 different WSheds, too difficult to accurately assign",X
+SSE,Ketchikan,103-90-061,Hamlin Creek,Sea Otter Sound,103-90-10610,55.96905766,-133.5955162,"5458, 5426",15,0.81,0.57,X,X,,,X
+NSE Inside,Sitka,113-52-004,Hanus Bay,Hanus Bay,113-52-10040,57.40906983,-135.0695153,"9550, 9549",68,6.75,0.51,X,X,,,X
+SSE,Petersburg,107-40-049,Harding River,Blake Channel,107-40-10490,56.20498484,-131.6206058,"8069, 8037",260,22.74,0.6,X,,X,Same WShed as Tom Lake Creek (8069),X
+NSE Inside,Petersburg,110-34-01A,Harmony Creek,Port Houghton,110-34-10012,57.338407,-133.381753,10003,8,0.38,0.58,,,X,Same WShed as Port Houghton N Side,X
+SSE,Ketchikan,102-60-082,Harris River,Kasaan Bay,102-60-10820,55.459622,-132.68952,4145,224,19.67,0.48,,,X,Same WShed as Twelvemile Creek,X
+SSE,Ketchikan,101-11-014,Harry Bay,Revilla Channel to Pearse Canal,101-11-10140,54.8442,-130.8038,3235,36,2.48,0.57,,X,,,X
+NSE Inside,Juneau,112-67-035,Hasselborg Creek,Kootznahoo Inlet,112-67-10350,57.57093092,-134.3633543,10044,556,36.5,0.49,,,X,Same WShed as Jims Creek,X
+SSE,Petersburg,106-30-051,Hatchery Creek,Steamer Bay/Kindergarten/Quiet Harbor,106-30-10670-2004-3031,55.94061023,-132.9734741,NA,NA,NA,NA,NA,NA,NA,"Drains to a lake, not the estuary",X
+NSE Inside,Juneau,112-65-015,Hawk Inlet Head,Hawk Inlet,112-65-10150,58.18900161,-134.7405979,11722,75,5.94,0.55,,,X,"Same WShed as Fowler Creek-Young Bay, Hawk Inlet Head NW, and Jimmy Green Creek",X
+NSE Inside,Juneau,112-65-014,Hawk Inlet Head NW,Hawk Inlet,112-65-10140,58.17970672,-134.7436826,11722,75,5.94,0.55,,,X,"Same Wshed as Fowler Creek-Young Bay, Hawk Inlet Head, and Jimmy Green Creek",X
+SSE,Ketchikan,101-90-096,Heckman Creek,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10960,55.75103252,-131.8050461,5958,8,0.63,0.56,,X,,,X
+SSE,Ketchikan,101-90-097,Heckman Point North,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10970,55.76873837,-131.7981327,"6087, 6005",10,0.78,0.58,X,X,,,X
+SSE,Ketchikan,101-90-080,Helm Bay Head,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10800,55.68246086,-132.0428899,5435,65,3.33,0.51,,,X,,X
+SSE,Ketchikan,101-90-084,Helm Lake Creek,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10840,55.65149472,-131.972674,5402,5,0.25,0.55,,X,,,X
+SSE,Ketchikan,101-75-005,Herman Creek-Behm Canal,Back Behm Canal,101-75-10050,55.99652462,-131.2990399,7431,20,1.58,0.57,,X,,,X
+NSE Inside,Petersburg,109-30-010,Herring Bay East,Eliza Harbor/Herring Bay/Tyee,109-30-10100,57.13137158,-134.3719425,9183,14,1,0.54,,,X,Same 2nd WShed as Herring Bay Middle,X
+NSE Inside,Petersburg,109-30-011,Herring Bay Middle,Eliza Harbor/Herring Bay/Tyee,109-30-10110,57.13256684,-134.3890246,"9183, 9165",41,2.35,0.54,X,,X,Same WShed as Bergmann Creek (9165) and Herring Bay East (9183),X
+SSE,Ketchikan,101-45-007,Herring Cove,Mountain Point to Carroll Point,101-45-10070,55.32629977,-131.5245044,4493,24,2.03,0.48,,X,,,X
+SSE,Ketchikan,103-25-047,Hetta Creek,Hetta Inlet/Sukkwan Strait,103-25-10470,55.17164093,-132.5796385,3116,27,2.16,0.51,,X,,,X
+SSE,Ketchikan,101-11-101,Hidden Inlet,Revilla Channel to Pearse Canal,101-11-11010,55.02065867,-130.3191298,NA,NA,NA,NA,NA,NA,NA,,X
+NSE Inside,Juneau,111-40-070,Hilda Creek,Gastineau Channel,111-40-10690,58.22054151,-134.4958034,12030,17,1.26,0.61,,X,,,X
+SSE,Ketchikan,103-90-065,Holbrook Inlet Head,Sea Otter Sound,103-90-10650,56.04756961,-133.4838791,5708,26,1.76,0.51,,,X,Same WShed as Holbrook Inlet W Side,X
+SSE,Ketchikan,103-90-064,Holbrook Inlet W Side,Sea Otter Sound,103-90-10640,56.03799164,-133.4956609,5708,26,1.76,0.51,,,X,Same WShed as Holbrook Inlet Head,X
+SSE,Petersburg,105-41-005,Hole-In-The-Wall SE,Port Protection/Hole In The Wall,105-41-10050,56.26667374,-133.6212804,6768,19,0.69,0.49,,,X,,X
+NSE Inside,Juneau,114-25-010,Homeshore Creek,Homeshore,114-25-10100,58.31094457,-135.3733526,"11890, 11852",49,4.95,0.59,X,,X,Same WShed as East Homeshore Creek (11852) and Windy Creek (11890),X
+NSE Inside,Juneau,112-72-012,Hood Bay N Arm E Head,N Arm Hood Bay,112-72-10120,57.39182742,-134.3234284,9710,172,11.1,0.48,,,X,"Same WShed as 1st NW of Weir Creek, Hood Bay S Arm Head, Hood Bay S Arm Head N, Narrows Creek, Weir Creek N Arm Hood Bay, Weir Creek S Arm Hood Bay",X
+NSE Inside,Juneau,112-73-020,Hood Bay S Arm Head,S Arm Hood Bay,112-73-10200,57.3354799,-134.3230453,9710,172,11.1,0.48,,,X,"Same WShed as 1st NW of Weir Creek, Hood Bay N Arm E Head, Hood Bay S Arm Head N, Narrows Creek, Weir Creek N Arm Hood Bay, Weir Creek S Arm Hood Bay",X
+NSE Inside,Juneau,112-73-017,Hood Bay S Arm Head N,S Arm Hood Bay,112-73-10170,57.34459214,-134.3243601,9710,172,11.1,0.48,,,X,"Same WShed as 1st NW of Weir Creek, Hood Bay N Arm E Head, Hood Bay S Arm Head, Narrows Creek, Weir Creek N Arm Hood Bay, Weir Creek S Arm Hood Bay",X
+NSE Inside,Sitka,113-58-004,Hoonah Sound N Head,North Arm Hoonah Sound,113-58-10500-2001,57.77009009,-135.838288,10015,134,12.23,0.45,,,X,Same WShed as Granite Creek N Arm and Hoonah Sound N Arm West,X
+NSE Inside,Sitka,113-57-009,Hoonah Sound S Arm Head,South Arm Hoonah Sound,113-57-10090,57.71161565,-135.755256,9974,28,2.1,0.49,,X,,,X
+NSE Inside,Sitka,113-57-002,Hoonah Sound S Arm SW,South Arm Hoonah Sound,113-57-10020,57.64962645,-135.7011029,9880,34,2.85,0.48,,,X,Same WShed as Fick Cove Head,X
+NSE Inside,Sitka,113-58-002,Hoonah Sound N Arm West,North Arm Hoonah Sound,113-58-10020,57.73537323,-135.7797141,10015,134,12.23,0.45,,,X,Same WShed as Granite Creek N Arm and Hoonah Sound N Head,X
+NSE Inside,Juneau,112-61-008,Howard Bay NW Side,Howard Bay,112-61-10080,58.29798734,-135.0961115,11958,18,1.22,0.59,,,X,Same WShed as Howard Bay W Side,X
+NSE Inside,Juneau,112-61-006,Howard Bay W Side,Howard Bay,112-61-10060,58.29182456,-135.1007225,11958,18,1.22,0.59,,,X,Same WShed as Howard Bay NW Side,X
+SSE,Ketchikan,101-30-083,Humpback Creek,Boca De Quadra,101-30-10830,55.0321619,-130.6858007,4088,243,21.36,0.47,,X,,Same WShed as Mink Creek,X
+NSE Inside,Juneau,114-34-010,Humpback Creek-Port Frederick,W Shore Port Frederick,114-34-10100,58.09384393,-135.5792629,"11010, 10981, 11318",121,12.17,0.56,X,X,,,X
+NSE Inside,Juneau,114-50-025,Humpie Creek-Port Althorp,Port Althorp,114-50-10250,58.12194561,-136.3157982,"10768, 10734",51,3.49,0.5,X,,X,Same WShed as Althrop Creek (10734) and Magret Creek-Port Althorp (10768),X
+SSE,Ketchikan,101-71-04H,Humpy Creek,Walker Cove/Chichamin,101-71-10040-2005,55.84875584,-130.8729344,7049,1709,184.19,0.6,,,X,"Same WShed as Choca Creek, Clear Creek, and King Creek",X
+NSE Inside,Juneau,114-25-018,Humpy Creek-Homeshore,Homeshore,114-25-10180,58.27325996,-135.3419042,11758,24,2.29,0.57,,X,,,X
+SSE,Ketchikan,103-11-017,Hunter Bay E Head,Lower Cordova Bay,103-11-10190,54.86855086,-132.292637,"2318, 2253",171,12.57,0.53,X,,X,,X
+SSE,Ketchikan,103-40-041,Hydaburg River,Tlevak Strait,103-40-10410,55.20586982,-132.8270085,3183,23,1.79,0.51,,X,,,X
+NSE Inside,Juneau,112-42-008,Indian River-Tenakee,Tenakee Springs,112-42-10080,57.7774635,-135.1818931,"10274, 10275",61,6.41,0.55,X,X,,,X
+SSE,Ketchikan,103-80-056,Inside St Phillips S,St Phillips/Warmchuck,103-80-10560,55.63815389,-133.3948488,4348,12,0.72,0.53,,,X,Same WShed as S of Salt Lake Bay,X
+NSE Inside,Juneau,112-13-006,Iyouktug Creek,False Bay,112-13-10060,57.97019405,-134.9358597,10932,79,7.39,0.54,,X,,,X
+SSE,Ketchikan,103-70-005,James Creek,11-Mile,103-70-10050,55.61880535,-133.3760977,4180,16,0.91,0.55,,,X,Same WShed as Goodrow Creek,X
+NSE Inside,Petersburg,109-42-005,Jenny Creek,Kake/Kadake Bay/Keku Strait,109-42-10050,56.93174098,-133.8717162,8968,30,1.46,0.55,,X,,,X
+NSE Inside,Juneau,112-65-012,Jimmy Green Creek,Hawk Inlet,112-65-10120,58.17638912,-134.7567047,11722,75,5.94,0.55,,,X,"Same WShed as Fowler Creek-Young Bay, Hawk Inlet Head, and Hawk Inlet Head NW",X
+NSE Inside,Juneau,112-67-040,Jims Creek,Kootznahoo Inlet,112-67-10350-2012,57.59077683,-134.3312201,10044,556,36.5,0.49,,,X,Same WShed as Hasselborg Creek,X
+SSE,Petersburg,105-10-021,Joan Creek,Affleck Canal/Spanish Is/Louise Cove,105-10-10210,56.28525547,-134.0799751,6513,8,0.28,0.55,,X,,,X
+SSE,Ketchikan,102-30-017,Johnson Cove Creek,Moira Sound,102-30-10170,54.97423358,-132.1097051,2698,15,1.15,0.53,,X,,,X
+NSE Inside,Petersburg,110-23-008,Johnston Creek,Gambier Bay,110-23-10100,57.50763528,-134.1041033,10121,118,5.66,0.52,,X,,Same Wshed as 1st East of Bowman ,X
+NSE Inside,Petersburg,109-63-005,Joyce Creek Malmesbury,Port Malmsbury,109-63-10050,56.32609491,-134.1678442,6603,14,0.27,0.55,,X,,,X
+SSE,Petersburg,107-20-015,June Creek,Anan/Fools/Menefee/Deer Is/N Ernest Sd,107-20-10150,55.95908385,-132.0102729,6780,33,2.51,0.56,,X,,,X
+NSE Inside,Petersburg,109-42-030,Kadake Creek,Kake/Kadake Bay/Keku Strait,109-42-10300,56.80056418,-133.9705963,8561,99,6.31,0.53,,X,,,X
+NSE Inside,Juneau,112-42-025,Kadashan River,Tenakee Springs,112-42-10250,57.70235484,-135.2204374,10139,121,11,0.51,,,X,,X
+SSE,Petersburg,106-42-010,Kah Sheets Creek,Kah Sheets/St Johns,106-42-10100,56.53032685,-133.1422908,"8182, 8477",213,14.2,0.62,X,,X,,X
+NSE Inside,Juneau,114-23-022,Kahtaheena River,Point Adolphus Area,114-23-10220,58.41797519,-135.6101327,"12123, 12124",57,4.76,0.54,X,,X,Same 2nd WShed as East Kahtaheena River (12124),X
+NSE Inside,Juneau,112-67-060,Kanalku Lake Creek,Kootznahoo Inlet,112-67-10600,57.49818199,-134.4101827,9981,83,5.26,0.51,,X,,,X
+SSE,Petersburg,105-10-019,Kathleen Creek-Affleck Canal,Affleck Canal/Spanish Is/Louise Cove,105-10-10190,56.31583036,-134.0813429,6604,25,1.42,0.54,,,X,Same WShed as Affleck Canal NE,X
+NSE Outside,Sitka,113-44-005,Katlian Bay S Fork,Katlian Bay,113-44-10050,57.16419393,-135.2860793,8984,38,3.35,0.43,,X,,,X
+NSE Outside,Sitka,113-44-003,Katlian River,Katlian Bay,113-44-10030,57.16848597,-135.2865234,9009,118,12.17,0.51,,X,,,X
+SSE,Ketchikan,102-30-067,Kegan Cove,Moira Sound,102-30-10670,55.0218718,-132.1717394,2794,39,2.01,0.51,,,X,Same WShed as Kugel Creek,X
+SSE,Petersburg,105-10-032,Kell Bay Creek,Affleck Canal/Spanish Is/Louise Cove,105-10-10320,56.19281693,-134.1908611,5863,18,0.92,0.55,,X,,,X
+SSE,Petersburg,105-10-028,Kell Slough Creek,Affleck Canal/Spanish Is/Louise Cove,105-10-10290,56.17259412,-134.1490276,5820,5,0.31,0.52,,X,,,X
+NSE Inside,Sitka,112-21-008,Kelp Bay Middle Arm Head,Kelp Bay,112-21-10080,57.34076089,-135.0802724,9421,88,9.59,0.53,,X,,,X
+NSE Inside,Sitka,112-21-009,Kelp Bay Portage Arm,Kelp Bay,112-21-10090,57.36763529,-134.9634167,9474,13,0.46,0.56,,,X,,X
+NSE Inside,Juneau,112-50-020,Kennel Creek,Freshwater Bay,112-50-10250,57.89887,-135.15048,10617,65,6.55,0.53,,,X,,X
+SSE,Ketchikan,101-30-030,Keta River,Boca De Quadra,101-30-10300,55.33601594,-130.4757393,4411,359,32.95,0.54,,X,,,X
+SSE,Ketchikan,101-47-025,Ketchikan Creek,Tongass Narrows,101-47-10250,55.340823,-131.6417,4306,71,6.27,0.45,,X,,,X
+NSE Outside,Sitka,113-73-012,Khaz Creek,Slocum Arm,113-73-10120,57.49651164,-135.925561,9470,143,11.18,0.41,,,X,Same WShed as Slocum Arm Head and Waterfall Cove Creek,X
+SSE,Petersburg,105-20-002,Kim Creek,Port Beauclerc,105-20-10020,56.3049627,-133.8946133,"6765, 6733",13,0.78,0.57,X,X,,,X
+SSE,Ketchikan,102-60-068,Kina Creek,Kasaan Bay,102-60-10680,55.48799136,-132.5241606,4437,21,1.8,0.53,,,X,,X
+SSE,Ketchikan,101-71-04K,King Creek,Walker Cove/Chichamin,101-71-10040-2006,55.84035252,-130.8521086,7049,1709,184.19,0.6,,,X,"Same WShed as Choca Creek, Clear Creek, and Humpy Creek",X
+SSE,Petersburg,108-20-001,King George Creek,Meter Bight/King George,108-20-10010,56.30831817,-132.5313642,7813,24,2.03,0.52,,X,,,X
+NSE Inside,Juneau,111-17-010,King Salmon River,Seymour Head,111-17-10100,58.04200257,-134.3414478,11482,97,7.64,0.55,,X,,,X
+SSE,Ketchikan,102-40-017,Kitkun Bay,Cholmondeley Sound,102-40-10170,55.16182181,-132.1583116,3494,77,5.7,0.51,,,X,Same WShed as Aiken Cove and Miller Lake Creek,X
+SSE,Ketchikan,102-40-013,Kitkun Bay NE Side,Cholmondeley Sound,102-40-10130,55.19376892,-132.1011184,3557,7,0.44,0.5,,X,,,X
+NSE Outside,Sitka,113-41-042,Kizhuchia Creek,Sitka Sound,113-41-10420,56.93657258,-135.3542138,8268,25,1.76,0.47,,X,,,X
+SSE,Ketchikan,101-75-050,Klahini River,Back Behm Canal,101-75-10500,56.04439314,-131.0962547,7852,151,15.39,0.64,,X,,,X
+SSE,Ketchikan,103-15-019,Klakas Head,Klakas Inlet,103-15-10170,55.08243162,-132.4008837,2582,103,8.38,0.49,,,X,"Same WShed as Klakas Inlet W Side, Klakas Inlet W Side N, Klakas Lake Creek, Klakas Left Head, and Klakas Right Head",X
+SSE,Ketchikan,103-15-014,Klakas Inlet W Side N,Klakas Inlet,103-15-10140,55.04374338,-132.4194337,2582,103,8.38,0.49,,,X,"Same WShed as Klakas Head, Klakas Inlet W Side, Klakas Lake Creek, Klakas Left Head, and Klakas Right Head",X
+SSE,Ketchikan,103-15-010,Klakas Inlet W Side,Klakas Inlet,103-15-10100,54.99437944,-132.4280281,2582,103,8.38,0.49,,,X,"Same WShed as Klakas Head, Klakas Inlet W Side N, Klakas Lake Creek, Klakas Left Head, and Klakas Right Head",X
+SSE,Ketchikan,103-15-027,Klakas Lake Creek,Klakas Inlet,103-15-10270,55.01444344,-132.3926512,2582,103,8.38,0.49,,,X,"Same WShed as Klakas Head, Klakas Inlet W Side, Klakas Inlet W Side N, Klakas Left Head, and Klakas Right Head",X
+SSE,Ketchikan,103-15-016,Klakas Left Head,Klakas Inlet,103-15-10160,55.08042892,-132.4028895,2582,103,8.38,0.49,,,X,"Same WShed as Klakas Head, Klakas Inlet W Side, Klakas Inlet W Side N, Klakas Lake Creek, and Klakas Right Head",X
+SSE,Ketchikan,103-15-023,Klakas Right Head,Klakas Inlet,103-15-10230,55.08593418,-132.3844889,2582,103,8.38,0.49,,,X,"Same WShed as Klakas Head, Klakas Inlet W Side, Klakas Inlet W Side N, Klakas Lake Creek, and Klakas Left Head",X
+SSE,Petersburg,107-10-070,Kudays Creek S Etolin,Union Bay/Emerald Bay/S Ernest Sound,107-10-10700,55.93783304,-132.2763104,"6395, 6346",51,4.39,0.57,X,,X,Same WShed as Chum Creek S Etolin Mid (6395) and S Etolin Island East (6395),X
+SSE,Ketchikan,102-30-065,Kugel Creek,Moira Sound,102-30-10650,55.04525695,-132.2536016,"2794, 2768",68,4.03,0.51,X,,X,"Same WShed as Dickman Bay (2768), Dickman Bay Head (2768), and Kegan Cove (2794)",X
+SSE,Petersburg,105-31-003,Kushneahin Creek,Reid Bay/No Name Bay/Point Barrie,105-31-10030,56.47135331,-133.6674026,7628,53,3.7,0.57,,X,,,X
+NSE Inside,Petersburg,109-52-035,Kutlaku Creek,Rowan Bay and Bay of Pillars,109-52-10350,56.62009032,-134.1182891,7868,68,5.01,0.46,,,X,Same WShed as Pillar Bay Head,X
+NSE Inside,Petersburg,109-52-055,Kwatahein Creek,Rowan Bay and Bay of Pillars,109-52-10550,56.59534292,-134.2343439,"7737, 7837",44,2.91,0.51,X,X,,Same Wshed as Pillar Bay SW Side (7837),X
+NSE Inside,Juneau,112-17-025,Lake Florence Creek,Angoon to Hepburn,112-17-10250,57.80717196,-134.710953,10566,118,9.86,0.52,,X,,,X
+NSE Inside,Juneau,112-17-012,Lake Kathleen Creek,Angoon to Hepburn,112-17-10120,57.89582662,-134.7327233,10807,80,7.32,0.58,,X,,,X
+SSE,Ketchikan,102-40-011,Lancaster Cove East 1,Cholmondeley Sound,102-40-10110,55.2027947,-132.0959159,3587,10,0.89,0.51,,,X,Same WShed as Lancaster Cove East 2,X
+SSE,Ketchikan,102-40-009,Lancaster Cove East 2,Cholmondeley Sound,102-40-10090,55.20546529,-132.0849216,3587,10,0.89,0.51,,,X,Same WShed as Lancaster Cove East 1,X
+SSE,Ketchikan,102-40-007,Lancaster Cove East 3,Cholmondeley Sound,102-40-10070,55.21460828,-132.0822531,3612,6,0.54,0.51,,X,,,X
+NSE Inside,Petersburg,110-23-004,Last Chance Creek-Gambier Bay,Gambier Bay,110-23-10040,57.53057509,-133.9573084,10219,19,0.81,0.53,,,X,Same WShed as Gambier Bay N Arm West,X
+NSE Inside,Petersburg,110-33-013,Lauras Creek,Hobart Bay,110-33-10130,57.412721,-133.346759,10177,86,5.41,0.58,,X,,,X
+SSE,Ketchikan,101-45-032,Leask Creek,Mountain Point to Carroll Point,101-45-10320,55.50886712,-131.5165969,4577,294,25.19,0.48,,,X,"Same WShed as Salt Chuck-George Inlet, Salt Lagoon Right, and White River",X
+NSE Inside,Juneau,111-90-005,Limestone Creek,Limestone Inlet,111-90-10050,58.03722049,-133.9394769,11649,37,2.19,0.57,,X,,,X
+NSE Outside,Sitka,113-42-002,Limit Creek,Nakwasina Passage,113-42-10030,57.25355392,-135.4585761,9111,12,0.22,0.52,,X,,,X
+SSE,Petersburg,105-10-016,Linda Sue Slough,Affleck Canal/Spanish Is/Louise Cove,105-10-10160,56.19040548,-134.0078122,6077,6,0.37,0.55,,X,,,X
+NSE Outside,Sitka,113-95-006,Lisianski River,Lisianski Inlet,113-95-10060,57.84780687,-136.041862,10244,217,22.24,0.44,,,X,Same WShed as Phonograph Creek and Steelhead River-Lisianski Inlet,X
+SSE,Ketchikan,103-11-035,Little Datzkoo Head,Lower Cordova Bay,103-11-10350,54.70377036,-132.7199302,1792,13,0.63,0.54,,X,,,X
+NSE Inside,Juneau,112-48-019,Little Goose Creek,Tenakee Head,112-48-10190,57.92147237,-135.7739824,10439,92,9.78,0.5,,,X,Same WShed as Big Goose Creek,X
+SSE,Ketchikan,103-60-081,Little John Creek,Big Salt/Trocadero Bay,103-60-10810,55.34480961,-132.9633868,"3527, 3528",31,1.86,0.51,X,,X,Same WShed as Trocadero Bay NW Side (3527),X
+NSE Inside,Petersburg,109-30-025,Little Pybus Bay Creek,Eliza Harbor/Herring Bay/Tyee,109-30-10260,57.27100288,-134.1593654,9529,33,1.96,0.46,,X,,,X
+SSE,Petersburg,106-10-006,Little Ratz Creek,Ratz Harbor Shore,106-10-10060,55.86072258,-132.5795314,5790,12,0.9,0.52,,X,,,X
+SSE,Ketchikan,103-40-089,Lively Creek,Tlevak Strait,103-40-10890,55.23262769,-133.1167513,"3024, 2943",34,2.04,0.54,X,,X,Same WShed as North Bay (2943),X
+NSE Outside,Sitka,113-43-005,Liza Creek-Nakwasina Sound,Nakwasina Sound,113-43-10050,57.19628939,-135.3767265,8961,179,17.02,0.41,,,X,Same WShed as Nakwasina River and Noson Creek,X
+NSE Inside,Juneau,112-47-010,Long Bay Head,Long Bay,112-47-10100,57.855908,-135.65309,10332,76,7.93,0.52,,X,,,X
+NSE Inside,Petersburg,109-45-017,Lookout Point Creek,Security Bay,109-45-10170,56.83088997,-134.3382175,"8469, 8470",13,0.61,0.47,X,,X,Same WShed as Security Bay S Mid (8470),X
+SSE,Ketchikan,101-90-048,Loring Creek,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10480,55.60102491,-131.6280703,5474,137,12.03,0.48,,,X,Same WShed as Naha River,X
+SSE,Petersburg,105-10-011,Louise Cove,Affleck Canal/Spanish Is/Louise Cove,105-10-10110,56.196872,-133.973779,6179,23,1.11,0.55,,,X,Same WShed as N of Louise Cove and West of Pt Amelius,X
+SSE,Petersburg,105-32-001,Lovelace Creek,Rocky Pass/Threemile Arm/Seclusion Hbr,105-32-10010,56.55444785,-133.6583913,7945,41,2.48,0.55,,X,,,X
+NSE Inside,Sitka,109-10-009,Lovers Cove Creek,Southeast Baranof Island,109-10-10120,56.38977221,-134.7173474,6556,45,3.62,0.49,,,X,Same WShed as Sashin Creek,X
+SSE,Ketchikan,101-41-025,Lucky Cove,Alva to Sykes,101-41-10250,55.21223495,-131.2604991,"4199, 4200",22,1.49,0.6,X,,X,,X
+SSE,Ketchikan,101-90-068,Lunch Creek,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10680,55.51204032,-131.7247957,5072,13,1.27,0.52,,X,,,X
+SSE,Petersburg,106-30-072,Mabel Creek,Steamer Bay/Kindergarten/Quiet Harbor,106-30-10720,56.03231144,-133.067955,6185,85,5.88,0.56,,,X,,X
+NSE Inside,Juneau,112-17-040,Marble Creek-Angoon ,Angoon to Hepburn,112-17-10400,57.681925,-134.7011176,"10218, 10201",18,1.32,0.56,X,X,,,X
+NSE Inside,Juneau,114-40-038,Marble Creek-Idaho Inlet,Idaho Inlet,114-40-10380,58.0757201,-136.1502787,10678,15,0.3,0.52,,X,,,X
+SSE,Petersburg,105-42-006,Marble Creek-Shakan,Shakan Bay/Calder Bay/El Capitan Pass,105-42-10060,56.17463926,-133.4655162,"6477, 6435",24,1.51,0.57,X,X,,Same 2nd WShed as Bear Creek-Dry Pass (6435),X
+SSE,Ketchikan,101-90-039,Margaret Creek,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10390,55.700302,-131.6352971,5795,175,15.38,0.49,,,X,Same WShed as Traitors Cove Creek,X
+SSE,Ketchikan,101-80-052,Margarita Creek,Bell Island/North Behm Canal,101-80-10520,55.86929166,-131.8939801,6444,10,0.57,0.53,,X,,,X
+NSE Inside,Juneau,114-50-030,Margret Creek-Port Althorp,Port Althorp,114-50-10300,58.13118453,-136.3335367,"10801, 10768",26,1.32,0.52,X,,X,Same 2nd WShed as Humpie Creek-Port Althorp (10768),X
+NSE Outside,Sitka,113-66-003,Marine Cove,St John The Baptist Bay,113-66-10030,57.32517258,-135.6345154,9032,64,4.55,0.47,,,X,,X
+NSE Inside,Petersburg,110-23-006,Marker Creek,Gambier Bay,110-23-10080,57.49555598,-134.0060172,10110,17,0.78,0.54,,X,,,X
+SSE,Petersburg,107-40-038,Marten Creek-Bradfield Canal,Blake Channel,107-40-10380,56.23103801,-131.8833178,7957,58,4.77,0.61,,X,,,X
+SSE,Ketchikan,101-30-060,Marten River,Boca De Quadra,101-30-10600,55.197016,-130.457229,4278,333,26.62,0.51,,,X,,X
+SSE,Ketchikan,102-60-084,Maybeso Creek,Kasaan Bay,102-60-10840,55.48130266,-132.6636529,4184,45,3.94,0.47,,X,,,X
+SSE,Petersburg,106-20-023,McHenry Anchorage Creek,Rocky Bay/McHenry Anchorage,106-20-10230,55.96691955,-132.4159204,6394,13,1.09,0.51,,X,,,X
+SSE,Ketchikan,102-60-014,McKenzie Creek,Kasaan Bay,102-60-10140,55.33038087,-132.3452634,3947,44,4.48,0.48,,,X,Same WShed as Omar Creek,X
+SSE,Petersburg,107-20-030,Menefee Creek,Anan/Fools/Menefee/Deer Is/N Ernest Sd,107-20-10300,56.13770544,-132.261378,7232,25,0.93,0.5,,X,,,X
+NSE Inside,Juneau,111-40-065,Middle Point Creek,Gastineau Channel,111-40-10600,58.24902626,-134.6272598,12061,7,0.36,0.6,,X,,,X
+SSE,Ketchikan,102-30-089,Miller Lake Creek,Moira Sound,102-30-10890,55.12753241,-132.1845981,3494,77,5.7,0.51,,,X,Same WShed as Aiken Cove and Kitkun Bay ,X
+SSE,Ketchikan,101-30-089,Mink Creek,Boca De Quadra,101-30-10890,55.01825011,-130.6879241,4088,243,21.36,0.47,,,X,Same WShed as Humpback Creek,X
+SSE,Ketchikan,102-30-037,Moira S Arm Head S,Moira Sound,102-30-10370,54.91605031,-132.2092444,NA,NA,NA,NA,NA,NA,NA,,X
+NSE Inside,Juneau,111-13-015,Mole Harbor N Side,Mole Harbor,111-13-10150,57.66933232,-134.0928232,10448,12,0.47,0.61,,X,,Same 2nd WShed as Bear Creek-Seymour Canal ,X
+NSE Inside,Juneau,111-13-010,Mole River,Mole Harbor,111-13-10100,57.660517,-134.07379,10416,74,3.54,0.52,,X,,,X
+SSE,Ketchikan,101-90-061,Moser Bay,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10610,55.53236041,-131.6446525,"5260, 5335",56,4.69,0.54,X,,X,Same WShed as Wolf Creek (5335),X
+SSE,Petersburg,106-22-008,Mosman Creek E Head,"Burnett,Mosman,McHenry Inlet",106-22-10080,56.14784378,-132.5799505,7424,162,13,0.49,,,X,"Same WShed as Anita Bay Head W, Brad Creek NW Anita Bay, Flat Creek-Mosman Inlet, Mosman Inlet NW Head, and Mosman Inlet SE Head",X
+SSE,Petersburg,106-22-004,Mosman Inlet NW Head,"Burnett,Mosman,McHenry Inlet",106-22-10040,56.15018448,-132.5980094,7424,162,13,0.49,,,X,"Same WShed as Anita Bay Head W, Brad Creek NW Anita Bay, Flat Creek-Mosman Inlet, Mosman Creek E Head, and Mosman Inlet SE Head",X
+SSE,Petersburg,106-22-010,Mosman Inlet SE Head,"Burnett,Mosman,McHenry Inlet",106-22-10100,56.14583153,-132.5813047,7424,162,13,0.49,,,X,"Same WShed as Anita Bay Head W, Brad Creek NW Anita Bay, Flat Creek-Mosman Inlet, Mosman Creek E Head, and Mosman Inlet NW Head",X
+NSE Inside,Juneau,114-23-070,Mud Bay River,Point Adolphus Area,114-23-10700,58.18940306,-135.9926664,"11114, 11086",156,15.86,0.5,X,X,,,X
+NSE Inside,Juneau,112-12-034,N of Basket Bay,W Chatham Peril to Wukuktook,112-12-10340,57.70764632,-134.9198005,10232,28,2.45,0.53,,X,,,X
+SSE,Petersburg,105-10-010,N of Louise Cove,Affleck Canal/Spanish Is/Louise Cove,105-10-10100,56.20764135,-133.9539911,6179,23,1.11,0.55,,,X,Same WShed of West of Pt Amelius and Louise Cove,X
+NSE Inside,Juneau,111-20-040,N of Pt. Glass Penn,South Glass Peninsula,111-20-10400,57.81847849,-133.9222561,11016,15,0.83,0.56,,X,,,X
+SSE,Ketchikan,103-40-064,N of Rose Point Ck,Tlevak Strait,103-40-10640,54.9863913,-132.9693596,2291,13,0.2,0.54,,X,,,X
+NSE Inside,Petersburg,110-21-005,N of Square Point,False Point Pybus/Brothers Island,110-21-10050,57.33985244,-133.923074,9811,7,0.26,0.59,,X,,,X
+NSE Inside,Juneau,112-12-008,N of White Rock,W Chatham Peril to Wukuktook,112-12-10080,57.57017193,-134.8545171,"10041, 9961",13,0.82,0.55,X,X,,,X
+SSE,Ketchikan,101-90-050,Naha River,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10500,55.5918871,-131.5947009,5474,137,12.03,0.48,,X,,Same WShed as Loring Creek,X
+NSE Outside,Sitka,113-43-002,Nakwasina River,Nakwasina Sound,113-43-10020,57.25553037,-135.3462999,8961,179,17.02,0.41,,,X,Same WShed as Liza Creek-Nakwasina Sound and Noson Creek,X
+NSE Inside,Petersburg,110-33-008,Nancy Creek-Hobart Bay,Hobart Bay,110-33-10080,57.45129778,-133.3161169,10191,114,6.85,0.53,,,X,,X
+NSE Inside,Juneau,112-71-024,Narrows Creek,Outer Hood Bay,112-71-10240,57.36952174,-134.4346879,9710,172,11.1,0.48,,,X,"Same Wshed as 1st NW of Weir Creek, Hood Bay N Arm E Head, Hood Bay S Arm Head, Hood Bay S Arm Head N, Weir Creek N Arm Hood Bay, Weir Creek S Arm Hood Bay",X
+SSE,Ketchikan,103-40-039,Natzuhini Bay E Side,Tlevak Strait,103-40-10390,55.2479011,-132.8266016,3293,5,0.25,0.51,,,X,,X
+SSE,Ketchikan,103-40-033,Natzuhini N Center,Tlevak Strait,103-40-10330,55.2788155,-132.8478231,3292,42,3.52,0.51,,,X,Same WShed as Natzuhini NE Corner,X
+SSE,Ketchikan,103-40-035,Natzuhini NE Corner,Tlevak Strait,103-40-10350,55.27911154,-132.8281405,3292,42,3.52,0.51,,X,,Same WShed as Natzuhini N Center,X
+SSE,Ketchikan,103-90-026,Naukati Creek,Sea Otter Sound,103-90-10260,55.88550655,-133.1496964,5467,134,9,0.52,,,X,Same WShed as Gutchie Creek and Yatuk Creek,X
+SSE,Petersburg,106-22-016,Navy Creek,"Burnett,Mosman,McHenry Inlet",106-22-10160,56.0604967,-132.4527546,"6844, 6777",71,4.64,0.5,X,,X,,X
+NSE Inside,Juneau,111-21-053,NE of Bushy Island,Tracy and Endicott Arms,111-21-10530,57.71827357,-133.4049711,"10942, 10722",338,27.63,0.6,,,X,,X
+NSE Inside,Petersburg,109-62-036,Neal Creek,Tebenkof Bay,109-62-10360,56.35945495,-134.2250499,6730,13,0.53,0.49,,,X,Same WShed as Gedney Harbor S Head,X
+NSE Inside,Petersburg,110-34-014,Negro Creek,Port Houghton,110-34-10140,57.28499375,-133.4147066,9908,19,0.83,0.56,,X,,,X
+NSE Inside,Juneau,114-33-023,Neka River,Neka Bay,114-33-10230,58.05567303,-135.7882468,10679,130,13.72,0.49,,X,,,X
+NSE Inside,Juneau,114-80-045,Neva Creek,Excursion Inlet,114-80-10450-2004,58.4130705,-135.4161088,12181,45,4.98,0.61,,X,,,X
+SSE,Ketchikan,101-45-075,Nigelius Creek,Mountain Point to Carroll Point,101-45-10750,55.53586976,-131.3529063,4673,544,48.72,0.43,,,X,Same WShed as Carroll Creek and Spit Creek,X
+NSE Inside,Juneau,114-40-023,Nip and Tuck Creek,Idaho Inlet,114-40-10230,58.13937415,-136.1696416,NA,NA,NA,NA,NA,NA,NA,No assigned WShed ,X
+SSE,Ketchikan,101-60-009,Nooya Creek,Rudyerd Bay,101-60-10090,55.61473908,-130.7108105,5877,329,29.48,0.56,,,X,"Same WShed as Big Goat Creek, Sandpiper Creek, and Valentine Creek",X
+SSE,Petersburg,108-41-010,North Arm Creek,N. Stikine Flats/Leconte Bay/Ideal,108-40-10150-2007,56.68492843,-132.306356,NA,NA,NA,NA,NA,NA,NA,,X
+SSE,Ketchikan,103-40-086,North Bay,Tlevak Strait,103-40-10860,55.20248206,-133.1272791,2943,29,1.72,0.52,,,X,Same 2nd WShed as Lively Creek,X
+NSE Outside,Sitka,113-42-003,Noson Creek,Nakwasina Passage,113-42-10035,57.25272454,-135.3985532,8961,179,17.02,0.41,,,X,Same WShed as Liza Creek-Nakwasina Sound and Nakwasina Creek,X
+SSE,Ketchikan,103-80-035,Nossuk Bay Left Head,St Phillips/Warmchuck,103-80-10350,55.71349091,-133.3230873,4708,19,1.2,0.55,,,X,,X
+SSE,Ketchikan,103-21-008,Nutkwa Creek,Upper Cordova Bay,103-21-10080,55.14634044,-132.4596632,2998,108,6.59,0.51,,X,,Same WShed as Nutkwa Creek North,X
+SSE,Ketchikan,103-21-005,Nutkwa Creek North,Upper Cordova Bay,103-21-10050,55.13575952,-132.5296513,2998,108,6.59,0.51,,,X,Same WShed as Nutkwa Creek ,X
+SSE,Petersburg,107-40-025,Oerns Creek,Blake Channel,107-40-10250,56.38012897,-131.9427568,7914,465,40.53,0.57,,,X,Same WShed as Berg Creek,X
+NSE Inside,Petersburg,110-22-002,Old Mans Creek-Pybus Bay,Pybus Bay,110-22-10020,57.32998464,-134.0335603,9764,17,0.6,0.59,,X,,,X
+SSE,Ketchikan,102-60-024,Old Tom Creek,Kasaan Bay,102-60-10240,55.39704406,-132.4054107,4112,10,0.85,0.53,,X,,,X
+SSE,Ketchikan,102-60-016,Omar Creek,Kasaan Bay,102-60-10160,55.32779116,-132.358753,3947,44,4.48,0.48,,,X,Same WShed as McKenzie Creek,X
+NSE Inside,Juneau,111-14-042,Opp Middle Tiedeman,Central Seymour Canal,111-14-10420,57.79384525,-134.1701267,NA,NA,NA,NA,NA,NA,NA,,X
+NSE Inside,Juneau,111-14-038,Opposite S Tiedeman,Central Seymour Canal,111-14-10380,57.75883278,-134.1445411,"10714, 10656",21,1.21,0.58,X,X,,,X
+NSE Inside,Petersburg,109-52-002,Outer Rowan Bay,Rowan Bay and Bay of Pillars,109-52-10020,56.66386308,-134.3235754,7899,5,0.38,0.46,,X,,,X
+SSE,Petersburg,105-20-006,P Beauclerc Lake,Port Beauclerc,105-20-10060,56.34104767,-133.9889817,6838,9,0.21,0.55,,,X,Same WShed as P Beauclerc NW Side,X
+SSE,Petersburg,105-20-005,P Beauclerc NW Head,Port Beauclerc,105-20-10050,56.35753785,-133.9851478,6874,16,0.98,0.55,,,X,Same WShed as Paul Creek N Arm Hd,X
+SSE,Petersburg,105-20-007,P Beauclerc NW Side,Port Beauclerc,105-20-10070,56.33407296,-133.9845559,6838,9,0.21,0.55,,,X,Same WShed as P Beauclerc Lake,X
+SSE,Petersburg,105-20-009,P Beauclerc S Arm Hd,Port Beauclerc,105-20-10088,56.25524143,-133.9936547,6515,19,1.24,0.53,,,X ,Same WShed as Gail Creek S Arm SE Hd,X
+NSE Inside,Petersburg,109-63-012,P Malmesbury Lake Ck,Port Malmsbury,109-63-10120,56.29163817,-134.2092469,6471,8,0.52,0.52,,,X,,X
+NSE Inside,Petersburg,109-63-015,P Malmesbury S Arm E,Port Malmsbury,109-63-10150,56.23993242,-134.2060511,6176,11,0.46,0.54,,,X,Same WShed as P Malmesbury S Arm S,X
+NSE Inside,Petersburg,109-63-017,P Malmesbury S Arm S,Port Malmsbury,109-63-10170,56.23839265,-134.2083811,6176,11,0.46,0.54,,,X,Same WShed as P Malmesbury S Arm E,X
+NSE Inside,Juneau,111-15-030,Pack Creek,Windfall-Pack Area,111-15-10300,57.90474312,-134.2900596,11090,51,4.3,0.6,,X,,,X
+NSE Inside,Juneau,112-41-001,Passage Point Creek,Outer Tenakee Inlet,112-41-10360,57.75167844,-134.9326183,10280,8,0.43,0.56,,X,,,X
+NSE Inside,Sitka,109-10-028,Patterson Bay Head,Southeast Baranof Island,109-10-10280,56.63394411,-134.6796164,7272,91,8.95,0.44,,,X,,X
+NSE Inside,Sitka,113-57-005,Patterson Bay W Head,South Arm Hoonah Sound,113-57-10050,57.64926055,-135.8142089,9840,76,4.92,0.48,,X,,,X
+SSE,Petersburg,105-20-004,Paul Creek N Arm Hd,Port Beauclerc,105-20-10040,56.36711645,-133.9864317,6874,16,0.98,0.55,,,X,Same WShed as P Beauclerc NW Head,X
+NSE Outside,Sitka,113-95-003,Pelican Creek,Lisianski Inlet,113-95-10030,57.95612704,-136.2216155,"10289, 10308",40,3.37,0.53,X,X,,,X
+NSE Inside,Sitka,113-51-004,Peril Straits N-False Island,East Peril Straits,113-51-10040,57.52338394,-135.1806082,9780,32,2.97,0.53,,X,,,X
+SSE,Ketchikan,102-30-028,Perkins Creek,Moira Sound,102-30-10280,54.94513229,-132.1784552,2665,24,1.96,0.5,,X,,,X
+SSE,Ketchikan,103-60-089,Perlas Point Creek,Big Salt/Trocadero Bay,103-60-10890,55.36713074,-133.080075,3458,16,0.68,0.51,,,X,Same WShed as Deep Bay,X
+SSE,Petersburg,106-44-060,Petersburg Creek,Wrangell Narrows,106-44-10600,56.83975397,-133.0564383,"9188, 8497",512,34.8,0.55,X,,X,,X
+NSE Inside,Petersburg,109-62-022,Petrof Bay S Head,Tebenkof Bay,109-62-10220,56.34134099,-134.0569129,6872,13,0.9,0.55,,,X,Same 2nd WShed as Petrof Bay SW Head and Petrof Bay W Head,X
+NSE Inside,Petersburg,109-62-020,Petrof Bay SE Head,Tebenkof Bay,109-62-10200,56.36277011,-134.0433208,6873,6,0.27,0.56,,,X,Same 2nd WShed as Petrof Bay W Head,X
+NSE Inside,Petersburg,109-62-026,Petrof Bay SW Head,Tebenkof Bay,109-62-10260,56.378776,-134.0829818,"6914, 6872",22,1.38,0.56,X,,X,Same WShed as Petrof Bay W Head (6872) and William Creek Thetis E (6914),X
+NSE Inside,Petersburg,109-62-024,Petrof Bay W Head,Tebenkof Bay,109-62-10240,56.36372859,-134.0680531,"6873, 6872",19,1.17,0.56,X,,X,"Same WShed as Petrof Bay S Head (6872), Petrof Bay SW Head (6872), and Petrof Bay SE Head (6873)",X
+NSE Outside,Sitka,113-95-004,Phonograph Creek,Lisianski Inlet,113-95-10040,57.90716098,-136.1374354,10244,217,22.24,0.44,,,X,Same WShed as Lisianski River and Steelhead River-Lisianski Inlet,X
+SSE,Ketchikan,103-60-003,Picnic Bay,Big Salt/Trocadero Bay,103-60-10030,55.58610797,-133.2407021,"4107, 4105",49,3.23,0.54,X,,X,Same 2nd WShed as 11 Mile Creek (4105),X
+NSE Inside,Juneau,112-65-028,Piledriver Cove Creek,Hawk Inlet,112-65-10280,58.08358093,-134.7738149,"11382, 11254, 11225",67,5.94,0.58,X,,X,"Same WShed as Wheeler Creek (11254, 11225) and Greens Creek (11382)",X
+NSE Inside,Petersburg,109-51-005,Piledriver Cove NW Kuiu,Kingsmill/Washington Bay,109-51-10050,56.77571188,-134.3924728,8306,9,0.78,0.46,,X,,,X
+NSE Inside,Petersburg,109-62-003,Piledriver Cove-Tebenkof Bay,Tebenkof Bay,109-62-10030,56.54259027,-134.1875088,"7540, 7412",13,0.8,0.56,X,X,,,X
+NSE Inside,Petersburg,109-52-030,Pillar Bay Head,Rowan Bay and Bay of Pillars,109-52-10300,56.6442267,-134.0853119,7868,68,5.01,0.46,,,X,Same WShed as Kutlaku Creek,X
+NSE Inside,Petersburg,109-52-050,Pillar Bay SW Side,Rowan Bay and Bay of Pillars,109-52-10500,56.61065801,-134.1690763,7837,28,1.79,0.49,,,X,Same 2nd WShed as Kwatahein Creek,X
+NSE Inside,Petersburg,110-34-012,Placer Creek,Port Houghton,110-34-10120,57.28512211,-133.3477549,9929,12,0.48,0.58,,,X,Shares WShed with 1st E of Negro Creek,X
+NSE Inside,Juneau,111-12-005,Pleasant Bay Creek,Pleasant Bay,111-12-10050,57.6306334,-133.9964567,10418,48,1.9,0.52,,X,,,X
+SSE,Petersburg,105-20-012,Point Beauclerc S Arm E,Port Beauclerc,105-20-10120,56.27122626,-133.9634052,6562,6,0.2,0.56,,X,,,X
+NSE Inside,Juneau,112-61-010,Point Howard Creek,Howard Bay,112-61-10100,58.31405922,-135.0914768,12025,27,2.09,0.6,,,X,,X
+NSE Inside,Juneau,111-20-024,Point League Creek,South Glass Peninsula,111-20-10240,57.63836149,-133.6173293,10547,41,1.87,0.57,,X,,,X
+NSE Inside,Petersburg,109-42-001,Point White Creek,Kake/Kadake Bay/Keku Strait,109-42-10010,57.01644865,-134.0297842,"9079, 9096",39,2.22,0.59,X,X,,,X
+NSE Outside,Sitka,113-22-008,Politofski Lake Outlet,Whale Bay,113-22-10080,56.71763268,-134.9522093,7494,269,24.29,0.39,,,X,,X
+SSE,Ketchikan,101-43-029,Pop Creek,Thorne Arm,101-43-10290,55.40877818,-131.2365815,5037,45,3.11,0.55,,,X,Same WShed as Fish Creek-Thorne Arm,X
+SSE,Petersburg,106-30-010,Porcupine Creek,Steamer Bay/Kindergarten/Quiet Harbor,106-30-10100,56.13086788,-132.6585867,"7002, 6701",35,2.31,0.56,X,,X,Same WShed as Streets Creek-Rocky Bay (6701),X
+SSE,Ketchikan,103-60-092,Port Caldera,Big Salt/Trocadero Bay,103-60-10920,55.36107314,-133.1608881,3457,12,0.77,0.53,,,X,Same WShed as West of Caldera,X
+SSE,Ketchikan,103-50-058,Port Delores,Bucareli Bay,103-50-10600,55.32907001,-133.3811683,3143,10,0.52,0.51,,X,,,X
+SSE,Ketchikan,103-50-021,Port Estrella Head,Bucareli Bay,103-50-10210,55.35127839,-133.2279631,3322,10,0.69,0.52,,,X,Same WShed as Port Estrella R Head,X
+SSE,Ketchikan,103-50-022,Port Estrella R Head,Bucareli Bay,103-50-10220,55.34897074,-133.2482695,3322,10,0.69,0.52,,,X,Same WShed as Port Estrella Head,X
+NSE Inside,Petersburg,110-34-001,Port Houghton N Side,Port Houghton,110-34-10010,57.34125232,-133.3971291,10003,8,0.38,0.58,,,X,Same WShed as Harmony Creek,X
+SSE,Ketchikan,103-50-042,Port Refugio E Arm,Bucareli Bay,103-50-10420,55.27584484,-133.2702596,2985,5,0.32,0.54,,X,,,X
+SSE,Ketchikan,103-50-051,Port Refugio North,Bucareli Bay,103-50-10490,55.29434572,-133.32398,3064,6,0.18,0.54,,X,,,X
+SSE,Ketchikan,103-50-049,Port Refugio W Arm H,Bucareli Bay,103-50-10480,55.27829608,-133.340203,2984,27,0.83,0.54,,,X,Same WShed as Port Refugio W Arm S,X
+SSE,Ketchikan,103-50-044,Port Refugio W Arm R,Bucareli Bay,103-50-10440,55.27523103,-133.302097,3022,7,0.18,0.5,,X,,,X
+SSE,Ketchikan,103-50-047,Port Refugio W Arm S,Bucareli Bay,103-50-10470,55.27780287,-133.3335469,2984,27,0.83,0.54,,,X,Same WShed as Port Refugio W Arm H,X
+SSE,Ketchikan,103-60-059,Port St Nicholas Head,Big Salt/Trocadero Bay,103-60-10590,55.45025457,-132.9908293,4143,144,10.75,0.46,,,X,Same 2nd WShed as Airport Creek S Klawock,X
+NSE Inside,Petersburg,110-16-002,Portage Bay Head,Schooner Is/Big Creek/Portage Bay,110-16-10030,56.92956031,-133.2873921,9167,7,0.27,0.6,,X,,,X
+SSE,Ketchikan,101-71-063,Portage Creek-Behm Canal,Walker Cove/Chichamin,101-71-10630,55.7496597,-131.0987744,6783,102,9.38,0.58,,X,,,X
+SSE,Ketchikan,103-25-030,Portage Creek-Sulzer Passage,Hetta Inlet/Sukkwan Strait,103-25-10300,55.27541241,-132.5418116,3354,105,9.08,0.48,,,X,Same WShed as Deer Creek,X
+NSE Inside,Juneau,111-33-010,Prospect Creek,Speel Arm,111-33-10100,58.04737466,-133.806306,11795,42,2.7,0.6,,X,,,X
+NSE Inside,Petersburg,110-22-006,Pybus Bay Head,Pybus Bay,110-22-10060,57.39543175,-134.1918679,9850,17,0.62,0.55,,X,,,X
+NSE Inside,Petersburg,110-22-008,Pybus Bay Main Arm,Pybus Bay,110-22-10080,57.38948787,-134.2021507,9834,15,0.84,0.47,,X,,,X
+SSE,Ketchikan,101-30-005,Quadra Creek,Boca De Quadra,101-30-10050,55.11291501,-130.886102,"4164, 4083",61,4.85,0.6,X,X,,,X
+SSE,Petersburg,106-30-004,Quiet Harbor,Steamer Bay/Kindergarten/Quiet Harbor,106-30-10040,56.22690323,-132.6630289,NA,NA,NA,NA,NA,NA,NA,,X
+NSE Inside,Sitka,112-21-006,Ralphs Creek,Kelp Bay,112-21-10060,57.328229,-135.021535,9404,33,3.16,0.47,,X,,,X
+SSE,Petersburg,106-10-010,Ratz Harbor Creek,Ratz Harbor Shore,106-10-10100,55.88597595,-132.6052216,"5871, 5909",48,3.86,0.58,X,X,,,X
+SSE,Petersburg,106-41-030,Red Bay Creek,Sumner Strait/Pt Baker/Macnamara,106-41-10300,56.27196273,-133.3335688,7283,117,8.75,0.5,,,X,,X
+NSE Inside,Sitka,109-20-016,Red Bluff Bay S Head,Red Bluff Area,109-20-10160,56.86738833,-134.8092563,8340,122,13.74,0.44,,X,,,X
+SSE,Ketchikan,101-55-083,Red Creek,Smeaton Bay,101-55-10870,55.28739538,-130.8318823,4889,22,1.24,0.6,,,X,Same WShed as Skull Creek,X
+SSE,Petersburg,105-31-025,Reid Bay N Arm E,Reid Bay/No Name Bay/Point Barrie,105-31-10250,56.4034995,-133.9180491,7105,15,0.83,0.56,,X,,,X
+SSE,Petersburg,105-31-029,Reid Bay SW Arm Head,Reid Bay/No Name Bay/Point Barrie,105-31-10290,56.37545213,-133.932461,7035,6,0.22,0.52,,X,,,X
+SSE,Petersburg,105-31-027,Reid Bay West Side,Reid Bay/No Name Bay/Point Barrie,105-31-10270,56.38464395,-133.9184354,7065,5,0.21,0.56,,X,,,X
+NSE Inside,Petersburg,110-31-004,Roberts Island Creek,Fanshaw/Foot Is/CAA Station/Windham Bl,110-31-10030,57.28737625,-133.4803472,9852,20,1.03,0.57,,X,,,X
+NSE Inside,Juneau,112-15-062,Robinson Creek,South Lynn Canal,112-15-10620,58.380675,-135.07881,12231,64,5.87,0.58,,X,,,X
+SSE,Ketchikan,102-60-037,Rock Creek,Kasaan Bay,102-60-10370,55.31484345,-132.4680108,4147,192,16.94,0.46,,,X,"Same WShed as 142F Creek, Cabin Creek-Polk Inlet, Dog Salmon Creek-Kasaan Bay, and Goose Bay Creek",X
+NSE Inside,Petersburg,110-31-001,Rockpile Creek Stephens,Fanshaw/Foot Is/CAA Station/Windham Bl,110-31-10010,57.51020241,-133.5098915,"10300, 10253",13,0.46,0.55,X,X,,,X
+NSE Inside,Sitka,113-54-007,Rodman Creek,Rodman Bay,113-54-10070,57.43484876,-135.3961254,9473,69,6.73,0.5,,X,,,X
+SSE,Ketchikan,103-30-046,Rose Inlet,Kaigani Strait,103-30-10460,54.95193121,-132.9814465,"2224, 2208",18,1.17,0.53,X,X,,,X
+NSE Inside,Petersburg,109-52-008,Rowan Bay E Head,Rowan Bay and Bay of Pillars,109-52-10080,56.67535091,-134.2300525,8058,36,2.57,0.52,,X,,Same Rowan Creek and Rowan Creek SE Head,X
+NSE Inside,Petersburg,109-52-004,Rowan Bay NW Side,Rowan Bay and Bay of Pillars,109-52-10040,56.66443434,-134.268462,8056,88,6.29,0.5,,,X,Same WShed as Rowan Creek (8056) and Wanigan Creek,X
+NSE Inside,Petersburg,109-52-009,Rowan Bay SE Head,Rowan Bay and Bay of Pillars,109-52-10088,56.67006008,-134.2172226,8058,36,2.57,0.52,,,X,Same WShed as Rowan Creek and Rowan Bay E Head,X
+NSE Inside,Petersburg,109-52-007,Rowan Creek,Rowan Bay and Bay of Pillars,109-52-10060,56.688163,-134.23378,"8056, 8058",124,8.86,0.52,X,,X,"Same WShed as Rowan Bay E Head (8058),Rowan Bay SE Head (8058), Rowan Bay NW Side (8056), and Wanigan Creek (8056)",X
+NSE Inside,Juneau,112-42-032,Rudy Creek,Tenakee Springs,112-42-10320,57.73258728,-135.2474134,10169,17,1.48,0.51,,X,,,X
+SSE,Ketchikan,101-60-015,Rudyerd Creek,Rudyerd Bay,101-60-10150,55.66244424,-130.6394309,6625,401,38.99,0.61,,,X,"Same WShed as Walker Cove L Head, Walker Cove R Head, and Walker Creek",X
+NSE Outside,Sitka,113-72-004,Rust Creek,Klag Bay,113-72-10040-2019,57.6335577,-135.9970884,9643,39,3.1,0.43,,,X,Same WShed as Sister Lake SE Head,X
+NSE Inside,Petersburg,110-34-003,Rusty River,Port Houghton,110-34-10030,57.37120786,-133.0684086,10096,309,23.03,0.57,,,X,Same WShed as Glen Creek,X
+NSE Inside,Juneau,114-50-012,S Anchor Bight Creek,Port Althorp,114-50-10120,58.14471355,-136.2673037,10862,10,0.57,0.47,,,X,Same WShed as Anchor Bight Creek,X
+SSE,Petersburg,107-10-072,S Etolin Island East,Union Bay/Emerald Bay/S Ernest Sound,107-10-10740,55.93333419,-132.2535916,6395,8,0.59,0.57,,,X,Same WShed as Chum Creek S Etolin Mid and Kudays Creek S Etolin,X
+SSE,Ketchikan,102-60-007,S Head Saltery Cove Creek,Kasaan Bay,102-60-10070,55.39861718,-132.3273432,4114,10,0.64,0.53,,,X,Same 2nd WShed as Saltery Cove Creek,X
+NSE Inside,Juneau,111-20-031,S of Midway Point,South Glass Peninsula,111-20-10310,57.71874694,-133.8951131,10658,10,0.44,0.59,,X,,,X
+NSE Inside,Juneau,111-20-038,S of Pt. Glass Penn,South Glass Peninsula,111-20-10380,57.77951774,-133.9088288,10875,19,0.74,0.59,,X,,,X
+SSE,Ketchikan,103-80-050,S of Salt Lake Bay,St Phillips/Warmchuck,103-80-10500,55.66313237,-133.3931479,4348,12,0.72,0.53,,X,,Same WShed as Inside St Phillips S,X
+NSE Inside,Juneau,115-10-032,S of St. James Point,Central Lynn Canal,115-10-10308,58.54665413,-135.1763101,12665,73,8.07,0.6,,X,,,X
+NSE Inside,Petersburg,109-44-037,Saginaw Bay S Head,Saginaw Bay,109-44-10370,56.84967805,-134.1358896,8635,34,1.62,0.53,,,X,,X
+NSE Inside,Petersburg,109-44-039,Saginaw Creek,Saginaw Bay,109-44-10390,56.844679,-134.15974,"8634, 8635",70,4.11,0.53,X,,X,Mouth is in same WShed as Saginaw Bay S Head,X
+SSE,Ketchikan,101-75-076,Saks Creek,Back Behm Canal,101-75-10760,55.9501052,-131.1277897,7338,95,8.56,0.63,,X,,,X
+SSE,Petersburg,106-10-004,Sal Creek,Ratz Harbor Shore,106-10-10040,55.81196691,-132.5073882,5629,23,2.1,0.5,,X,,,X
+NSE Outside,Sitka,113-41-032,Salmon Lake Stream,Sitka Sound,113-41-10320,56.97683493,-135.1474711,8582,100,11.93,0.53,,,X,~50% of channels fall into other WShed but that WShed drains distantly,X
+SSE,Petersburg,105-10-026,Salt Chuck Affleck,Affleck Canal/Spanish Is/Louise Cove,105-10-10260,56.2058267,-134.1152089,6076,16,1.05,0.53,,X,,,X
+SSE,Ketchikan,101-45-038,Salt Chuck-George Inlet,Mountain Point to Carroll Point,101-45-10380,55.53840757,-131.4536391,4577,294,25.19,0.48,,,X,"Same WShed as Leask Creek, Salt Lagoon Right, and White River",X
+NSE Inside,Petersburg,109-45-013,Salt Chuck-Security Bay,Security Bay,109-45-10130,56.78249747,-134.2996053,8423,44,0.93,0.54,,,X,Same 2nd WShed as Security Bay Creek,X
+SSE,Ketchikan,103-80-046,Salt Laek Bay R Head,St Phillips/Warmchuck,103-80-10460,55.68285873,-133.3562782,4480,11,0.33,0.55,,,X,Same WShed as Salt Lake Bay Head,X
+SSE,Ketchikan,101-45-042,Salt Lagoon Right,Mountain Point to Carroll Point,101-45-10420,55.52657947,-131.4399381,4577,294,25.19,0.48,,,X,"Same WShed as Leask Creek, Salt Chuck-George Inlet, and White River",X
+SSE,Ketchikan,103-80-044,Salt Lake Bay Head,St Phillips/Warmchuck,103-80-10440,55.68864315,-133.3501877,4480,11,0.33,0.55,,,X,Same WShed as Salt Laek Bay R Head,X
+SSE,Ketchikan,103-80-042,Salt Lake Bay N Head,St Phillips/Warmchuck,103-80-10420,55.69974376,-133.3643159,4617,7,0.31,0.55,,X,,,X
+NSE Inside,Juneau,112-44-010,Saltery Bay,Saltery Bay,112-44-10100,57.770285,-135.45083,10152,118,11.7,0.49,,,X,Same WShed as Crab Bay Head,X
+SSE,Ketchikan,102-60-005,Saltery Cove Creek,Kasaan Bay,102-60-10050,55.40086314,-132.315679,"4114, 4189",17,1.26,0.53,X,,X,Same WShed as S Head Saltery Cove Creek (4114),X
+SSE,Ketchikan,103-25-005,Saltery Creek,Hetta Inlet/Sukkwan Strait,103-25-10050,55.19487878,-132.7938758,3029,28,1.96,0.52,,X,,,X
+NSE Outside,Sitka,113-96-002,Saltery River-Stag Bay,Stag Bay,113-96-10020,57.90212192,-136.2718461,10168,86,7.94,0.43,,,X,,X
+NSE Inside,Petersburg,109-62-014,Sample Creek,Tebenkof Bay,109-62-10140,56.474244,-134.03588,7462,17,1.13,0.54,,,X,"~40% of the tails of Sample Creek drainage go into another WShed, but that WShed outlets on other side of island. Same WShed as Slough Creek",X
+NSE Inside,Petersburg,110-34-008,Sanborn Creek,Port Houghton,110-34-10080,57.234998,-133.186333,9968,70,4.5,0.55,,X,,,X
+SSE,Ketchikan,101-15-008,Sandfly Creek,Portland Canal,101-15-10080,55.16248888,-130.1512977,NA,NA,NA,NA,NA,NA,NA,,X
+SSE,Ketchikan,101-60-020,Sandpiper Creek,Rudyerd Bay,101-60-10200,55.63731829,-130.6483951,5877,329,29.48,0.56,,,X,"Same WShed as Big Goat Creek, Nooya Creek, and Valentine Creek",X
+NSE Inside,Juneau,111-21-095,Sanford Cove S Head,Tracy and Endicott Arms,111-21-10950,57.67467618,-133.4805181,10781,11,0.5,0.56,,X,,,X
+SSE,Petersburg,107-20-010,Santa Anna Inlet,Anan/Fools/Menefee/Deer Is/N Ernest Sd,107-20-10100,55.97532486,-131.9341957,6887,24,0.42,0.6,,X,,,X
+NSE Inside,Sitka,113-53-003,Saook Bay West Head,Saook Bay,113-53-10030,57.410254,-135.21727,9577,83,8.56,0.5,,X,,,X
+SSE,Ketchikan,103-90-004,Sarheen Cove,Sea Otter Sound,103-90-10040,56.05229569,-133.2542974,6042,22,1.36,0.55,,,X,,X
+NSE Inside,Sitka,109-10-006,Sashin Creek,Southeast Baranof Island,109-10-10090,56.38043667,-134.6507079,6556,45,3.62,0.49,,,X,Same WShed as Lovers Cove Creek,X
+NSE Inside,Juneau,115-20-052,Sawmill Creek,Berners Bay,115-20-10520,58.71843171,-134.9456125,13264,24,2.18,0.63,,X,,,X
+NSE Inside,Petersburg,110-16-014,Schooner Island,Schooner Is/Big Creek/Portage Bay,110-16-10135,57.08111494,-133.8005769,9286,56,3.15,0.55,,,X,Same WShed as 1st E of Schooner Island,X
+SSE,Ketchikan,101-80-060,Sea Lion Cove,Bell Island/North Behm Canal,101-80-10600,55.90176828,-131.8357753,6708,211,18.35,0.54,,,X,,X
+NSE Inside,Juneau,114-32-004,Seagull Creek,Port Frederick Head,114-32-10040,58.016006,-135.56219,10772,139,15.26,0.51,,,X,Same 2nd WShed as Game Creek,X
+NSE Inside,Juneau,112-46-009,Seal Bay Head,Seal Bay,112-46-10070,57.82324,-135.5949893,10245,80,7.53,0.51,,X,,Same 2nd WShed as E Side Seal Bay ,X
+NSE Inside,Juneau,112-50-038,Seal Creek,Freshwater Bay,112-50-10380,57.93324306,-135.1519888,10712,34,3.4,0.58,,X,,,X
+SSE,Petersburg,105-32-082,Seclusion Harbor Head,Rocky Pass/Threemile Arm/Seclusion Hbr,105-32-10820,56.55794763,-133.929152,7838,30,1.99,0.47,,,X,Same WShed as Seclusion Harbor N,X
+SSE,Petersburg,105-32-080,Seclusion Harbor N,Rocky Pass/Threemile Arm/Seclusion Hbr,105-32-10800,56.56295109,-133.9195004,7838,30,1.99,0.47,,,X,Same WShed as Seclusion Harbor Head,X
+NSE Inside,Petersburg,109-45-010,Security Bay Creek,Security Bay,109-45-10100,56.80580362,-134.2764144,"8447, 8423",54,1.2,0.55,X,,X,Same WShed as Salt Chuck-Security Bay (8423) and Security Bay S Side (8447),X
+NSE Inside,Petersburg,109-45-016,Security Bay S Mid,Security Bay,109-45-10160,56.81733353,-134.3200449,8470,8,0.33,0.42,,,X,Same 2nd WShed as Lookout Point Creek,X
+NSE Inside,Petersburg,109-45-015,Security Bay S Side,Security Bay,109-45-10150,56.81463024,-134.3041882,"8447, 8471",16,0.53,0.57,X,,X,Same 2nd WShed as Security Bay Creek (8447),X
+SSE,Ketchikan,103-90-042,Shaheen Creek,Sea Otter Sound,103-90-10420,55.74686262,-133.248404,4847,61,4.41,0.51,,X,,,X
+SSE,Ketchikan,103-40-009,Shelikof Creek,Tlevak Strait,103-40-10090,55.27612954,-132.9825222,3217,17,0.93,0.54,,X,,,X
+SSE,Ketchikan,103-60-013,Shinaku Creek,Big Salt/Trocadero Bay,103-60-10130,55.60519836,-133.1404154,"4393, 4349",75,5.67,0.5,,X,,Same WShed as Shinaku Inlet N Side (4349) and Shinaku Inlet (4349),X
+SSE,Ketchikan,103-60-009,Shinaku Inlet,Big Salt/Trocadero Bay,103-60-10090,55.60084825,-133.1787271,4349,38,2.8,0.5,,,X,Same WShed as Shinaku Creek and Shinaku Inlet N Side,X
+SSE,Ketchikan,103-60-011,Shinaku Inlet N Side,Big Salt/Trocadero Bay,103-60-10110,55.6036513,-133.1668053,4349,38,2.8,0.5,,,X,Same WShed as Shinaku Creek and Shinaku Inlet ,X
+SSE,Petersburg,105-43-002,Shipley Bay Lake Creek,Shipley Bay,105-43-10020,56.08980123,-133.5051262,5996,7,0.36,0.54,,X,,,X
+SSE,Petersburg,105-43-006,Shipley Bay S Side,Shipley Bay,105-43-10060,56.08145652,-133.5529126,5947,14,0.96,0.52,,X,,,X
+SSE,Petersburg,105-43-005,Shipley Bay SE Side,Shipley Bay,105-43-10050,56.07509826,-133.5357742,5949,22,1.47,0.49,,,X,,X
+SSE,Ketchikan,101-80-084,Short Creek,Bell Island/North Behm Canal,101-80-10840,56.00376518,-131.528423,7046,113,9.57,0.58,,X,,,X
+SSE,Ketchikan,102-30-043,Sick Creek,Moira Sound,102-30-10430,54.93420309,-132.215671,NA,NA,NA,NA,NA,NA,NA,,X
+NSE Outside,Sitka,113-62-008,Sinitsin Cove Head,Inner Salisbury Sound,113-62-10080,57.32121777,-135.7379948,9161,14,0.9,0.5,,X,,,X
+NSE Outside,Sitka,113-72-005,Sister Lake SE Head,Klag Bay,113-72-10040-2025,57.62556779,-135.9780385,9643,39,3.1,0.43,,,X,Same WShed as Rust Creek,X
+NSE Inside,Sitka,113-59-007,Sitkoh Bay Head,Sitkoh Bay,113-59-10070,57.5366994,-134.9780555,9830,128,11.11,0.53,,X,,Same 2nd WShed as Sitkoh Creek,X
+NSE Inside,Sitka,113-59-004,Sitkoh Creek,Sitkoh Bay,113-59-10040,57.52196136,-134.9573415,"9830, 9731",175,15.48,0.53,X,,X,Same WShed as Sitkoh Bay Head (9830),X
+SSE,Ketchikan,101-55-087,Skull Creek,Smeaton Bay,101-55-10900,55.28671675,-130.8535118,4889,22,1.24,0.6,,,X,Same WShed as Red Creek,X
+NSE Outside,Sitka,113-73-010,Slocum Arm Head,Slocum Arm,113-73-10100,57.44410722,-135.8131456,9470,143,11.18,0.41,,,X,Same WShed as Khaz Creek and Waterfall Cove Creek,X
+NSE Inside,Juneau,111-32-099,Slocum Creek,Taku Inlet,111-32-10990,58.12395242,-134.0426968,11964,53,3.51,0.6,,X,,,X
+NSE Inside,Petersburg,109-62-015,Slough Creek,Tebenkof Bay,109-62-10150,56.46088546,-134.0409231,7462,17,1.13,0.54,,,X,Same WShed as Sample Creek,X
+SSE,Ketchikan,103-90-028,Slow Creek,Sea Otter Sound,103-90-10280,55.86168027,-133.1549655,5330,8,0.53,0.57,,,X,,X
+SSE,Ketchikan,101-90-075,Smugglers Creek,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10750,55.59658451,-131.9788805,5257,52,4.18,0.52,,,X,Same WShed as Falls Creek,X
+SSE,Petersburg,107-30-070,Snake Creek Olive Cove,Zimovia Strait/Anita Bay,107-30-10700,56.17875407,-132.3284611,7468,38,3.3,0.52,,X,,,X
+NSE Inside,Petersburg,110-23-019,Snug Cove-Gambier Bay,Gambier Bay,110-23-10190,57.424274,-133.97671,9964,38,1.53,0.56,,X,,,X
+SSE,Ketchikan,103-40-003,Soda Bay NW Side R,Tlevak Strait,103-40-10030,55.27457158,-133.0589395,"3146, 3147",36,2.35,0.55,X,X,,Same WShed as Tlevak Creek (3146),X
+SSE,Ketchikan,103-40-013,Soda Creek,Tlevak Strait,103-40-10130,55.28072104,-132.9207007,3258,28,1.61,0.54,,X,,,X
+NSE Outside,Sitka,113-73-004,South Ford Arm,Slocum Arm,113-73-10040,57.56252549,-135.9136979,9597,7,0.36,0.46,,,X,"Most of creek falls into other WShed, but that Wshed drains distantly. Other channel (Ford Arm Creek) in this WShed should account for missed flow",X
+SSE,Ketchikan,103-40-071,South View Cove,Tlevak Strait,103-40-10710,55.09028907,-133.0982902,2496,16,1.09,0.5,,,X,Same WShed as View Cove Head,X
+SSE,Ketchikan,101-80-050,Spacious Bay R Head,Bell Island/North Behm Canal,101-80-10500,55.86492681,-131.9232758,"6399, 6348",44,3.13,0.55,X,,X,Same 2nd Wshed as Wasta Creek ,X
+NSE Inside,Juneau,114-27-030,Spasski Creek,Point Sophia Area,114-27-10300,58.09514106,-135.2922606,11150,78,7.16,0.54,,X,,,X
+SSE,Ketchikan,101-45-094,Spit Creek,Mountain Point to Carroll Point,101-45-10940,55.37078571,-131.363349,4673,544,48.72,0.43,,,X,Same WShed as Carroll Creek and Nigelius Creek,X
+SSE,Petersburg,106-30-082,Squaw Creek,Steamer Bay/Kindergarten/Quiet Harbor,106-30-10820,56.13131334,-133.0887649,6519,14,0.92,0.55,,X,,,X
+SSE,Petersburg,106-42-003,St Johns Harbor,Kah Sheets/St Johns,106-42-10030,56.43227818,-132.9694223,7949,48,3.47,0.55,,,X,,X
+NSE Inside,Juneau,115-10-042,St. James Bay NW Side,Central Lynn Canal,115-10-10420,58.624498,-135.23361,"12790, 12815",146,13.88,0.58,X,,X,Same Wshed as St. James Creek (12815),X
+NSE Inside,Juneau,115-10-046,St. James Creek,Central Lynn Canal,115-10-10460,58.62027432,-135.2048766,"12845, 12815",145,12.94,0.65,X,X,,Same Wshed as St. James Bay NW Side (12815),X
+NSE Outside,Sitka,113-66-006,St. John Baptist Head,St John The Baptist Bay,113-66-10060,57.2841784,-135.5437245,9126,25,1.48,0.5,,X,,,X
+SSE,Ketchikan,103-60-057,St. Nicholas N Side,Big Salt/Trocadero Bay,103-60-10570,55.45443911,-133.0329769,3839,7,0.24,0.55,,X,,,X
+SSE,Ketchikan,103-90-030,Staney Creek,Sea Otter Sound,103-90-10310,55.818389,-133.15125,5174,186,14.25,0.5,,X,,,X
+SSE,Ketchikan,101-15-011,Star Creek,Portland Canal,101-15-10110,55.23547388,-130.1015372,NA,NA,NA,NA,NA,NA,NA,,X
+SSE,Ketchikan,103-60-029,Steelhead Creek,Big Salt/Trocadero Bay,103-60-10290,55.6316873,-132.9596152,4529,160,13.39,0.46,,,X,"Same WShed as Big Salt Lake N Side M, Blackbear Creek Big Salt, and Dog Salmon Creek",X
+NSE Outside,Sitka,113-95-007,Steelhead River-Lisianski Inlet,Lisianski Inlet,113-95-10070,57.86509367,-136.1007272,10244,217,22.24,0.44,,,X,Same WShed as Lisianski River and Phonograph Creek,X
+SSE,Ketchikan,101-90-092,Stewart Creek,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10930,55.75541117,-131.8943858,5830,48,0.95,0.53,,X,,,X
+SSE,Petersburg,106-20-010,Streets Creek-Rocky Bay,Rocky Bay/McHenry Anchorage,106-20-10100,56.09054617,-132.6222178,6701,23,1.6,0.49,,,X,Same 2nd WShed as Porcupine Creek,X
+NSE Outside,Sitka,113-62-006,Sukoi Inlet W Side,Inner Salisbury Sound,113-62-10060,57.27915232,-135.6884175,9109,11,0.57,0.48,,X,,,X
+NSE Inside,Juneau,115-31-038,Sullivan Creek,North Lynn Canal,115-31-10380,58.858363,-135.320646,13630,27,1.58,0.68,,,X,"Stream is tiny, doesn't fall into any particular watershed",X
+SSE,Ketchikan,102-40-087,Sunny Creek,Cholmondeley Sound,102-40-10870,55.26431961,-132.2843199,3605,24,2.19,0.51,,X,,,X
+NSE Inside,Juneau,114-27-015,Suntaheen Creek,Point Sophia Area,114-27-10150,58.06453495,-135.1075977,"11152, 11151",34,2.99,0.57,X,,X,Same 2nd WShed as Whitestone Head Creek (11151),X
+NSE Inside,Petersburg,110-32-014,Surprise Creek-Windham Bay,Windham Bay,110-32-10140,57.54974813,-133.4872582,10426,25,0.99,0.57,,X,,,X
+NSE Inside,Petersburg,109-30-018,Surprise Harbor East,Eliza Harbor/Herring Bay/Tyee,109-30-10190,57.03968369,-134.5658833,8937,45,3.47,0.5,,,X,Same WShed as Curtiss Creek and Tyee Head East,X
+NSE Inside,Petersburg,110-17-005,SW of Pinta Rocks,Turnabout Is/Pinta Rocks,110-17-10050,57.07677507,-133.9558088,"9211, 9226",15,0.67,0.56,X,X,,,X
+NSE Inside,Juneau,111-16-040,Swan Cove Creek,Swan Cove,111-16-10450,57.99440381,-134.3484787,11320,92,7.33,0.58,,,X,Same WShed as Swan Cove S Creek,X
+NSE Inside,Juneau,111-16-035,Swan Cove S Creek,Swan Cove,111-16-10350,57.99190871,-134.3447727,11320,92,7.33,0.58,,,X,Same WShed as Swan Cove Creek,X
+NSE Inside,Juneau,111-35-020,Sweetheart Creek,Gilbert Bay,111-35-10200,57.94379212,-133.6916013,NA,NA,NA,NA,NA,NA,NA,,X
+SSE,Ketchikan,101-11-100,Swift Creek,Revilla Channel to Pearse Canal,101-11-11005,55.01157277,-130.3484416,NA,NA,NA,NA,NA,NA,NA,No assigned WShed ,X
+NSE Inside,Petersburg,109-63-02C,Tavin Creek,Port Malmsbury,109-63-10025,56.32350988,-134.2097971,6558,6,0.36,0.55,,,X,Same WShed as 2nd W Joyce Creek and Gods Pocket North ,X
+NSE Inside,Juneau,112-48-035,Tenakee Inlet Head,Tenakee Head,112-48-10350,57.99189,-135.89631,10585,120,13.18,0.51,,X,,,X
+SSE,Ketchikan,103-90-075,Tenass Passage,Sea Otter Sound,103-90-10750,56.01830586,-133.3206203,5826,10,0.55,0.57,,,X,,X
+NSE Inside,Juneau,112-17-050,Thayer Creek,Angoon to Hepburn,112-17-10500,57.57519255,-134.6287679,NA,NA,NA,NA,NA,NA,NA,,X
+NSE Inside,Petersburg,109-62-031,Thetis Bay Salt Chuck,Tebenkof Bay,109-62-10310,56.38304161,-134.1872164,6836,10,0.71,0.53,,X,,,X
+NSE Inside,Petersburg,109-62-030,Thetis Bay SW Head,Tebenkof Bay,109-62-10300,56.36785857,-134.1786035,6802,12,0.52,0.52,,,X,Same WShed as Wolf Creek Thetis Bay,X
+NSE Inside,Juneau,111-20-020,Thistle Ledge Creek,South Glass Peninsula,111-20-10200,57.67238499,-133.6432588,10659,26,1.07,0.57,,X,,,X
+SSE,Petersburg,107-30-030,Thoms Creek,Zimovia Strait/Anita Bay,107-30-10300,56.17983912,-132.14862,7516,30,2.2,0.56,,X,,,X
+SSE,Ketchikan,103-40-002,Tlevak Creek,Tlevak Strait,103-40-10020,55.27571124,-133.0797221,3146,30,2.16,0.53,,,X,Same 2nd WShed as Soda Bay NW Side R,X
+SSE,Ketchikan,103-90-067,Tokeen Bay N Side,Sea Otter Sound,103-90-10670,56.01944736,-133.4121427,5749,6,0.44,0.5,,X,,,X
+SSE,Petersburg,107-40-047,Tom Lake Creek,Blake Channel,107-40-10470,56.20967683,-131.6803724,8069,250,21.99,0.6,,,X,Same 2nd WShed as Harding River,X
+SSE,Ketchikan,101-15-019,Tombstone River,Portland Canal,101-15-10190,55.40251186,-130.0543784,NA,NA,NA,NA,NA,NA,NA,,X
+SSE,Petersburg,106-41-060,Totem Bay NE Side,Sumner Strait/Pt Baker/Macnamara,106-41-10610,56.49101709,-133.3625533,7874,5,0.19,0.61,,X,,,X
+SSE,Petersburg,106-41-055,Totem Creek,Sumner Strait/Pt Baker/Macnamara,106-41-10550,56.50481949,-133.4397081,"7903, 7872",68,3.83,0.61,X,X,,,X
+NSE Inside,Juneau,114-40-035,Trail River,Idaho Inlet,114-40-10350,58.06500165,-136.1071792,10707,98,11.22,0.53,,X,,,X
+SSE,Ketchikan,101-90-029,Traitors Cove Creek,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10290,55.73290542,-131.5190877,5795,175,15.38,0.49,,,X,Same WShed as Margaret Creek,X
+NSE Inside,Juneau,112-41-010,Trap Bay East,Outer Tenakee Inlet,112-41-10100,57.74410232,-135.0211633,"10279, 10278",17,1.57,0.5,X,,X,,X
+SSE,Ketchikan,103-60-075,Trocadero Bay,Big Salt/Trocadero Bay,103-60-10750,55.35364547,-132.8873166,3554,88,6.69,0.5,,X,,,X
+SSE,Ketchikan,103-60-073,Trocadero Bay N Side,Big Salt/Trocadero Bay,103-60-10730,55.35762679,-132.9175005,3582,7,0.4,0.53,,X,,,X
+SSE,Ketchikan,103-60-071,Trocadero Bay NW Side,Big Salt/Trocadero Bay,103-60-10710,55.37049664,-132.9654598,3527,24,1.56,0.51,,,X,Same 2nd WShed as Little John Creek,X
+SSE,Petersburg,105-50-001,Trout Creek-Kosciusko Island,Warren Is/Trout Creek/Cape Pole,105-50-10010,56.05064683,-133.6972605,5660,50,3.22,0.53,,X,,,X
+SSE,Petersburg,106-21-005,Trout Creek-McHenry Inlet,none yet,106-21-10050,56.03542546,-132.3776391,6705,67,6.43,0.52,,X,,,X
+SSE,Petersburg,105-32-004,Tunehean Creek,Rocky Pass/Threemile Arm/Seclusion Hbr,105-32-10040,56.59199945,-133.6624947,8117,114,7.54,0.56,,X,,,X
+NSE Inside,Juneau,111-32-080,Turner Creek,Taku Inlet,111-32-10800,58.31556837,-133.969965,12583,151,11.22,0.63,,X,,,X
+SSE,Ketchikan,102-60-072,Twelvemile Creek,Kasaan Bay,102-60-10720,55.36552868,-132.7352523,4145,224,19.67,0.48,,,X,Same WShed as Harris River,X
+NSE Inside,Petersburg,110-11-003,Twelvemile Creek Fred S,Beacon Point to Cape Strait,110-11-10030,56.97826721,-133.0696918,9330,31,2.02,0.55,,X,,,X
+NSE Inside,Juneau,111-31-040,Twin Point Creek,Point Arden to Midway Islands,111-31-10400,57.91338469,-134.0051961,11197,14,0.23,0.63,,,X,Same WShed as 1st S of Twin Point Creek,X
+NSE Inside,Petersburg,109-30-016,Tyee Head East,Eliza Harbor/Herring Bay/Tyee,109-30-10160,57.05562976,-134.5381054,"8937, 8938",50,3.81,0.57,X,,X,Same WShed as Curtiss Creek (8937) and Surprise Harbor East (8937),X
+SSE,Ketchikan,103-50-035,Ulloa Bay,Bucareli Bay,103-50-10350,55.28243871,-133.1223449,"3145, 3109",27,1.62,0.53,X,,X,Same WSheds as Barry Creek (3145) and E of Waterfall Creek,X
+NSE Inside,Sitka,113-56-002,Ushk  ,Ushk Bay,113-56-10020,57.546422,-135.690068,9645,55,4.38,0.48,,,X,Same WShed as Ushk Bay W End ,X
+NSE Inside,Sitka,113-56-003,Ushk Bay W End,Ushk Bay,113-56-10030,57.54824015,-135.6786182,9645,55,4.38,0.48,,,X,Same WShed as Ushk ,X
+SSE,Ketchikan,101-60-025,Valentine Creek,Rudyerd Bay,101-60-10250,55.60852151,-130.6870012,5877,329,29.48,0.56,,,X,"Same WShed as Big Goat Creek, Nooya Creek, and Sandpiper Creek",X
+SSE,Ketchikan,101-29-006,Vallenar Creek,Gravina Shore,101-29-10060,55.37635868,-131.8329173,4404,21,1.44,0.56,,X,,Same WShed as Grant Creek-Gravina,X
+SSE,Ketchikan,103-90-063,Van Sant Cove,Sea Otter Sound,103-90-10630,55.99084979,-133.5388961,"5661, 5559",14,0.79,0.56,X,X,,,X
+SSE,Ketchikan,101-23-034,Very Inlet 1,Outside Boca De Quadra,101-23-10340,54.93499358,-130.8900785,3565,136,10.84,0.55,,,X,"Same WShed as Very Inlet 2, Very Inlet E Head, Very Inlet N Head, and Very Inlet SE Head",X
+SSE,Ketchikan,101-23-032,Very Inlet 2,Outside Boca De Quadra,101-23-10320,54.95270081,-130.8819903,3565,136,10.84,0.55,,,X,"Same WShed as Very Inlet 1, Very Inlet E Head, Very Inlet N Head, and Very Inlet SE Head",X
+SSE,Ketchikan,101-23-023,Very Inlet E Head,Outside Boca De Quadra,101-23-10190,54.99730647,-130.8857186,3565,136,10.84,0.55,,,X,"Same WShed as Very Inlet 1, Very Inlet 2, Very Inlet N Head, and Very Inlet SE Head",X
+SSE,Ketchikan,101-23-019,Very Inlet N Head,Outside Boca De Quadra,101-23-10180,55.00750146,-130.9050803,3565,136,10.84,0.55,,,X,"Same WShed as Very Inlet 1, Very Inlet 2, Very Inlet E Head, and Very Inlet SE Head",X
+SSE,Ketchikan,101-23-027,Very Inlet SE Head,Outside Boca De Quadra,101-23-10270,54.96895353,-130.8691462,3565,136,10.84,0.55,,,X,"Same WShed as Very Inlet 1, Very Inlet 2, Very Inlet E Head, and Very Inlet N Head",X
+SSE,Ketchikan,103-30-043,Vesta Bay,Kaigani Strait,103-30-10430,54.93116965,-132.9356723,2127,25,1,0.53,,,X,Same WShed as Grace Harbor Creek,X
+SSE,Ketchikan,103-40-073,View Cove Head,Tlevak Strait,103-40-10730,55.09616964,-133.0963664,2496,16,1.09,0.5,,,X,Same WShed as South View Cove ,X
+SSE,Ketchikan,101-30-095,Vixen Bay Head,Boca De Quadra,101-30-10950,55.0332,-130.7842,4030,41,0.45,0.56,,X,,,X
+SSE,Petersburg,107-10-025,Vixen Harbor,Union Bay/Emerald Bay/S Ernest Sound,107-10-10250,55.80020583,-132.1418336,"5873, 5955",22,1.93,0.54,X,,X,,X
+SSE,Petersburg,107-10-020,Vixen Inlet Creek,Union Bay/Emerald Bay/S Ernest Sound,107-10-10200,55.77682361,-132.0031928,5957,81,6.15,0.55,,,X,Same WShed as Vixen Inlet West Sd,X
+SSE,Petersburg,107-10-024,Vixen Inlet West Sd,Union Bay/Emerald Bay/S Ernest Sound,107-10-10240,55.8045889,-132.0662324,5957,81,6.15,0.55,,,X,Same WShed as Vixen Inlet Creek,X
+SSE,Ketchikan,102-40-073,W Arm Chol Sd Head,Cholmondeley Sound,102-40-10730,55.2592878,-132.4722798,3583,108,9.99,0.48,,,X,Same WShed as Cannery Creek W Arm and W Arm Chol Sd Head S,X
+SSE,Ketchikan,102-40-071,W Arm Chol Sd Head S,Cholmondeley Sound,102-40-10710,55.25560977,-132.4733165,3583,108,9.99,0.48,,,X,Same WShed as Cannery Creek W Arm and W Arm Chol Sd Head,X
+NSE Outside,Sitka,113-32-004,W Crawfish N Arm NE,West Crawfish Inlet,113-32-10040,56.84815755,-135.1915478,7981,102,9.79,0.44,,,X,Same WShed as W Crawfish NE Arm Hd,X
+NSE Outside,Sitka,113-32-005,W Crawfish NE Arm Hd,West Crawfish Inlet,113-32-10050,56.84965695,-135.1149087,7981,102,9.79,0.44,,,X,Same WShed as W Crawfish NE Arm NE,X
+SSE,Ketchikan,102-40-047,W of Disappearance,Cholmondeley Sound,102-40-10470,55.13151339,-132.3568952,3490,88,7.92,0.48,,,X,Same WShed as Cannery Creek W Arm and Disappearance Creek,X
+SSE,Petersburg,108-40-13A,W of Hot Springs,Wrangell,108-40-10150-2033-3007,56.71967993,-132.062251,NA,NA,NA,NA,NA,NA,NA,Assigned to mega-WShed,X
+NSE Inside,Petersburg,109-62-017,W of Long Island,Tebenkof Bay,109-62-10170,56.43289354,-134.0470684,"7141, 7064",24,1.66,0.55,X,,X,Same WShed as Goose Trap Creek (7064),X
+NSE Inside,Juneau,111-14-044,W Side Seymour Canal,Central Seymour Canal,111-14-10440,57.80743094,-134.1874539,"10838, 10808",16,0.94,0.6,X,X,,,X
+NSE Inside,Juneau,112-50-005,Wachusett Creek,Freshwater Bay,112-50-10050,57.82887083,-135.0090673,10491,13,0.32,0.6,,,X,,X
+SSE,Ketchikan,101-71-025,Walker Cove L Head,Walker Cove/Chichamin,101-71-10250,55.76270907,-130.7092444,6625,401,38.99,0.61,,,X,"Same WShed as Rudyerd Creek, Walker Cove R Head, and Walker Creek",X
+SSE,Ketchikan,101-71-026,Walker Cove R Head,Walker Cove/Chichamin,101-71-10260,55.75270581,-130.7023386,6625,401,38.99,0.61,,,X,"Same WShed as Rudyerd Creek, Walker Cove L Head, and Walker Creek",X
+SSE,Ketchikan,101-71-028,Walker Creek,Walker Cove/Chichamin,101-71-10280,55.72413374,-130.7509881,6625,401,38.99,0.61,,,X,"Same WShed as Rudyerd Creek, Walker Cove L Head, and Walker Cove R Head,",X
+NSE Inside,Petersburg,109-52-005,Wanigan Creek,Rowan Bay and Bay of Pillars,109-52-10045,56.68156108,-134.2549127,8056,88,6.29,0.5,,,X,Same WShed as Rowan Bay NW Side and Rowan Creek (8056),X
+NSE Inside,Juneau,112-17-016,Ward Creek,Angoon to Hepburn,112-17-10160,57.86848897,-134.7228856,"10713, 10655",125,10.89,0.56,X,X,,,X
+SSE,Ketchikan,103-80-015,Warm Chuck Inlet SW,St Phillips/Warmchuck,103-80-10150,55.74205518,-133.5099185,"4662, 4390",12,0.79,0.54,X,X,,,X
+SSE,Ketchikan,103-80-026,Warm Chuck Left Head,St Phillips/Warmchuck,103-80-10260,55.77858229,-133.5465565,4774,22,0.98,0.55,,,X,~50% of channels fall into other WShed but that WShed drains distantly. Same 2nd WShed as Warm Chuck NW Side,X
+SSE,Ketchikan,103-80-024,Warm Chuck NW Side,St Phillips/Warmchuck,103-80-10240,55.7725938,-133.5540703,"4774, 4732",33,1.45,0.55,X,,X,Same WShed as Warm Chuck Left Head (4774),X
+SSE,Ketchikan,101-80-040,Wasta Creek,Bell Island/North Behm Canal,101-80-10400,55.85559372,-131.9222402,"6348, 6399, 6046, 6349",102,7.27,0.61,X,,X,"Spans 4 WSheds! Same WShed as Spacious Bay R Head (6399, 6348)",X
+NSE Outside,Sitka,113-73-006,Waterfall Cove Creek,Slocum Arm,113-73-10060,57.52686822,-135.9147977,9470,143,11.18,0.41,,,X,Same WShed as Khaz Creek and Slocum Arm Head,X
+SSE,Ketchikan,103-50-027,Waterfall Creek N,Bucareli Bay,103-50-10270,55.31166066,-133.2348908,3144,28,1.86,0.53,,,X,Same WShed as Waterfall Creek S,X
+SSE,Ketchikan,103-50-029,Waterfall Creek S,Bucareli Bay,103-50-10290,55.30470423,-133.2321728,3144,28,1.86,0.53,,X,,Same WShed as Waterfall Creek N,X
+SSE,Petersburg,107-20-016,Watkins Point Creek,Anan/Fools/Menefee/Deer Is/N Ernest Sd,107-20-10170,55.94929561,-132.0411992,6666,5,0.23,0.58,,X,,,X
+SSE,Ketchikan,101-30-009,Weasel Cove Head,Boca De Quadra,101-30-10090,55.16059113,-130.8345526,4317,75,5.69,0.53,,,X,Same WShed as Badger Bay Head,X
+NSE Inside,Juneau,112-72-011,Weir Creek N Arm Hood Bay,N Arm Hood Bay,112-72-10110,57.392702,-134.34694,9710,172,11.1,0.48,,,X,"Same WShed as 1st NW of Weir Creek, Hood Bay N Arm E Head, Hood Bay S Arm Head, Hood Bay S Arm Head N, Narrows Creek, Weir Creek S Arm Hood Bay",X
+NSE Inside,Juneau,112-73-024,Weir Creek S Arm Hood Bay,S Arm Hood Bay,112-73-10240,57.33694424,-134.3563492,9710,172,11.1,0.48,,,X,"Same WShed as 1st NW of Weir Creek, Hood Bay N Arm E Head, Hood Bay S Arm Head, Hood Bay S Arm Head N, Narrows Creek, Weir Creek N Arm Hood Bay",X
+NSE Inside,Juneau,112-48-023,West Bay Head Creek,Tenakee Head,112-48-10230,57.93699855,-135.8198066,10464,112,11.97,0.47,,X,,,X
+NSE Inside,Juneau,111-41-016,West Cabin Creek,Youngs Bay,111-41-10160,58.16026189,-134.6699965,11724,28,2.47,0.59,,,X,Same WShed as Cabin Creek-Admiralty Island,X
+NSE Inside,Petersburg,110-34-002,West of Bluffs,Port Houghton,110-34-10020,57.33706624,-133.339509,10027,24,1.35,0.59,,X,,,X
+SSE,Ketchikan,103-60-093,West of Caldera,Big Salt/Trocadero Bay,103-60-10930,55.37374683,-133.1770733,3457,12,0.77,0.53,,,X,Same WShed as Port Caldera,X
+SSE,Petersburg,105-10-009,West of Pt Amelius,Affleck Canal/Spanish Is/Louise Cove,105-10-10095,56.21185256,-133.9368295,"6278, 6179",29,1.36,0.57,X,,X,"Same WShed as 2nd N Louise Cove (6278), N of Louise Cove (6179), and Louise Cove (6179)",X
+NSE Inside,Juneau,114-25-035,West Swanson Creek,Homeshore,114-25-10350,58.21187819,-135.1418988,11666,62,5.97,0.55,,X,,,X
+NSE Outside,Sitka,113-22-018,Whale Bay Great Arm E,Whale Bay,113-22-10180,56.68140845,-134.8519165,7577,110,10.76,0.4,,,X,Same WShed as Whale Bay Great Arm Head,X
+NSE Outside,Sitka,113-22-015,Whale Bay Great Arm Head,Whale Bay,113-22-10150,56.74647,-134.83079,7577,110,10.76,0.4,,,X,Same WShed as Whale Bay Great Arm E,X
+NSE Inside,Juneau,112-16-030,Wheeler Creek,West Mansfield Peninsula,112-16-10300,58.06297428,-134.7984878,"11254, 11225, 11191, 11089",168,15.67,0.58,X,X,,"Cuts through 4 different WSheds. Same 2nd WShed as Piledriver Cove Creek (11254, 11225)",X
+SSE,Ketchikan,101-45-024,White River,Mountain Point to Carroll Point,101-45-10240,55.4741339,-131.5363569,4577,294,25.19,0.48,,,X,"Same WShed as Leask Creek, Salt Chuck-George Inlet, and Salt Lagoon Right",X
+NSE Inside,Juneau,112-12-005,White Rock Creek,W Chatham Peril to Wukuktook,112-12-10050,57.54751747,-134.863725,9903,33,3.04,0.55,,X,,,X
+NSE Inside,Juneau,114-27-012,Whitestone E Side,Point Sophia Area,114-27-10120,58.05706059,-135.0719177,"11189, 11153",14,1.09,0.57,X,X,,,X
+NSE Inside,Juneau,114-27-018,Whitestone Head Creek,Point Sophia Area,114-27-10180,58.06749817,-135.1114128,"11224, 11151",54,4.66,0.54,X,,X,Same 2nd WShed as Suntaheen Creek (11151),X
+NSE Inside,Juneau,112-90-014,Whitewater Creek,Whitewater Bay,112-90-10140,57.24226545,-134.5234901,9363,30,2.41,0.49,,X,,,X
+NSE Inside,Juneau,112-90-016,Whitewater S Arm Head,Whitewater Bay,112-90-10160,57.22732509,-134.529355,9346,26,1.71,0.48,,X,,,X
+SSE,Ketchikan,101-11-065,Willard Creek,Revilla Channel to Pearse Canal,101-11-10650,54.96967709,-130.6058669,NA,NA,NA,NA,NA,NA,NA,,X
+NSE Inside,Petersburg,109-62-028,William Creek Thetis E,Tebenkof Bay,109-62-10280,56.37411922,-134.1219115,6914,9,0.48,0.56,,,X,Same 2nd WShed as Petrof Bay SW Head,X
+NSE Inside,Juneau,112-15-054,Willie's Creek,South Lynn Canal,112-15-10540,58.41605118,-135.094259,"12362, 12306",35,3.35,0.58,X,X,,,X
+NSE Inside,Juneau,112-19-015,Wilson Cove SE,Wilson Cove Area,112-19-10150,57.15804259,-134.5828949,9197,90,6.05,0.48,,,X,Same WShed as Wilson River ,X
+NSE Inside,Juneau,112-19-010,Wilson River,Wilson Cove Area,112-19-10100,57.155757,-134.61229,9197,90,6.05,0.48,,,X,Same WShed as Wilson Cove SE,X
+SSE,Ketchikan,101-55-020,Wilson River-Smeaton Bay,Smeaton Bay,101-55-10200,55.40222517,-130.6080211,5009,797,73.71,0.53,,,X,Same WShed as Bakewell Creek and Blossom River,X
+SSE,Ketchikan,102-70-028,Windfall Creek-Clarence Strait,Tolstoi Shore,102-70-10280,55.59807232,-132.3585072,"4962, 4915",19,1.47,0.53,X,X,,,X
+NSE Inside,Juneau,111-15-024,Windfall Hbr W Side,Windfall-Pack Area,111-15-10240,57.84806162,-134.3094978,10869,25,2.12,0.6,,X,,,X
+NSE Inside,Juneau,111-15-020,Windfall-Pack Area,Windfall-Pack Area,111-15-10200,57.82370674,-134.2945473,10837,26,1.86,0.53,,X,,,X
+NSE Inside,Juneau,114-25-005,Windy Creek,Homeshore,114-25-10050,58.35297852,-135.4088979,11890,40,4.27,0.59,,,X,Same 2nd WShed as Homeshore Creek,X
+NSE Inside,Petersburg,109-30-001,Woewodski Harbor,Eliza Harbor/Herring Bay/Tyee,109-30-10010,57.18463729,-134.235672,9315,17,1.1,0.49,,X,,,X
+SSE,Ketchikan,101-90-060,Wolf Creek,Higgins Pt to Nose Pt/Naha/Traitors,101-90-10600,55.56033463,-131.6489989,5335,37,3.1,0.54,,,X,Same 2nd WShed as Moser Bay,X
+NSE Inside,Petersburg,109-62-029,Wolf Creek Thetis Bay,Tebenkof Bay,109-62-10290,56.36164109,-134.1708195,6802,12,0.52,0.52,,,X,Same WShed as Thetis Bay SW Head,X
+NSE Inside,Juneau,112-12-050,Wukuklook Creek,W Chatham Peril to Wukuktook,112-12-10500,57.9184218,-134.9381456,10773,19,1.78,0.54,,X,,,X
+SSE,Ketchikan,103-90-025,Yatuk Creek,Sea Otter Sound,103-90-10250,55.89355348,-133.1532847,5467,134,9,0.52,,,X,Same WShed as Gutchie Creek and Naukati Creek,X
+SSE,Petersburg,106-41-058,Zim Creek Totem Bay,Sumner Strait/Pt Baker/Macnamara,106-41-10600,56.49663943,-133.3739296,7904,63,4.09,0.57,,,X,,X
