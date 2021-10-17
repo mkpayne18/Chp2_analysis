@@ -48,3 +48,5 @@ Master_dataset <- left_join(Pink_A_long, Cons_A_long, by=c('StreamName','Year'))
 View(Master_dataset)
 Master_dataset <- Master_dataset[,c(1:4,6,5,9,7,8)]
 sum(is.na(Master_dataset$Pink_Abundance))
+setwd("~/Documents/CHUM_THESIS/CHAPTER_2/Chp2_analysis")
+write.csv(Master_dataset, "Chp2_Master_dataset.csv")
