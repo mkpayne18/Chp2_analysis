@@ -1,4 +1,4 @@
-#Read in data listing release sites that have chp 2 streams within 40km of thems
+#Read in data listing release sites that have chp 2 streams within 40km of them
 setwd("~/Documents/CHUM_THESIS/CHAPTER_2/Chp2_analysis/Data")
 r40 <- read.csv("Releases_within40km_chp2.csv")
 str(r40)
