@@ -13,6 +13,7 @@ Barlow Head Creek,2008,50.36613915
 Bear Creek-Stephens Pas,2008,36.44700181
 Beardslee River,2008,50.36613915
 Bergmann Creek,2008,56.75489163
+Berners River,2008,50.36613915
 Bostwick Bay SW Side,2008,4.841676998
 Bostwick Creek,2008,4.841676998
 Brad Creek NW Anita Bay,2008,14.01509128
@@ -71,8 +72,7 @@ Katlian Bay S Fork,2008,52.86882305
 Katlian River,2008,52.86882305
 Kegan Cove,2008,19.54055457
 Kelp Bay Middle Arm Head,2008,88.62981472
-Kelp Bay Portage Arm,2008,44.89183874
-Kelp Bay Portage Arm Head,2008,43.73797598
+Kelp Bay Portage Arm,2008,88.62981472
 Ketchikan Creek,2008,4.841676998
 King George Creek,2008,14.01509128
 Kizhuchia Creek,2008,52.86882305
@@ -182,6 +182,7 @@ Barlow Head Creek,2009,49.59574097
 Bear Creek-Stephens Pas,2009,35.91128302
 Beardslee River,2009,49.59574097
 Bergmann Creek,2009,28.07055258
+Berners River,2009,49.59574097
 Bostwick Bay SW Side,2009,6.484336385
 Bostwick Creek,2009,6.484336385
 Brad Creek NW Anita Bay,2009,19.29010857
@@ -240,8 +241,7 @@ Katlian Bay S Fork,2009,58.28560067
 Katlian River,2009,58.28560067
 Kegan Cove,2009,20.47393663
 Kelp Bay Middle Arm Head,2009,87.18846209
-Kelp Bay Portage Arm,2009,43.0901334
-Kelp Bay Portage Arm Head,2009,44.09832868
+Kelp Bay Portage Arm,2009,87.18846209
 Ketchikan Creek,2009,6.484336385
 King George Creek,2009,19.29010857
 Kizhuchia Creek,2009,58.28560067
@@ -351,6 +351,7 @@ Barlow Head Creek,2010,57.75776174
 Bear Creek-Stephens Pas,2010,43.2900381
 Beardslee River,2010,57.75776174
 Bergmann Creek,2010,24.14263069
+Berners River,2010,57.75776174
 Bostwick Bay SW Side,2010,6.5233214
 Bostwick Creek,2010,6.5233214
 Brad Creek NW Anita Bay,2010,21.11711325
@@ -409,8 +410,7 @@ Katlian Bay S Fork,2010,62.24414016
 Katlian River,2010,62.24414016
 Kegan Cove,2010,21.30879486
 Kelp Bay Middle Arm Head,2010,87.42006279
-Kelp Bay Portage Arm,2010,43.47211295
-Kelp Bay Portage Arm Head,2010,43.94794984
+Kelp Bay Portage Arm,2010,87.42006279
 Ketchikan Creek,2010,6.5233214
 King George Creek,2010,21.11711325
 Kizhuchia Creek,2010,62.24414016
@@ -520,6 +520,7 @@ Barlow Head Creek,2011,61.01596966
 Bear Creek-Stephens Pas,2011,46.25081657
 Beardslee River,2011,61.01596966
 Bergmann Creek,2011,23.27746908
+Berners River,2011,61.01596966
 Bostwick Bay SW Side,2011,6.74905536
 Bostwick Creek,2011,6.74905536
 Brad Creek NW Anita Bay,2011,19.88849283
@@ -578,8 +579,7 @@ Katlian Bay S Fork,2011,61.79879542
 Katlian River,2011,61.79879542
 Kegan Cove,2011,20.88898476
 Kelp Bay Middle Arm Head,2011,85.7068926
-Kelp Bay Portage Arm,2011,43.27854346
-Kelp Bay Portage Arm Head,2011,42.42834915
+Kelp Bay Portage Arm,2011,85.7068926
 Ketchikan Creek,2011,6.74905536
 King George Creek,2011,19.88849283
 Kizhuchia Creek,2011,61.79879542
@@ -689,6 +689,7 @@ Barlow Head Creek,2013,57.81027994
 Bear Creek-Stephens Pas,2013,44.05789104
 Beardslee River,2013,57.81027994
 Bergmann Creek,2013,35.90939635
+Berners River,2013,57.81027994
 Bostwick Bay SW Side,2013,7.689823427
 Bostwick Creek,2013,7.689823427
 Brad Creek NW Anita Bay,2013,23.40988645
@@ -747,8 +748,7 @@ Katlian Bay S Fork,2013,58.87930301
 Katlian River,2013,58.87930301
 Kegan Cove,2013,21.14441896
 Kelp Bay Middle Arm Head,2013,79.99790085
-Kelp Bay Portage Arm,2013,39.46904815
-Kelp Bay Portage Arm Head,2013,40.5288527
+Kelp Bay Portage Arm,2013,79.99790085
 Ketchikan Creek,2013,7.689823427
 King George Creek,2013,23.40988645
 Kizhuchia Creek,2013,58.87930301
@@ -858,6 +858,7 @@ Barlow Head Creek,2014,55.85050438
 Bear Creek-Stephens Pas,2014,43.7265018
 Beardslee River,2014,55.85050438
 Bergmann Creek,2014,29.05776005
+Berners River,2014,55.85050438
 Bostwick Bay SW Side,2014,5.9362497
 Bostwick Creek,2014,5.9362497
 Brad Creek NW Anita Bay,2014,23.1920518
@@ -916,8 +917,7 @@ Katlian Bay S Fork,2014,61.81293827
 Katlian River,2014,61.81293827
 Kegan Cove,2014,20.90905249
 Kelp Bay Middle Arm Head,2014,77.61569875
-Kelp Bay Portage Arm,2014,39.03611716
-Kelp Bay Portage Arm Head,2014,38.57958158
+Kelp Bay Portage Arm,2014,77.61569875
 Ketchikan Creek,2014,5.9362497
 King George Creek,2014,23.1920518
 Kizhuchia Creek,2014,61.81293827
@@ -1027,6 +1027,7 @@ Barlow Head Creek,2015,60.24278955
 Bear Creek-Stephens Pas,2015,44.34977803
 Beardslee River,2015,60.24278955
 Bergmann Creek,2015,23.1679375
+Berners River,2015,60.24278955
 Bostwick Bay SW Side,2015,6.554820168
 Bostwick Creek,2015,6.554820168
 Brad Creek NW Anita Bay,2015,22.44697852
@@ -1085,8 +1086,7 @@ Katlian Bay S Fork,2015,65.54088838
 Katlian River,2015,65.54088838
 Kegan Cove,2015,24.8838394
 Kelp Bay Middle Arm Head,2015,79.15120319
-Kelp Bay Portage Arm,2015,41.19696034
-Kelp Bay Portage Arm Head,2015,37.95424285
+Kelp Bay Portage Arm,2015,79.15120319
 Ketchikan Creek,2015,6.554820168
 King George Creek,2015,22.44697852
 Kizhuchia Creek,2015,65.54088838
@@ -1196,6 +1196,7 @@ Barlow Head Creek,2017,64.79306714
 Bear Creek-Stephens Pas,2017,42.13197914
 Beardslee River,2017,64.79306714
 Bergmann Creek,2017,45.3000887
+Berners River,2017,64.79306714
 Bostwick Bay SW Side,2017,10.27724816
 Bostwick Creek,2017,10.27724816
 Brad Creek NW Anita Bay,2017,22.37302949
@@ -1254,8 +1255,7 @@ Katlian Bay S Fork,2017,72.83926493
 Katlian River,2017,72.83926493
 Kegan Cove,2017,18.09459329
 Kelp Bay Middle Arm Head,2017,74.6661072
-Kelp Bay Portage Arm,2017,41.50228068
-Kelp Bay Portage Arm Head,2017,33.16382652
+Kelp Bay Portage Arm,2017,74.6661072
 Ketchikan Creek,2017,10.27724816
 King George Creek,2017,22.37302949
 Kizhuchia Creek,2017,73.3522738
@@ -1365,6 +1365,7 @@ Barlow Head Creek,2018,61.92278769
 Bear Creek-Stephens Pas,2018,40.24592079
 Beardslee River,2018,61.92278769
 Bergmann Creek,2018,26.53442822
+Berners River,2018,61.92278769
 Bostwick Bay SW Side,2018,10.63530572
 Bostwick Creek,2018,10.63530572
 Brad Creek NW Anita Bay,2018,22.88729256
@@ -1423,8 +1424,7 @@ Katlian Bay S Fork,2018,76.90744216
 Katlian River,2018,76.90744216
 Kegan Cove,2018,11.45838807
 Kelp Bay Middle Arm Head,2018,74.44234926
-Kelp Bay Portage Arm,2018,42.76707364
-Kelp Bay Portage Arm Head,2018,31.67527562
+Kelp Bay Portage Arm,2018,74.44234926
 Ketchikan Creek,2018,10.63530572
 King George Creek,2018,22.88729256
 Kizhuchia Creek,2018,86.15798253
@@ -1534,6 +1534,7 @@ Barlow Head Creek,2019,55.20941869
 Bear Creek-Stephens Pas,2019,34.47241997
 Beardslee River,2019,55.20941869
 Bergmann Creek,2019,34.07564514
+Berners River,2019,55.20941869
 Bostwick Bay SW Side,2019,11.7105038
 Bostwick Creek,2019,11.7105038
 Brad Creek NW Anita Bay,2019,22.44534802
@@ -1592,8 +1593,7 @@ Katlian Bay S Fork,2019,73.63921463
 Katlian River,2019,73.63921463
 Kegan Cove,2019,19.09742596
 Kelp Bay Middle Arm Head,2019,79.86574909
-Kelp Bay Portage Arm,2019,38.59893621
-Kelp Bay Portage Arm Head,2019,41.26681288
+Kelp Bay Portage Arm,2019,79.86574909
 Ketchikan Creek,2019,11.7105038
 King George Creek,2019,22.44534802
 Kizhuchia Creek,2019,96.20966185

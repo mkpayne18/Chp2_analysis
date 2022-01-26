@@ -1,4 +1,6 @@
 Sub-region,Management Area,Stream_Number,StreamName,STAT_AREA_NAME,AWC_CODE,LATITUDE,LONGITUDE,Watershed_ID,Watershed_km2,mean_flow,CV_flow,Stream_spans_2_WSheds,Scenario_A,Scenario_B,Notes,Triple-checked
+NSE Inside,Juneau,115-20-010,Berners River,Berners Bay,115-20-10100,58.836985,-134.996836,13632,1924,197.42,0.64,,X,,,
+NSE Outside,Sitka,113-62-009,Kalinin Cove Hd,Inner Salisbury Sound,113-62-10090,57.306053,-135.779605,9160,10,0.53,0.49,,X,,,
 SSE,Ketchikan,103-70-011,11 Mile Creek,11-Mile,103-70-10110,55.58487972,-133.2770951,"4141, 4105",51,3.15,0.55,X,,X,Same 2nd WShed as Picnic Bay (4105),X
 SSE,Ketchikan,102-60-039,142F Creek,Kasaan Bay,102-60-10390,55.35556911,-132.5182465,4147,192,16.94,0.46,,,X,"Same WShed as Cabin Creek-Polk Inlet, Dog Salmon Creek-Kasaan Bay, Goose Bay Creek, and Rock Creek",X
 SSE,Petersburg,107-40-057,1st E of Hoya Creek,Blake Channel,107-40-10570,56.18684297,-131.6993936,7919,57,5.28,0.61,,X,,,X

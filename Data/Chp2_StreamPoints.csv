@@ -1,4 +1,6 @@
 Sub-region,Management Area,Stream_Number,StreamName,STAT_AREA_NAME,AWC_CODE,LATITUDE,LONGITUDE,Correct_num/code_name_verified,Location_verified
+NSE Inside,Juneau,115-20-010,Berners River,Berners Bay,115-20-10100,58.836985,-134.996836,X,X
+NSE Outside,Sitka,113-62-009,Kalinin Cove Hd,Inner Salisbury Sound,113-62-10090,57.306053,-135.779605,X,X
 NSE Inside,Juneau,115-31-038,Sullivan Creek,North Lynn Canal,115-31-10380,58.858363,-135.320646,X,X
 NSE Outside,Sitka,113-41-034,Camp Coogan,Sitka Sound,113-41-10344,57.003894,-135.22678,X,X
 SSE,Petersburg,105-10-011,Louise Cove,Affleck Canal/Spanish Is/Louise Cove,105-10-10110,56.196872,-133.973779,X,X
