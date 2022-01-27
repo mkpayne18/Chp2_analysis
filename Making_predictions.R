@@ -11,6 +11,10 @@ Chp2_MasterDat$WMA_Releases_in_millions[is.na(Chp2_MasterDat$WMA_Releases_in_mil
 str(Chp2_MasterDat)
 
 
+#Did the streams that are missing flow get deleted? LIke Hidden Inlet and Fish
+#Creek-Portland Canal?
+
+
 
 #1. Recreate final models from chapter 1, use to make new predictions ##########
 Chp1_Master <- read.csv("Chp1_Master_dataset copy.csv")
