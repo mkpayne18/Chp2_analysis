@@ -158,12 +158,14 @@ colnames(mean_predsChp2)[8] <- "Mean_pred_strays"
 mean_predsChp2 <- mean_predsChp2[!duplicated(mean_predsChp2$Mean_pred_strays),]
 
 #Get map
-library(ggmap)
+library(ggmap) ### USE DIFFERENT BACKGROUND FOR MAP
 myMap <- get_stamenmap(location <- c(-137, 54.5, -130, 59.5), zoom = 6,
                        maptype = "terrain-background", color = "bw", crop = TRUE)
 ggmap(myMap)
 strays_mapChp2 <- ggmap(myMap) + geom_point(aes(x = LONGITUDE, y = LATITUDE, size = 10,
                                                         fill = Mean_pred_strays),
                                                     colour = "black", pch = 21,
-                                                    data = mean_predsChp2)
+                                                    data = mean_predsChp2) +
+  scale_fill_gradient2(low = "blue", high = "red") #Zoom into different regions
+#to show more contrast on a finer scale. Max out gradient at 50
 strays_mapChp2
