@@ -368,12 +368,15 @@ Percentile") +
                 ymax = 58.75),
             fill = "transparent",
             color = "black", size = 1) +
+  annotate("text", x = -135.68, y = 58.74, label = "1", fontface = 2, size = 5) +
   geom_rect(aes(xmin = -132.29,
                 xmax = -131.45,
                 ymin = 55.5,
                 ymax = 55.97),
             fill = "transparent",
-            color = "black", size = 1)
+            color = "black", size = 1) +
+  annotate("text", x = -132.42, y = 55.96, label = "2", fontface = 2, size = 5) +
+  theme(plot.margin = unit(c(0,-0.5,0,1), "cm"))
   
 strays_map1
 
@@ -385,16 +388,16 @@ strays_map2 <- strays_map1 + inset(grob = ggplotGrob(alaska), xmin = -133, xmax 
                                    ymin = 58.2, ymax = 59.55) 
 strays_map2
 
-#add scale bar and north arrow
-strays_map3 <- strays_map2 + scalebar(x.min = -136.8, x.max = -134.8, y.min = 54.8,
-                                      y.max = 55, dist = 50, dist_unit = "km",
-                                      transform = T, height = 0.5, st.dist = 0.6,
-                                      st.size = 5)
+#add scale bar
+strays_map3 <- strays_map2 + scalebar(x.min = -137, x.max = -135, y.min = 54.75,
+                                      y.max = 54.95, dist = 50, dist_unit = "km",
+                                      transform = T, height = 0.4, st.dist = 0.6,
+                                      st.size = 4)
 strays_map3
 
 
 #6.1. "Zoom-in" region #1: Lynn Canal, Amalga Harbor area ======================
-zoom1_map <- get_stamenmap(location <- c(-135.55, 58.15, -134.4, 58.75), zoom = 9,
+zoom1_map <- get_stamenmap(location <- c(-135.55, 58.15, -134.41, 58.74), zoom = 9,
                        maptype = "terrain-background", crop = TRUE)
 ggmap(zoom1_map)
 
@@ -416,6 +419,8 @@ Percentile") +
   theme(legend.text = element_text(size = 11.5)) +
   theme(legend.title = element_text(size = 14)) +
   theme(text=element_text(family="Times New Roman")) +
+  annotate("text", x = -135.49, y = 58.7, label = "1", fontface = 2, size = 8) +
+  theme(plot.margin = unit(c(1,0,0,-0.5), "cm")) +
   scale_fill_gradientn(colours = c("#CFE8F3", "#A2D4EC", "#73BFE2",
                                    "#46ABDB", "#1696D2", "#12719E", "#0A4C6A",
                                    "#062635"), values = rescale(c(0,0.1,0.25,1)))
@@ -423,7 +428,7 @@ Amalga_map
 
 
 #6.2. "Zoom-in" region #2: Neets Bay ===========================================
-zoom2_map <- get_stamenmap(location <- c(-132.29, 55.5, -131.45, 55.97), zoom = 10,
+zoom2_map <- get_stamenmap(location <- c(-132.29, 55.5, -131.43, 55.97), zoom = 10,
                            maptype = "terrain-background", crop = TRUE)
 ggmap(zoom2_map)
 
@@ -445,10 +450,13 @@ Percentile") +
   theme(legend.text = element_text(size = 11.5)) +
   theme(legend.title = element_text(size = 14)) +
   theme(text=element_text(family="Times New Roman")) +
+  annotate("text", x = -132.23, y = 55.94, label = "2", fontface = 2, size = 8) +
+  theme(plot.margin = unit(c(0,0,1,-0.5), "cm")) +
   scale_fill_gradientn(colours = c("#CFE8F3", "#A2D4EC", "#73BFE2",
                                    "#46ABDB", "#1696D2", "#12719E", "#0A4C6A",
                                    "#062635"), values = rescale(c(0,0.1,0.25,1)))
 Neets_map
+
 
 
 library(gridExtra)
@@ -459,24 +467,13 @@ right_side <- ggarrange(Amalga_map, Neets_map, ncol = 1,
 
 whole_map <- ggarrange(strays_map3, right_side, align = "v",
                        common.legend = T, legend = "right")
-whole_map
+whole_map #hot damn
 
+#Export as high-res figure
+tiff("fig1.tiff", width = 9, height = 6, pointsize = 12, units = 'in', res = 300)
+whole_map #graph that you want to export
+dev.off( )
 
-ggarrange(strays_map3, Amalga_map, Neets_map,
-          layout_matrix = matrix(c(1,3,2,3), nrow = 2),
-          common.legend = TRUE, legend="bottom")
-
-(1,1,2,3)
-(1,2,3,3)
-(3,3,2,1)
-          
-          
-          
-          heights = c(2,1), common.legend = TRUE, legend="bottom")
-  
-
-layout_matrix = rbind(c(1, 2, NA),
-                      c(3, 3, 4))
 
 
 save.image("Making_predictions_objects.RData")
