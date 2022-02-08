@@ -339,7 +339,10 @@ myMap <- get_stamenmap(location <- c(-137, 54.5, -130, 59.5), zoom = 6,
                        maptype = "terrain-background", crop = TRUE)
 ggmap(myMap)
 strays_map1 <- ggmap(myMap) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
-                                             fill = Percentile), size = 4,
+                                             fill = Percentile), size = 2,
+                                         colour = "black", pch = 24,
+                                         data = lowr_conf_preds) +
+  geom_point(aes(x = LONGITUDE, y = LATITUDE, fill = Percentile), size = 4,
                                          colour = "black", pch = 21,
                                          data = mean_predsChp2) +
   labs(x = "Latitude", y = "Longitude", fill = "Predicted Index
@@ -369,16 +372,19 @@ Percentile") +
             fill = "transparent",
             color = "black", size = 1) +
   annotate("text", x = -135.68, y = 58.74, label = "1", fontface = 2, size = 5) +
-  geom_rect(aes(xmin = -132.29,
-                xmax = -131.45,
-                ymin = 55.5,
-                ymax = 55.97),
+  geom_rect(aes(xmin = -135.5,
+                xmax = -134.75,
+                ymin = 56.59,
+                ymax = 57),
             fill = "transparent",
             color = "black", size = 1) +
-  annotate("text", x = -132.42, y = 55.96, label = "2", fontface = 2, size = 5) +
+  annotate("text", x = -135.65, y = 56.95, label = "2", fontface = 2, size = 5) +
   theme(plot.margin = unit(c(0,-0.5,0,1), "cm"))
   
-strays_map1
+strays_map1 #warning message about true north not being meaningful. This is bc
+#I included the north arrow as an annotation on the plot, rather than using data
+#to locate it. You can ignore
+
 
 ### Code to create inset map was here. See section 3 above for that code if you 
 #want it
@@ -420,19 +426,32 @@ Percentile") +
   theme(legend.title = element_text(size = 14)) +
   theme(text=element_text(family="Times New Roman")) +
   annotate("text", x = -135.49, y = 58.7, label = "1", fontface = 2, size = 8) +
-  theme(plot.margin = unit(c(1,0,0,-0.5), "cm")) +
+  theme(plot.margin = unit(c(1,0,0,-0.5), "cm")) + #the plot.margin positioning
+  #specified here makes the plot have no margin space at the bottom or on its left
+  #side, and I did that so that it would be closer to the Crawfish_map below it
+  #and the SEAK strays map to its left when I put them together in ggarrange()
+  scalebar(x.min = -135.45, x.max = -134.8, y.min = 58.2, y.max = 58.24,
+           transform = T, dist_unit = "km", dist = 20, height = 0.6,
+           st.dist = 0.6, st.size = 4.5) +
   scale_fill_gradientn(colours = c("#CFE8F3", "#A2D4EC", "#73BFE2",
                                    "#46ABDB", "#1696D2", "#12719E", "#0A4C6A",
                                    "#062635"), values = rescale(c(0,0.1,0.25,1)))
 Amalga_map
 
 
-#6.2. "Zoom-in" region #2: Neets Bay ===========================================
-zoom2_map <- get_stamenmap(location <- c(-132.29, 55.5, -131.43, 55.97), zoom = 10,
-                           maptype = "terrain-background", crop = TRUE)
-ggmap(zoom2_map)
 
-Neets_map <- ggmap(zoom2_map) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
+#6.2. "Zoom-in" region #2: Crawfish Inlet ======================================
+#Previously I had zoomed in on the Neets Bay area. Here is the map for that if
+#you wish to return to using that area again:
+#zoom2_map <- get_stamenmap(location <- c(-132.29, 55.5, -131.43, 55.97), zoom = 10,
+                           maptype = "terrain-background", crop = TRUE)
+#ggmap(zoom2_map)
+
+zoom3_map <- get_stamenmap(location <- c(-135.53, 56.6, -134.73, 57.03), zoom = 10,
+                           maptype = "terrain-background", crop = TRUE)
+ggmap(zoom3_map)
+
+Crawfish_map <- ggmap(zoom3_map) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
                                   fill = Percentile), size = 5,
                               colour = "black", pch = 21,
                               data = mean_predsChp2) +
@@ -450,19 +469,25 @@ Percentile") +
   theme(legend.text = element_text(size = 11.5)) +
   theme(legend.title = element_text(size = 14)) +
   theme(text=element_text(family="Times New Roman")) +
-  annotate("text", x = -132.23, y = 55.94, label = "2", fontface = 2, size = 8) +
-  theme(plot.margin = unit(c(0,0,1,-0.5), "cm")) +
+  annotate("text", x = -135.48, y = 57, label = "2", fontface = 2, size = 8) +
+  theme(plot.margin = unit(c(0,0,1,-0.5), "cm")) + #the plot.margin positioning
+  #specified here makes the plot have no margin space at the top or on its left
+  #side, and I did that so that it would be closer to the Amalga_map above it
+  #and the SEAK strays map to its left when I put them together in ggarrange()
+  scalebar(x.min = -135.5, x.max = -134.83, y.min = 56.64, y.max = 56.67,
+           transform = T, dist_unit = "km", dist = 20, height = 0.6,
+           st.dist = 0.7, st.size = 4.5) +
   scale_fill_gradientn(colours = c("#CFE8F3", "#A2D4EC", "#73BFE2",
                                    "#46ABDB", "#1696D2", "#12719E", "#0A4C6A",
                                    "#062635"), values = rescale(c(0,0.1,0.25,1)))
-Neets_map
+Crawfish_map
 
 
-
+#6.3. Put whole map together ===================================================
 library(gridExtra)
 library(ggpubr)
 
-right_side <- ggarrange(Amalga_map, Neets_map, ncol = 1,
+right_side <- ggarrange(Amalga_map, Crawfish_map, ncol = 1,
                         common.legend = T, legend = "right")
 
 whole_map <- ggarrange(strays_map3, right_side, align = "v",
@@ -473,6 +498,8 @@ whole_map #hot damn
 tiff("fig1.tiff", width = 9, height = 6, pointsize = 12, units = 'in', res = 300)
 whole_map #graph that you want to export
 dev.off( )
+
+
 
 
 
