@@ -47,13 +47,15 @@ View(ages) #in the entire HW dataset, all of the H strays range from 3-7yo. Ther
 #are very few 6 or 7 yo though, so I will limit my age distribution calculation
 #to 3, 4, and 5yo proportions out of the total of 3+4+5yo only
 ages <- ages[-c(4,5),] #remove 6 and 7yo row
-total345 <- sum(ages$Freq[ages$Var1 %in% c(3,4,5)])
+total345 <- sum(ages$Freq)
 ages$Proportion_345only <- ages$Freq/total345
 
 
 
 #Add release site data by year to each stream ##################################
-s_yrs <- seq(2008, 2019, 1) #"s" for survey year, or year H fish were sampled
+s_yrs <- seq(2008, 2021, 1) #"s" for survey year, or year H fish were sampled.
+#2020 and 2021 are included for making additional predictions in part 2 of chapter
+#2, so there are 12 total years instead of 10
 s_yrs <- s_yrs[-c(5,9)] #remove 2016 and 2012
 #repeat each line of streams w/ release sites df length(s_yrs) times
 dat2 <- dat[rep(seq_len(nrow(dat)), each = length(s_yrs)), ]
@@ -68,12 +70,11 @@ dat4[!complete.cases(dat4), ] #no NAs. Good
 
 
 #Read in # of fish released by year for each release site df
-Releases_site_year <-
-  read_csv("~/Documents/CHUM_THESIS/Data Sources/Release_Sites_Age/Releases_site_year.csv")
+Releases_site_year <- read.csv("Releases_thru2019.csv")
 
 #join releases by year to dat4
 dat5 <- left_join(dat4, Releases_site_year, by = c("ReleaseSite", "YearReleased"))
-dat5 <- dat5[,c(1:5,8)]
+dat5 <- dat5[,c(1:5,7)]
 #bind proportions of each age to corresponding year. 0.038 for 3yo, 0.612 for 
 #4yo, and 0.3495 for 5yo as specified in ages
 dat5$props <- ages$Proportion_345only
@@ -96,6 +97,13 @@ dat7 <- cbind.data.frame(dat3, dat6$WMA_Release_Total)
 #sum WMA_releases from each release site by stream. Es decir, for streams that 
 #have more than 1 release site within 40km, sum up the WMA_Release total for those
 #sites
-WMA_Releas_chp2 <- aggregate(dat7[,-c(1:3)],dat7[c("Stream_within_40km", "s_yrs")],sum)
-View(WMA_Releas_chp2)                         
+WMA_Releas_chp222 <- aggregate(dat7[,-c(1:3)],dat7[c("Stream_within_40km", "s_yrs")],sum)
+View(WMA_Releas_chp222)                         
 write.csv(WMA_Releas_chp2, "WMA_Releas_chp2.csv")
+
+WMA_old <- read.csv("WMA_Releas_chp2.csv")
+View(WMA_old)
+WMA_Releas_chp222$x <- round(WMA_Releas_chp222$x)
+WMA_old$x <- round(WMA_old$x)
+pec <- anti_join(WMA_Releas_chp222, WMA_old)
+View(pec)
