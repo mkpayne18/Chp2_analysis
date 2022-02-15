@@ -1,3 +1,6 @@
+### Update February 15, 2022. I added 2020 and 2021 data for WMA_Releases_by_Yr
+#and Cons_Abundance to the Master_dataset so that I could make future predictions
+
 #Create chp 2 master dataset. I.e., bring together all covariate data into 1 file
 getwd()
 setwd("~/Documents/CHUM_THESIS/CHAPTER_2/Chp2_analysis/Data")
@@ -14,12 +17,13 @@ Cons_A_long <- Cons_Abundance %>% pivot_longer(cols = starts_with("X"),
                                                names_to = "Year",
                                                names_prefix = "X")
 View(Cons_A_long)
-colnames(Cons_A_long)[6] <- "Cons_Abundance"
-colnames(Cons_A_long)[3] <- "StreamName"
+colnames(Cons_A_long)[5] <- "Cons_Abundance"
+colnames(Cons_A_long)[2] <- "StreamName"
 #Select only the relevant columns from df to join together
-Cons_A_long <- Cons_A_long[,c(2,3,5,6)]
+Cons_A_long <- Cons_A_long[,c(2:5)]
 #Finally, make sure year is a factor
 Cons_A_long$Year <- as.factor(Cons_A_long$Year)
+str(Cons_A_long)
 
 
 #Tailor Pink_Abundance =========================================================
@@ -34,6 +38,27 @@ Pink_A_long <- Pink_A_long[,c(1,3,4,6:8,13,14)] #keep additional data cols (subr
 #+ AWC #) from this one
 colnames(Pink_A_long)[1] <- "Subregion"
 Pink_A_long$Year <- as.factor(Pink_A_long$Year)
+str(Pink_A_long)
+
+### Update February 2022: Add 2 additional rows to each stream for 2020 and 2021
+#data
+Pink_df <- as.data.frame(unique(Pink_A_long[c("Subregion", "Stream_Number",
+                                              "StreamName", "AWC_CODE",
+                                              "LATITUDE", "LONGITUDE")]))
+#duplicate each row:
+Pink_df2 <- purrr::map_dfr(seq_len(2), ~Pink_df)
+Pink_df3 <- Pink_df2[order(Pink_df2$StreamName),]
+rownames(Pink_df3) <- 1:nrow(Pink_df3)
+end_years <- c("2020", "2021")
+Pink_df3$Year <- as.factor(end_years)
+Pink_df3$Pink_Abundance <- rep(NA, 1328)
+length(Pink_df3$StreamName) #This should add 1328 additional rows to the already
+#existing 6640 rows in Pink_A_long
+length(Pink_A_long$StreamName) #6640
+
+Pink_A_long <- rbind.data.frame(Pink_A_long, Pink_df3)
+str(Pink_A_long)
+length(Pink_A_long$StreamName) #7968 = 1328 + 6640
 
 
 #Tailor flow data ==============================================================
@@ -53,10 +78,9 @@ colnames(WMA_Releases)[3] <- "WMA_Releases_in_millions"
 #remove Herman Creek (NSE Inside) because there is no Herman Creek in this sub-
 #region in Pink_Abundance data and it doesn't have flow data anyway
 WMA_Releases <- WMA_Releases[WMA_Releases$StreamName != "Herman Creek",]
-#remove 10 random empty rows I noticed within WMA_Releases
-WMA_Releases <- WMA_Releases[complete.cases(WMA_Releases), ]
 #year as factor
 WMA_Releases$Year <- as.factor(WMA_Releases$Year)
+str(WMA_Releases)
 
 
 
@@ -85,8 +109,11 @@ View(Master_dataset)
 #Make sure everyone got correctly matched up (all values used for each covariate)
 sum(is.na(Master_dataset$Pink_Abundance)) #should = 20 because there are 2 streams
 #from Cons_Abundance data (Berners River and Kalinin Cove Hd) that do not have
-#pink abundance data. I entered these as NA for pink_abundance data vals
-length(Master_dataset$Pink_Abundance) #6640 is the full length of the dataset (10
+#pink abundance data. I entered these as NA for pink_abundance data vals. Update
+#Feb. 2022: there are 1328 more rows for Pink_Abundance that have NA values (bc
+#2020 + 2021 rows added for each of 664 streams = 664*2 = 1328 more rows). So
+#there should be 1328 + 20 = 1348 rows of NA in Pink_Abundance column
+length(Master_dataset$Pink_Abundance) #7968 is the full length of the dataset (12
 #years of data for each of 664 streams)
 
 #Did all streams correctly match up between pink_abundance data and cons_abundance?
@@ -96,26 +123,30 @@ which(ifelse(Master_dataset$StreamName == Master_dataset$StreamName.y, 0, 1) == 
 ### Check data values
 #Cons_Abundance
 sum(is.na(Cons_A_long$Cons_Abundance)) #none
-length(Cons_A_long$Cons_Abundance) #870
-length(Master_dataset$Cons_Abundance[!is.na(Master_dataset$Cons_Abundance)]) #870
+length(Cons_A_long$Cons_Abundance) #1044
+length(Master_dataset$Cons_Abundance[!is.na(Master_dataset$Cons_Abundance)]) #1044
 #GOOD
 
 
 #WMA_Releases_in_millions
 sum(is.na(WMA_Releases$WMA_Releases_in_millions)) #none
-length(WMA_Releases$WMA_Releases_in_millions)  #1680
+length(WMA_Releases$WMA_Releases_in_millions)  #2248
 length(Master_dataset$WMA_Releases_in_millions[!is.na(
-  Master_dataset$WMA_Releases_in_millions)]) #1680
+  Master_dataset$WMA_Releases_in_millions)]) #2248
 
 #Flow
 sum(is.na(Flow2$mean_flow)) #none
+length(Flow$mean_flow) #664 (contains the NA vals in OG df)
 length(Flow2$mean_flow[!is.na(Flow2$mean_flow)]) #640
 664-640 #=24 = total # of streams that are NA for flow data, which means there 
-#should be 240 rows of NA for flow data in the full dataset: 6640-240=6400
-length(Master_dataset$mean_flow[!is.na(Master_dataset$mean_flow)]) #6400
-#observations not matching
+#should be 24*12=288 rows of NA for flow data in the full dataset: 664*12 = 7968
+#7968 - 288 = 7680
+length(Master_dataset$mean_flow[!is.na(Master_dataset$mean_flow)]) #7680 obs not
+#matching
 #Should be the same for CV_flow
-length(Master_dataset$CV_flow[!is.na(Master_dataset$CV_flow)]) #6400
+length(Master_dataset$CV_flow[!is.na(Master_dataset$CV_flow)]) #7680
+
+
 
 #Example of how I previously checked for the streams that did not properly match
 #up between datasets when joining. I would identify the streams that DID correctly
@@ -139,5 +170,4 @@ View(fail_flow) #Marble Creek-Angoon and Ushk. Unclear why matching did not hap-
 Master_dataset <- Master_dataset[ , c(1:8, 10, 13, 11, 12)]
 setwd("~/Documents/CHUM_THESIS/CHAPTER_2/Chp2_analysis")
 write.csv(Master_dataset, "Chp2_Master_dataset.csv")
-
 

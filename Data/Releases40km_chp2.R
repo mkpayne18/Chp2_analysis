@@ -97,13 +97,7 @@ dat7 <- cbind.data.frame(dat3, dat6$WMA_Release_Total)
 #sum WMA_releases from each release site by stream. Es decir, for streams that 
 #have more than 1 release site within 40km, sum up the WMA_Release total for those
 #sites
-WMA_Releas_chp222 <- aggregate(dat7[,-c(1:3)],dat7[c("Stream_within_40km", "s_yrs")],sum)
-View(WMA_Releas_chp222)                         
+WMA_Releas_chp2 <- aggregate(dat7[,-c(1:3)],dat7[c("Stream_within_40km", "s_yrs")],sum)
+View(WMA_Releas_chp2)                         
 write.csv(WMA_Releas_chp2, "WMA_Releas_chp2.csv")
 
-WMA_old <- read.csv("WMA_Releas_chp2.csv")
-View(WMA_old)
-WMA_Releas_chp222$x <- round(WMA_Releas_chp222$x)
-WMA_old$x <- round(WMA_old$x)
-pec <- anti_join(WMA_Releas_chp222, WMA_old)
-View(pec)
