@@ -145,6 +145,8 @@ length(Master_dataset$mean_flow[!is.na(Master_dataset$mean_flow)]) #7680 obs not
 #matching
 #Should be the same for CV_flow
 length(Master_dataset$CV_flow[!is.na(Master_dataset$CV_flow)]) #7680
+length(Master_dataset$CV_flow) #7968, but the NA flow data streams will remain
+#in the dataset in case you wish to reference them for any reason
 
 
 

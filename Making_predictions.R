@@ -29,6 +29,9 @@ colnames(Chp2_MasterDat)[9] <- "WMA_Releases_by_Yr"
 #10 years of data each = 640 total rows)
 Chp2_MasterDat <- Chp2_MasterDat[!is.na(Chp2_MasterDat$CV_flow),]
 
+#Stick 2020 and 2021 streams into a separate dataset for part 2 of chapter 2
+X20_21_Chp2 <- Chp2_MasterDat[Chp2_MasterDat$Year %in% c("2020", "2021"),]
+Chp2_MasterDat <- Chp2_MasterDat[!Chp2_MasterDat$Year %in% c("2020", "2021"),]
 
 
 #1. Recreate final models from chapter 1, use to make new predictions ##########
@@ -70,6 +73,11 @@ bm1u <- glmer.nb(Avg_number_strays ~ (1|Year) + Cons_Abundance + WMA_Releases_by
                  + CV_flow + I(CV_flow^2), data = f_scaled) #'bm' for "best model"
 bm2u <- glmer.nb(Avg_number_strays ~ (1|Year) + WMA_Releases_by_Yr + CV_flow +
                    I(CV_flow^2), data = f_scaled)
+#2/15/22: No longer using second best candidate model for making high-confidence
+#predictions, but you will still use it below to make lower-confidence predictions
+#in section 4.
+#Only use 1st model to make predictions for high-confidence streams so that I can
+#more easily estimate uncertainty around the predictions
 
 
 
@@ -96,20 +104,103 @@ preds1 <- as.data.frame(predict(bm1u, newdata = Chp2_scaled, type = "response"))
 Mod1_Chp2_predictions <- cbind.data.frame(Chp2_scaled[, c(1:7)], preds1)
 colnames(Mod1_Chp2_predictions)[8] <- "Predictions"
 
-### Second best model (bm2u):
-preds2 <- as.data.frame(predict(bm2u, newdata = Chp2_scaled, type = "response"))
-Mod2_Chp2_predictions <- cbind.data.frame(Chp2_scaled[, c(1:7)], preds2)
-colnames(Mod2_Chp2_predictions)[8] <- "Predictions"
+### Second best model (bm2u): NO LONGER USING
+#preds2 <- as.data.frame(predict(bm2u, newdata = Chp2_scaled, type = "response"))
+#Mod2_Chp2_predictions <- cbind.data.frame(Chp2_scaled[, c(1:7)], preds2)
+#colnames(Mod2_Chp2_predictions)[8] <- "Predictions"
 
 #Take the weighted average of the two models' predictions (63-37 for mod 1 vs 2,
 #see chp 1 model fitting script or manuscript for this result)
-vec2 <- (Mod1_Chp2_predictions$Predictions*0.63) +
-  (Mod2_Chp2_predictions$Predictions*0.37)
-Chp2_predictions <- cbind.data.frame(Mod1_Chp2_predictions[,c(1:7)], vec2)
-colnames(Chp2_predictions)[8] <- "Chp2_predictions"
+#vec2 <- (Mod1_Chp2_predictions$Predictions*0.63) +
+ # (Mod2_Chp2_predictions$Predictions*0.37)
+#Chp2_predictions <- cbind.data.frame(Mod1_Chp2_predictions[,c(1:7)], vec2)
+#colnames(Chp2_predictions)[8] <- "Chp2_predictions"
 
 
-#2.3 Compare chp1 and chp2 predictions =========================================
+
+#2.3. Calculate prediction uncertainty using bootstrap approach ================
+
+### Bootstrapping steps
+#1) Run rnorm( ) for each covariate to specify a distribution for that covariate.
+#E.g., if my coefficient estimate is 0.215 and its SE is 0.12, then my 
+#rnorm(1000, mean = 0.215, sd = 0.12). 
+
+#2) Randomly sample 1000 values, with replacement, from the rnorm distribution
+#for each covariate, calculate a mean coefficient estimate each time you sample 
+
+#3) Run the model with mean coefficient estimate, make predictions, store
+#predictions
+
+#4) Repeat steps 2-3 1000 times
+
+#5) Calculate a CV or 95% confidence interval from each set of 1000 (1000 for
+#each individual prediction -> get one CV or 95% CI for each prediction)
+
+
+######   Bootstrap step 1)   ######
+summary(bm1u) #create random normal distributions using the mean and sd for each
+#model covariate, i.e., the coefficient estimate and standard error
+rWMA_releas <- rnorm(1000, 0.412, 0.086)
+rCons_A <- rnorm(1000, 0.215, 0.120)
+rCV_f <- rnorm(1000, 0.503, 0.091)
+rCV_f2 <- rnorm(1000, 0.623, 0.078)
+
+
+######   Bootstrap steps 2), 3), 4)   ######
+#Recall that you have a random effect of year, so the intercept will vary for 
+#your predictions depending on the year. You can incorporate this into the model
+#most easily by creating a column of the appropriate random intercepts:
+#Create column of random intercepts for each year
+re <- as.data.frame(ranef(bm1u)) #specifies random EFFECTS, not intercepts
+re2 <- re[,c(3:4)]
+names(re2) <- c("Year", "R.Intercept")
+summary(bm1u)
+re2$R.Intercept <- re2$R.Intercept + 0.41315 #0.41315 is the overall (mean)
+#intercept from the bm1u model output. re2$RE should match the (Intercept) column
+#specified by:
+coef(bm1u) #but I wasn't able to make this a df by itself. Hence the above steps
+eval_HC_df <- left_join(Chp2_scaled, re2, by = "Year")
+
+
+run_mod <- function(WMA, CA, CVf, CVf2){
+  y <- exp(eval_HC_df$R.Intercept +  (WMA * eval_HC_df$WMA_Releases_by_Yr) -
+             (CA * eval_HC_df$Cons_Abundance) + (CVf * eval_HC_df$CV_flow) +
+             (CVf2 * (eval_HC_df$CV_flow)^2))
+} #function I will use to run model with each sampled rnorm() coefficient estimate
+
+
+#Create empty df to store predictions from each model iteration
+mod_preds <- data.frame(matrix(ncol = 1000, nrow = 820))
+#For loop to run model!
+for (i in 1:1000) {
+  WMA <- mean(sample(rWMA_releas, 1000, replace = T))
+  CA <- mean(sample(rCons_A, 1000, replace = T))
+  CVf <- mean(sample(rCV_f, 1000, replace = T))
+  CVf2 <- mean(sample(rCV_f2, 1000, replace = T))
+  mod_preds[,i] <- run_mod(WMA, CA, CVf, CVf2)
+}
+mod_preds
+mod_preds$Mean <- rowMeans(mod_preds)
+mod_preds$SD <- apply(mod_preds, 1, sd)
+
+
+######   Bootstrap step 5)   ######
+#Link stream and year information to mean and SD of bootstrapped predictions
+bs_preds_HC <- cbind.data.frame(Chp2_scaled[,c(1:7)], mod_preds[,c(1001:1002)])
+#this^^ gives the mean and sd of the 1000 bootstrapped ("bs") model predictions
+#for each individual stream-year prediction. You want to know the mean and sd for
+#each stream overall:
+CV_HC <- bs_preds_HC %>% group_by(StreamName) %>%
+  summarise(Mean = mean(Mean), SD = max(SD)) #find the max of the SD, not the 
+#mean so that I am showing the maximum possible amount of uncertainty around a 
+#mean predicted attractiveness index across time
+CV_HC$CV <- CV_HC$SD/CV_HC$Mean
+CV_HC$CV_percent <- CV_HC$CV*100
+
+
+
+
+#2.4. Compare chp1 and chp2 predictions ========================================
 #That is, for the streams that appear in both datasets (the original 56 streams),
 #compare the predictions between the chp1 and chp2 models
 ### Best model (bm1u):
@@ -118,48 +209,80 @@ Mod1_Chp1_predictions <- cbind.data.frame(f_scaled[,c(1:3)], preds11)
 colnames(Mod1_Chp1_predictions)[4] <- "Chp1_predictions"
 
 ### Second best model (bm2u):
-preds22 <- as.data.frame(fitted(bm2u))
-Mod2_Chp1_predictions <- cbind.data.frame(f_scaled[,c(1:3)], preds22)
-colnames(Mod2_Chp1_predictions)[4] <- "Chp1_predictions"
+#preds22 <- as.data.frame(fitted(bm2u))
+#Mod2_Chp1_predictions <- cbind.data.frame(f_scaled[,c(1:3)], preds22)
+#colnames(Mod2_Chp1_predictions)[4] <- "Chp1_predictions"
 
 #Take the weighted average
-vec1 <- (Mod1_Chp1_predictions$Chp1_predictions*0.63) +
-  (Mod2_Chp1_predictions$Chp1_predictions*0.37)
-Chp1_predictions <- cbind.data.frame(Mod1_Chp1_predictions[,c(1:3)], vec1)
-colnames(Chp1_predictions)[4] <- "Chp1_predictions"
+#vec1 <- (Mod1_Chp1_predictions$Chp1_predictions*0.63) +
+ # (Mod2_Chp1_predictions$Chp1_predictions*0.37)
+#Chp1_predictions <- cbind.data.frame(Mod1_Chp1_predictions[,c(1:3)], vec1)
+#colnames(Chp1_predictions)[4] <- "Chp1_predictions"
 
 
 
 
-df <- inner_join(Chp2_predictions, Chp1_predictions, by = c("StreamName", "Year"))
-Xdf <- anti_join(Chp1_predictions, df, by = c("StreamName", "Year")) #Ushk, Camp
-#Coogan, and Staney Creek did not 'join' the new df because they were not included
-#in the model predictions in the Chp2 dataset. The reason they were not included
-#was because they had no Cons_Abundance data. The Cons_Abundance data they did 
-#have in Chp1 was interpolated (see Cons_Abundance methods detail in chp 1 Data_
-#sources folder for more info). Since these creeks only had 1-3 years of data
-#(not 10), which was interpolated anyway, I did not include them in the Chp2_scaled
-#dataset for modeling so that I would only include streams with actual data (not
-#interpolated) for each covariate. 
+df <- inner_join(Mod1_Chp2_predictions, Mod1_Chp1_predictions,
+                 by = c("StreamName", "Year"))
+Xdf <- anti_join(Mod1_Chp1_predictions, df, by = c("StreamName", "Year")) #Ushk,
+#Camp Coogan, and Staney Creek did not 'join' the new df because they were not
+#included in the model predictions in the Chp2 dataset. The reason they were not
+#included was because they had no Cons_Abundance data. The Cons_Abundance data
+#they did have in Chp1 was interpolated (see Cons_Abundance methods detail in
+#chp 1 Data_sources folder for more info). Since these creeks only had 1-3 years
+#of data (not 10), which was interpolated anyway, I did not include them in the
+#Chp2_scaled dataset for modeling so that I would only include streams with actual
+#data (not interpolated) for each covariate. 
 
 colnames(df)[1] <- "Subregion"
 Combined_preds <- df[,c(1:7,10,8)]
-plot(Combined_preds$Chp2_predictions ~ Combined_preds$Chp1_predictions)
-lm_pred <- lm(Chp2_predictions ~ Chp1_predictions, data = Combined_preds)
+plot(Combined_preds$Predictions ~ Combined_preds$Chp1_predictions)
+lm_pred <- lm(Predictions ~ Chp1_predictions, data = Combined_preds)
 summary(lm_pred)
 abline(lm_pred)
 abline(0,1, col = "red")
 #Conclusions: Chapter 2 predictions are larger than Chp 1 predictions (1.4x on
-#average), but the relationships is very linear, which is to say, the same streams
+#average), but the relationship is very linear, which is to say, the same streams
 #are predicted to be attractive/unattractive as before
+
+
+
+### Comparison of predictions from before and after 2/15/22 update: The update
+#was to only use the single best candidate model (bm1u) to predict stream attract-
+#iveness for chp 2 streams, instead of model averaging predictions from candidate
+#mods #1 and #2. Here I compare the differences between predictions for only the
+#single best candidate model (Mod1_Chp2_predictions object) and the predictions
+#that were averaged based on mods #1 & #2 AICc weights. Uncomment-out the code
+#chunks below where I create Mod1_Chp2_predictions to recreate this object (called
+#Chp2_predictions) in the future if need be (approximately line 106 above)
+plot(Mod1_Chp2_predictions$Predictions ~ Chp2_predictions$Chp2_predictions)
+#Create a ggplot to use in supplementary material
+for_supplem <- data.frame(Mod1_Chp2_predictions$Predictions,
+                          Chp2_predictions$Chp2_predictions)
+sup_plot <- ggplot(for_supplem, aes(Mod1_Chp2_predictions.Predictions,
+                                    Chp2_predictions.Chp2_predictions)) +
+  geom_point() +
+  labs(x = "Single model predictions", y = "Model-averaged predictions") +
+  theme_bw() + theme(axis.text = element_text(size = 12)) +
+  theme(axis.title = element_text(size = 13)) +
+  theme(legend.text = element_text(size = 11.5)) +
+  theme(legend.title = element_text(size = 14)) +
+  theme(text=element_text(family="Times New Roman"))
+sup_plot
+getwd()
+#Export as high-res figure
+tiff("Model_compare_supple.tiff", width = 7, height = 4, pointsize = 12,
+     units = 'in', res = 300)
+sup_plot #graph that you want to export
+dev.off( )
 
 
 
 #3. Visualization of predicted attractiveness for high confidence streams ######
 ### Map of chp2 predictions
 #First find averages by site
-mean_predsChp2 <- Chp2_predictions %>% group_by(StreamName) %>%
-  mutate(mean(Chp2_predictions)) #%>% ungroup
+mean_predsChp2 <- Mod1_Chp2_predictions %>% group_by(StreamName) %>%
+  mutate(mean(Predictions)) #%>% ungroup
 mean_predsChp2 <- mean_predsChp2 %>% select(-c(7,8))
 colnames(mean_predsChp2)[7] <- "Mean_pred_strays"
 mean_predsChp2 <- mean_predsChp2[!duplicated(mean_predsChp2$Mean_pred_strays),]
@@ -249,14 +372,103 @@ all_preds <- as.data.frame(predict(bm2u, newdata = Chp2_scaled_all, type = "resp
 All_strms_predictions <- cbind.data.frame(Chp2_scaled_all[ , c(1:7)], all_preds)
 colnames(All_strms_predictions)[8] <- "Predicted_strays"
 
+
 #How do these compare to the higher confidence predictions?
-a <- left_join(Chp2_predictions, All_strms_predictions, by = c("StreamName", "Year"))
-plot(a$Chp2_predictions ~ a$Predicted_strays) #relationship looks very linear
-cor.test(a$Chp2_predictions, a$Predicted_strays) #indeed they are, however it is
+a <- left_join(Mod1_Chp2_predictions, All_strms_predictions, by = c("StreamName", "Year"))
+plot(a$Predictions ~ a$Predicted_strays, xlab = "Lower confidence predictions",
+     ylab = "High confidence predictions") #relationship looks very linear
+cor.test(a$Predictions, a$Predicted_strays) #linear indeed, however it is
 #not a 1:1. The lower confidence stream predictions are way huger than the high
 #confidence streams. You should use percentiles of predicted attractiveness for
 #low and high confidence stream predictions if you want to be able to include them
 #in the same tool or show them in the same figures
+
+
+
+#4.2. Calculate prediction uncertainty using bootstrap approach ================
+#Adapted from section 2.3 above
+
+### Bootstrapping steps
+#1) Run rnorm( ) for each covariate to specify a distribution for that covariate.
+#E.g., if my coefficient estimate is 0.215 and its SE is 0.12, then my 
+#rnorm(1000, mean = 0.215, sd = 0.12). 
+
+#2) Randomly sample 1000 values, with replacement, from the rnorm distribution
+#for each covariate, calculate a mean coefficient estimate each time you sample 
+
+#3) Run the model with mean coefficient estimate, make predictions, store
+#predictions
+
+#4) Repeat steps 2-3 1000 times
+
+#5) Calculate a CV or 95% confidence interval from each set of 1000 (1000 for
+#each individual prediction -> get one CV or 95% CI for each prediction)
+
+
+######   Bootstrap step 1)   ######
+summary(bm2u) #create random normal distributions using the mean and sd for each
+#model covariate, i.e., the coefficient estimate and standard error
+rWMA_releasLC <- rnorm(1000, 0.436, 0.086)
+rCV_fLC <- rnorm(1000, 0.564, 0.084)
+rCV_f2LC <- rnorm(1000, 0.616, 0.079)
+
+
+######   Bootstrap steps 2), 3), 4)   ######
+#Recall that you have a random effect of year, so the intercept will vary for 
+#your predictions depending on the year. You can incorporate this into the model
+#most easily by creating a column of the appropriate random intercepts:
+#Create column of random intercepts for each year
+re_LC <- as.data.frame(ranef(bm2u)) #specifies random EFFECTS, not intercepts
+re_LC2 <- re_LC[,c(3:4)]
+names(re_LC2) <- c("Year", "R.Intercept")
+summary(bm2u)
+re_LC2$R.Intercept <- re_LC2$R.Intercept + 0.43488 #0.43488 is the overall (mean)
+#intercept from the bm2u model output. re2$RE should match the (Intercept) column
+#specified by:
+coef(bm2u) #but I wasn't able to make this a df by itself. Hence the above steps
+eval_LC_df <- left_join(Chp2_scaled_all, re_LC2, by = "Year")
+
+
+run_modLC <- function(WMA, CVf, CVf2){ #no Cons_Abundance this time
+  y <- exp(eval_LC_df$R.Intercept +  (WMA * eval_LC_df$WMA_Releases_by_Yr) +
+             (CVf * eval_LC_df$CV_flow) + (CVf2 * (eval_LC_df$CV_flow)^2))
+} #function I will use to run model with each sampled rnorm() coefficient estimate
+
+
+#Create empty df to store predictions from each model iteration
+mod_predsLC <- data.frame(matrix(ncol = 1000, nrow = 6400))
+#For loop to run model!
+for (i in 1:1000) {
+  WMA <- mean(sample(rWMA_releasLC, 1000, replace = T))
+  CVf <- mean(sample(rCV_fLC, 1000, replace = T))
+  CVf2 <- mean(sample(rCV_f2LC, 1000, replace = T))
+  mod_predsLC[,i] <- run_modLC(WMA, CVf, CVf2)
+}
+mod_predsLC
+mod_predsLC$Mean <- rowMeans(mod_predsLC)
+mod_predsLC$SD <- apply(mod_predsLC, 1, sd)
+
+
+######   Bootstrap step 5)   ######
+#Link stream and year information to mean and SD of bootstrapped predictions
+bs_preds_LC <- cbind.data.frame(Chp2_scaled_all[,c(1:7)], mod_predsLC[,c(1001:1002)])
+#this^^ gives the mean and sd of the 1000 bootstrapped ("bs") model predictions
+#for each individual stream-year prediction. You want to know the mean and sd for
+#each stream overall:
+CV_LC <- bs_preds_LC %>% group_by(StreamName) %>%
+  summarise(Mean = mean(Mean), SD = max(SD)) #find the max of the SD, not the 
+#mean so that I am showing the maximum possible amount of uncertainty around a 
+#mean predicted attractiveness index across time
+CV_LC$CV <- CV_LC$SD/CV_LC$Mean
+CV_LC$CV_percent <- CV_LC$CV*100
+#remove duplicated streams between high and low confidence sets:
+CV_LC <- anti_join(CV_LC, CV_HC, by = "StreamName")
+
+
+
+
+
+############  UPDATED UP TIL THIS POINT 2/15/22 ################################
 
 
 
@@ -444,7 +656,7 @@ Amalga_map
 #Previously I had zoomed in on the Neets Bay area. Here is the map for that if
 #you wish to return to using that area again:
 #zoom2_map <- get_stamenmap(location <- c(-132.29, 55.5, -131.43, 55.97), zoom = 10,
-                           maptype = "terrain-background", crop = TRUE)
+                           #maptype = "terrain-background", crop = TRUE)
 #ggmap(zoom2_map)
 
 zoom3_map <- get_stamenmap(location <- c(-135.53, 56.6, -134.73, 57.03), zoom = 10,
@@ -502,9 +714,120 @@ dev.off( )
 
 
 
+#7. Data for range of attractiveness table #####################################
+head(mean_predsChp2) #high confidence mean predictions by stream are in this df
+head(lowr_conf_preds) #lower confidence mean predictions by stream are in this df
+
+### Recall that percentile means that X% of the values are equal to or lower than
+#that score. So the 90% percentile should contain all values in the top 91-100%,
+#not 90-100%
+
+#7.1. High confidence streams range of attractiveness table ====================
+hc91100 <- mean_predsChp2 %>% filter(Percentile > quantile(Percentile, 0.9)) #cannot
+#get this to work for some reason, keeps returning empty tibble
+
+#Base R solution:
+hc_91_100 <- as.data.frame(mean_predsChp2[mean_predsChp2$Percentile >
+                                                quantile(mean_predsChp2$Percentile,
+                                                         0.9),])
+hc_0_20 <- as.data.frame(mean_predsChp2[mean_predsChp2$Percentile <=
+                                            quantile(mean_predsChp2$Percentile,
+                                                     0.2),])
+Xhc_21_90 <- anti_join(mean_predsChp2, hc_91_100, by = "Percentile")
+hc_21_90 <- anti_join(Xhc_21_90, hc_0_20, by = "Percentile")
+
+Percentile_range <- c("91-100", "21-90", "0-20")
+hc_n <- c(length(hc_91_100$Percentile), length(hc_21_90$Percentile),
+          length(hc_0_20$Percentile))
+hc_df <- cbind.data.frame(Percentile_range, hc_n)
+
+
+### Append mean and range of covariate data to each percentile grouping
+head(Chp2_MasterDat2)
+length(Chp2_MasterDat2$WMA_Releases_by_Yr) #only contains the 82 streams with Cons_
+#Abundance data (AKA the high confidence streams we are summarizing here in 7.1)
+hc_covariate_dat <- Chp2_MasterDat2 %>% group_by(StreamName) %>%
+  summarize(across(c(WMA_Releases_by_Yr, Cons_Abundance, CV_flow), mean))
+  
+hc_91_100a <- left_join(hc_91_100, hc_covariate_dat, by = "StreamName")
+hc_21_90a <- left_join(hc_21_90, hc_covariate_dat, by = "StreamName")
+hc_0_20a <- left_join(hc_0_20, hc_covariate_dat, by = "StreamName")
+
+
+hc_list <- list(hc_91_100a, hc_21_90a, hc_0_20a)
+
+cov_fun <- function(x){
+  out <- x %>% summarise(across(c(WMA_Releases_by_Yr, Cons_Abundance, CV_flow),
+                                c(mean, min, max)))
+  return(out)
+}
+
+hc_df2 <- purrr::map_df(hc_list, cov_fun)
+HC_table <- cbind.data.frame(hc_df, hc_df2)
+getwd()
+write.csv(HC_table, "High_confidence_streams.csv")
+
+
+#7.2. Lower confidence streams range of attractiveness table ===================
+lc_91_100 <- as.data.frame(lowr_conf_preds[lowr_conf_preds$Percentile >
+                                            quantile(lowr_conf_preds$Percentile,
+                                                     0.9),])
+lc_0_20 <- as.data.frame(lowr_conf_preds[lowr_conf_preds$Percentile <=
+                                          quantile(mean_predsChp2$Percentile,
+                                                   0.2),])
+Xlc_21_90 <- anti_join(lowr_conf_preds, lc_91_100, by = "Percentile")
+lc_21_90 <- anti_join(Xlc_21_90, lc_0_20, by = "Percentile")
+
+lc_n <- c(length(lc_91_100$Percentile), length(lc_21_90$Percentile),
+          length(lc_0_20$Percentile))
+lc_df <- cbind.data.frame(Percentile_range, lc_n)
+
+
+### Append mean and range of covariate data to each percentile grouping
+head(Chp2_MasterDat3)
+length(Chp2_MasterDat3$WMA_Releases_by_Yr) #contains 640 streams (6400 rows), 
+#including the 82 high-confidence streams. These need to be removed
+use_for_lc_covariate <- anti_join(Chp2_MasterDat3, Chp2_MasterDat2,
+                                  by = c("StreamName", "Year"))
+lc_covariate_dat <- use_for_lc_covariate %>% group_by(StreamName) %>%
+  summarize(across(c(WMA_Releases_by_Yr, CV_flow), mean))
+
+lc_91_100a <- left_join(lc_91_100, lc_covariate_dat, by = "StreamName")
+lc_21_90a <- left_join(lc_21_90, lc_covariate_dat, by = "StreamName")
+lc_0_20a <- left_join(lc_0_20, lc_covariate_dat, by = "StreamName")
+
+
+lc_list <- list(lc_91_100a, lc_21_90a, lc_0_20a)
+
+cov_fun2 <- function(x){ #doesn't include Cons_Abundance this time
+  out <- x %>% summarise(across(c(WMA_Releases_by_Yr, CV_flow),
+                                c(mean, min, max)))
+  return(out)
+}
+
+lc_df2 <- purrr::map_df(lc_list, cov_fun2)
+LC_table <- cbind.data.frame(lc_df, lc_df2)
+write.csv(LC_table, "Lower_confidence_streams.csv")
+
+
+
 
 save.image("Making_predictions_objects.RData")
 load("Making_predictions_objects.RData")
+
+
+
+
+#1. Run rnorm( ) for each covariate to specify a distribution for that covariate
+#2. Randomly sample from your rnorm distribution for each covariate 
+#3. Run your model, make predictions, store predictions
+#4. Repeat steps 2 & 3 1000(?) times: resample that same rnorm() distribution
+#for each covariate with replacement
+#5. Calculate CV for each site, e.g., you have 10 predictions for Fish Creek for
+#each of 10 years
+
+
+
 
 
 
