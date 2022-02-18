@@ -291,6 +291,10 @@ p <- scale(mean_predsChp2$Mean_pred_strays,
            center=min(mean_predsChp2$Mean_pred_strays),
            scale=diff(range(mean_predsChp2$Mean_pred_strays)))
 mean_predsChp2$Percentile <- p
+#Also add on the predicted uncertainty column from bootstrapping (section 2.3)
+mean_predsChp2 <- left_join(mean_predsChp2, CV_HC, by = "StreamName")
+new_names <- c("Mean_bootstrap", "SD_bootstrap", "CV_bootstrap")
+mean_predsChp2 <- mean_predsChp2 %>% rename_at(9:11, ~new_names)
 
 #Get map
 library(ggmap)
@@ -300,17 +304,19 @@ myMap <- get_stamenmap(location <- c(-137, 54.5, -130, 59.5), zoom = 6,
                        maptype = "terrain-background", crop = TRUE)
 ggmap(myMap)
 strays_map1 <- ggmap(myMap) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
-                                                fill = Percentile), size = 4,
+                                                fill = Percentile,
+                                             alpha = CV_percent), size = 4,
                                             colour = "black", pch = 21,
                                             data = mean_predsChp2) +
   labs(x = "Latitude", y = "Longitude", fill = "Predicted Index
-Percentile") +
+Percentile", alpha = "Prediction CV") +
   guides(size = "none") +
   theme(axis.text = element_text(size = 12)) +
   theme(axis.title = element_text(size = 13)) +
   theme(legend.text = element_text(size = 11.5)) +
   theme(legend.title = element_text(size = 14)) +
   theme(text=element_text(family="Times New Roman")) +
+  scale_alpha_continuous(range = c(1,0.6)) +
   scale_fill_gradientn(colours = c("#CFE8F3", "#A2D4EC", "#73BFE2",
                                    "#46ABDB", "#1696D2", "#12719E", "#0A4C6A",
                                    "#062635"), values = rescale(c(0,10,25,50,75,200)))
@@ -465,10 +471,9 @@ CV_LC$CV_percent <- CV_LC$CV*100
 CV_LC <- anti_join(CV_LC, CV_HC, by = "StreamName")
 
 
-
-
-
-############  UPDATED UP TIL THIS POINT 2/15/22 ################################
+# NEXT STEPS: Join CV_percent cols from CV_HC and CV_LC to their respective mean
+#preds dfs and incorporate that uncertainty into your map
+#Also create table of predictions with the CV uncertainty info included
 
 
 
@@ -485,7 +490,8 @@ colnames(ALLmean_predsChp2)[7] <- "Mean_pred_strays"
 #will not work. Use the following line of code instead:
 library(plyr)
 ALLmean_predsChp2 <- ddply(ALLmean_predsChp2, "StreamName", function(x) head(x,1))
-#remove the 82 higher confidence streams
+#remove the 82 higher confidence streams so that you aren't making double pred-
+#ictions:
 lowr_conf_preds <- anti_join(ALLmean_predsChp2, mean_predsChp2, by = "StreamName")
 #Sullivan Creek, Barlow Cove W Shore, and Beardslee River all have mean predicted
 #indices in the thousands, compared to <200 for all other sites. As a result, you
@@ -496,7 +502,6 @@ lowr_conf_preds[lowr_conf_preds$StreamName %in%
                   c("Sullivan Creek", "Barlow Cove W Shore"), 7] <- 250
 lowr_conf_preds[lowr_conf_preds$StreamName == "Beardslee River", 7] <- 200
 
-
 #calculate and append a percentile column for the predicted attractiveness indices
 #so that you can use alongsisde the higher confidence predicted attractinveness
 #indices which have a vastly different range
@@ -504,21 +509,26 @@ p2 <- scale(lowr_conf_preds$Mean_pred_strays,
            center=min(lowr_conf_preds$Mean_pred_strays),
            scale=diff(range(lowr_conf_preds$Mean_pred_strays)))
 lowr_conf_preds$Percentile <- p2
-
+#Also add on the predicted uncertainty column from bootstrapping (section 4.2)
+lowr_conf_preds <- left_join(lowr_conf_preds, CV_LC, by = "StreamName")
+new_names <- c("Mean_bootstrap", "SD_bootstrap", "CV_bootstrap")
+lowr_conf_preds <- lowr_conf_preds %>% rename_at(9:11, ~new_names)
 
 
 strays_map1a <- ggmap(myMap) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
-                                             fill = Percentile), size = 2,
+                                             fill = Percentile,
+                                             alpha = CV_percent), size = 2,
                                          colour = "black", pch = 21,
                                          data = lowr_conf_preds) +
   labs(x = "Latitude", y = "Longitude", fill = "Predicted Index
-Percentile") +
+Percentile", alpha = "Prediction CV") +
   guides(size = "none") +
   theme(axis.text = element_text(size = 12)) +
   theme(axis.title = element_text(size = 13)) +
   theme(legend.text = element_text(size = 11.5)) +
   theme(legend.title = element_text(size = 14)) +
   theme(text=element_text(family="Times New Roman")) +
+  scale_alpha_continuous(range = c(1, 0.6)) +
   scale_fill_gradientn(colours = c("#CFE8F3", "#A2D4EC", "#73BFE2",
                                    "#46ABDB", "#1696D2", "#12719E", "#0A4C6A",
                                    "#062635"), values = rescale(c(0,0.1,0.25,1)))
@@ -551,21 +561,28 @@ myMap <- get_stamenmap(location <- c(-137, 54.5, -130, 59.5), zoom = 6,
                        maptype = "terrain-background", crop = TRUE)
 ggmap(myMap)
 strays_map1 <- ggmap(myMap) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
-                                             fill = Percentile), size = 2,
+                                             fill = Percentile,
+                                             alpha = CV_percent), size = 2,
                                          colour = "black", pch = 24,
                                          data = lowr_conf_preds) +
-  geom_point(aes(x = LONGITUDE, y = LATITUDE, fill = Percentile), size = 4,
-                                         colour = "black", pch = 21,
+  geom_point(aes(x = LONGITUDE, y = LATITUDE, fill = Percentile,
+                 alpha = CV_percent), size = 4, colour = "black", pch = 21,
                                          data = mean_predsChp2) +
   labs(x = "Latitude", y = "Longitude", fill = "Predicted Index
-Percentile") +
-  guides(fill = "none") +
-  theme(axis.text = element_text(size = 12)) +
+Percentile", alpha = "Prediction CV") +
+  guides(fill = "none", alpha = "none") + #removes the legend for this plot. I will
+#specify the legend in the zoomed in plots below instead so that I can have the 
+#legen positioned properly
+theme(axis.text = element_text(size = 12)) +
   theme(axis.title = element_text(size = 13)) +
   theme(legend.text = element_text(size = 11.5)) +
   theme(legend.title = element_text(size = 14)) +
   theme(text=element_text(family="Times New Roman")) +
-  ggspatial::annotation_north_arrow(
+  scale_alpha_continuous(range = c(1,0.4)) + #adjusts transparency of alpha (part
+#of aes() within the two geom_points). You can make the range narrower by changing
+#the numbers. E.g., the range = c(1,0.5) I have there currently is a narrower 
+#transparency gradient than range = c(1,0.3)
+ggspatial::annotation_north_arrow(
     location = "bl", which_north = "true",
     pad_x = unit(0.4, "in"), pad_y = unit(0.4, "in"),
     style = ggspatial::north_arrow_nautical(
@@ -620,23 +637,25 @@ zoom1_map <- get_stamenmap(location <- c(-135.55, 58.15, -134.41, 58.74), zoom =
 ggmap(zoom1_map)
 
 Amalga_map <- ggmap(zoom1_map) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
-                                                fill = Percentile), size = 5,
+                                                fill = Percentile,
+                                                alpha = CV_percent), size = 5,
                                             colour = "black", pch = 21,
                                             data = mean_predsChp2) +
-  geom_point(aes(x = LONGITUDE, y = LATITUDE,
-                                         fill = Percentile), size = 3,
+  geom_point(aes(x = LONGITUDE, y = LATITUDE, fill = Percentile,
+                 alpha = CV_percent), size = 3,
                                      colour = "black", shape = 24,
                                      data = lowr_conf_preds) +
   geom_point(aes(x = Longitude, y = Latitude), shape = 22, size = 4,
              fill = "darkred", data = H_Release_Locations) +
   labs(x = "", y = "", fill = "Predicted
 Index
-Percentile") +
+Percentile", alpha = "Prediction CV") +
   theme(axis.text = element_text(size = 12)) +
   theme(axis.title = element_text(size = 13)) +
   theme(legend.text = element_text(size = 11.5)) +
   theme(legend.title = element_text(size = 14)) +
   theme(text=element_text(family="Times New Roman")) +
+  scale_alpha_continuous(range = c(1,0.4)) +
   annotate("text", x = -135.49, y = 58.7, label = "1", fontface = 2, size = 8) +
   theme(plot.margin = unit(c(1,0,0,-0.5), "cm")) + #the plot.margin positioning
   #specified here makes the plot have no margin space at the bottom or on its left
@@ -664,23 +683,24 @@ zoom3_map <- get_stamenmap(location <- c(-135.53, 56.6, -134.73, 57.03), zoom = 
 ggmap(zoom3_map)
 
 Crawfish_map <- ggmap(zoom3_map) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
-                                  fill = Percentile), size = 5,
+                                  fill = Percentile, alpha = CV_percent), size = 5,
                               colour = "black", pch = 21,
                               data = mean_predsChp2) +
   geom_point(aes(x = LONGITUDE, y = LATITUDE,
-                 fill = Percentile), size = 3,
+                 fill = Percentile, alpha = CV_percent), size = 3,
              colour = "black", shape = 24,
              data = lowr_conf_preds) +
   geom_point(aes(x = Longitude, y = Latitude), shape = 22, size = 4,
              fill = "darkred", data = H_Release_Locations) +
   labs(x = "", y = "", fill = "Predicted
 Index
-Percentile") +
+Percentile", alpha = "Prediction CV") +
   theme(axis.text = element_text(size = 12)) +
   theme(axis.title = element_text(size = 13)) +
   theme(legend.text = element_text(size = 11.5)) +
   theme(legend.title = element_text(size = 14)) +
   theme(text=element_text(family="Times New Roman")) +
+  scale_alpha_continuous(range = c(1,0.4)) +
   annotate("text", x = -135.48, y = 57, label = "2", fontface = 2, size = 8) +
   theme(plot.margin = unit(c(0,0,1,-0.5), "cm")) + #the plot.margin positioning
   #specified here makes the plot have no margin space at the top or on its left
@@ -707,7 +727,8 @@ whole_map <- ggarrange(strays_map3, right_side, align = "v",
 whole_map #hot damn
 
 #Export as high-res figure
-tiff("fig1.tiff", width = 9, height = 6, pointsize = 12, units = 'in', res = 300)
+tiff("fig1_alpha.tiff", width = 9, height = 6, pointsize = 12, units = 'in',
+     res = 300)
 whole_map #graph that you want to export
 dev.off( )
 
@@ -812,19 +833,297 @@ write.csv(LC_table, "Lower_confidence_streams.csv")
 
 
 
+
+#8. Predict future stream attractiveness in 2020 and 2021 ######################
+#In the previous 7 sections, I predicted out-of-sample stream attractiveness for
+#(high and lower confidence) streams using data from 2008-2019, which is the 
+#same set of years used to initially create the model in chapter 1. Now I am
+#going to predict out-of-sample stream attractiveness for years outside of my
+#modeled time range as well
+
+#I will do this^^ in 2 parts: 1) Predict stream attractiveness for 2020 and 2021
+#using actual updated hatchery release site and conspecific abundance data, and
+#2) predict stream attractiveness in any given hypothetical future year with
+#addition of release sites (section 9)
+
+
+#Dataframe that contains 2020 and 2021 (from before section 1 at top of script):
+X20_21_Chp2
+length(X20_21_Chp2$Cons_Abundance[!is.na(X20_21_Chp2$Cons_Abundance)]) #164 of
+#these streams (out of 1280) are will be high-confidence predictions (i.e., have
+#Cons_Abundance data)
+
+#8.1. High-confidence 2020-2021 stream attractiveness predictions ==============
+sapply(X20_21_Chp2, function(x) sum(is.na(x))) #only Cons_A has NAs, good
+X2020_2021_HC <- X20_21_Chp2[complete.cases(X20_21_Chp2),]
+rownames(X2020_2021_HC) <- 1:nrow(X2020_2021_HC) #164 total
+sapply(X2020_2021_HC, function(x) sum(is.na(x))) #No NAs
+
+
+#8.2. Scale covariates for modeling ============================================
+hc20_21 <- apply(X2020_2021_HC[ , c(8:10)], 2, scale.default)
+scaled_20_21hc <- cbind.data.frame(X2020_2021_HC[ , c(1:7)], hc20_21)
+
+
+#8.3. Predict for new HIGH CONFIDENCE 2020 and 2021 streams ====================
+#Note that I have a random effect of year in the model. Unfortunately, by pre-
+#dicting into the future, I don't have any way to estimate random intercepts for
+#new years. I will deal with this by bootstrapping predictions around the mean
+#intercept. Use SD of the random intercepts to create my bootstrapping 
+#distribution
+summary(bm1u) #mean intercept is 0.41315
+re2 #from section 2.3 above; contains the random intercepts for bm1u model
+sd(re2$R.Intercept) #sd of the random intercepts is 0.60845
+rRE_HC <- rnorm(1000, 0.41315, 0.60845)
+
+summary(bm1u) #create random normal distributions using the mean and sd for each
+#model covariate, i.e., the coefficient estimate and standard error
+rWMA_releas <- rnorm(1000, 0.412, 0.086)
+rCons_A <- rnorm(1000, 0.215, 0.120)
+rCV_f <- rnorm(1000, 0.503, 0.091)
+rCV_f2 <- rnorm(1000, 0.623, 0.078)
+
+run_mod20_21HC <- function(R.Intercept, WMA, CA, CVf, CVf2){ 
+  y <- exp(R.Intercept +  (WMA * scaled_20_21hc$WMA_Releases_by_Yr) +
+             (CA * scaled_20_21hc$Cons_Abundance) +
+             (CVf * scaled_20_21hc$CV_flow) + (CVf2 * (scaled_20_21hc$CV_flow)^2))
+} 
+
+
+#Create empty df to store predictions from each model iteration
+length(scaled_20_21hc$Stream_Number) #164
+mod_preds20_21HC <- data.frame(matrix(ncol = 1000, nrow = 164))
+#For loop to run model!
+for (i in 1:1000) {
+  R.Intercept <- mean(sample(rRE_HC, 1000, replace = T))
+  WMA <- mean(sample(rWMA_releas, 1000, replace = T))
+  CA <- mean(sample(rCons_A, 1000, replace = T))
+  CVf <- mean(sample(rCV_f, 1000, replace = T))
+  CVf2 <- mean(sample(rCV_f2, 1000, replace = T))
+  mod_preds20_21HC[,i] <- run_mod20_21HC(R.Intercept, WMA, CA, CVf, CVf2)
+}
+mod_preds20_21HC
+mod_preds20_21HC$Mean <- rowMeans(mod_preds20_21HC)
+mod_preds20_21HC$SD <- apply(mod_preds20_21HC, 1, sd)
+
+
+#Link stream and year information to mean and SD of bootstrapped predictions
+bs_preds_2021HC <-
+  cbind.data.frame(scaled_20_21hc[,c(1:7)], mod_preds20_21HC[,c(1001:1002)])
+#this^^ gives the mean and sd of the 1000 bootstrapped ("bs") model predictions
+#for each individual stream-year prediction. You want to know the mean and sd for
+#each stream overall:
+CV_HC20_21 <- bs_preds_2021HC %>% group_by(StreamName) %>%
+  summarise(Mean = mean(Mean), SD = max(SD)) #find the max of the SD, not the 
+#mean so that I am showing the maximum possible amount of uncertainty around a 
+#mean predicted attractiveness index across time
+CV_HC20_21$CV <- CV_HC20_21$SD/CV_HC20_21$Mean
+CV_HC20_21$CV_percent <- CV_HC20_21$CV*100
+
+
+### Are these^^ predictions total garbage? I.e., how do they compare to chp1
+#high confidence predictions?
+junk_Chp1 <- Chp1_predictions %>% group_by(StreamName) %>%
+  summarise(Mean_prediction = mean(Chp1_predictions))
+junk <- right_join(junk_Chp1, CV_HC20_21, by = "StreamName")
+plot(junk$Mean ~ junk$Mean_prediction)
+lm_junk <- lm(junk$Mean ~ junk$Mean_prediction)
+summary(lm_junk)
+abline(lm_junk)
+abline(0,1, col = "red")
+cor.test(junk$Mean, junk$Mean_prediction) #0.97. Predictions aren't that far off
+#from what tone would expect them to be
+
+
+
+#8.4. LOWER CONFIDENCE 2020-2021 stream attractiveness predictions =============
+X20_21_Chp2 #df with all 2020 and 2021 streams (high and lower confidence together)
+X2020_2021_LC <- X20_21_Chp2[is.na(X20_21_Chp2$Cons_Abundance),]
+X2020_2021_LC <- X2020_2021_LC %>% select(-Cons_Abundance)
+rownames(X2020_2021_LC) <- 1:nrow(X2020_2021_LC) #1116 total
+sapply(X2020_2021_LC, function(x) sum(is.na(x))) #No NAs
+
+
+#8.5. Scale covariates for modeling ============================================
+lc20_21 <- apply(X2020_2021_LC[ , c(8:9)], 2, scale.default)
+scaled_20_21lc <- cbind.data.frame(X2020_2021_LC[ , c(1:7)], lc20_21)
+
+
+#8.6. Predict for new LOWER CONFIDENCE 2020 and 2021 streams ===================
+#Create random intercept distribution
+summary(bm2u) #mean intercept is 0.43488
+re_LC2 #from section 4.2 above; contains the random intercepts for bm2u model
+sd(re_LC2$R.Intercept) #sd of the random intercepts is 0.62495
+rRE_LC <- rnorm(1000, 0.43488, 0.62495)
+
+summary(bm2u) #create random normal distributions using the mean and sd for each
+#model covariate, i.e., the coefficient estimate and standard error
+rWMA_releasLC <- rnorm(1000, 0.436, 0.086)
+rCV_fLC <- rnorm(1000, 0.564, 0.084)
+rCV_f2LC <- rnorm(1000, 0.616, 0.079)
+
+
+run_mod20_21LC <- function(R.Intercept, WMA, CVf, CVf2){ #No Cons_A this time
+  y <- exp(R.Intercept +  (WMA * scaled_20_21lc$WMA_Releases_by_Yr) +
+             (CVf * scaled_20_21lc$CV_flow) + (CVf2 * (scaled_20_21lc$CV_flow)^2))
+} 
+
+
+#Create empty df to store predictions from each model iteration
+length(scaled_20_21lc$Stream_Number) #1116
+mod_preds20_21LC <- data.frame(matrix(ncol = 1000, nrow = 1116))
+#For loop to run model!
+for (i in 1:1000) {
+  R.Intercept <- mean(sample(rRE_LC, 1000, replace = T))
+  WMA <- mean(sample(rWMA_releasLC, 1000, replace = T))
+  CVf <- mean(sample(rCV_fLC, 1000, replace = T))
+  CVf2 <- mean(sample(rCV_f2LC, 1000, replace = T))
+  mod_preds20_21LC[,i] <- run_mod20_21LC(R.Intercept, WMA, CVf, CVf2)
+}
+mod_preds20_21LC
+mod_preds20_21LC$Mean <- rowMeans(mod_preds20_21LC)
+mod_preds20_21LC$SD <- apply(mod_preds20_21LC, 1, sd)
+
+
+#Link stream and year information to mean and SD of bootstrapped predictions
+bs_preds_2021LC <-
+  cbind.data.frame(scaled_20_21lc[,c(1:7)], mod_preds20_21LC[,c(1001:1002)])
+#this^^ gives the mean and sd of the 1000 bootstrapped ("bs") model predictions
+#for each individual stream-year prediction. You want to know the mean and sd for
+#each stream overall:
+CV_LC20_21 <- bs_preds_2021LC %>% group_by(StreamName) %>%
+  summarise(Mean = mean(Mean), SD = max(SD)) #find the max of the SD, not the 
+#mean so that I am showing the maximum possible amount of uncertainty around a 
+#mean predicted attractiveness index across time
+CV_LC20_21$CV <- CV_LC20_21$SD/CV_LC20_21$Mean
+CV_LC20_21$CV_percent <- CV_LC20_21$CV*100
+
+
+
+#8.7. Calculate percentiles for high and lower confidence predictions ==========
+range(CV_HC20_21$Mean)
+range(CV_LC20_21$Mean) #Note that there are 3 exceptionally high predicted indices
+#in the lower confidence set, which will mess up your percentile calculation, so
+#you should adjust them. I.e., give those 3 streams smaller values, but values
+#that are still larger than all the rest of the predictions
+
+CV_LC20_21[CV_LC20_21$StreamName %in%
+                  c("Sullivan Creek", "Barlow Cove W Shore"), 2] <- 250
+CV_LC20_21[CV_LC20_21$StreamName == "Beardslee River", 2] <- 200
+
+
+#Calculate percentile
+#High-confidence streams
+p3 <- scale(CV_HC20_21$Mean, center = min(CV_HC20_21$Mean),
+            scale = diff(range(CV_HC20_21$Mean)))
+CV_HC20_21$Percentile <- p3
+
+
+p4 <- scale(CV_LC20_21$Mean, center = min(CV_LC20_21$Mean),
+            scale = diff(range(CV_LC20_21$Mean)))
+CV_LC20_21$Percentile <- p4
+
+
+#8.8. Visualize 2020-2021 predictions ==========================================
+#Attach location data to CV_HC20_21 and CV_LC20_21
+head(X20_21_Chp2)
+mid <- X20_21_Chp2 %>% select(StreamName, LATITUDE, LONGITUDE) %>%
+  distinct()
+CV_HC20_21 <- left_join(CV_HC20_21, mid, by = "StreamName")
+CV_LC20_21 <- left_join(CV_LC20_21, mid, by = "StreamName")
+sapply(CV_HC20_21, function(x) sum(is.na(x))) #good
+sapply(CV_LC20_21, function(x) sum(is.na(x))) #good
+
+
+#Create the map!
+myMap <- get_stamenmap(location <- c(-137, 54.5, -130, 59.5), zoom = 6,
+                       maptype = "terrain-background", crop = TRUE)
+ggmap(myMap)
+strays2021_map1 <- ggmap(myMap) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
+                                             fill = Percentile,
+                                             alpha = CV_percent), size = 2,
+                                         colour = "black", pch = 24,
+                                         data = CV_LC20_21) +
+  geom_point(aes(x = LONGITUDE, y = LATITUDE, fill = Percentile,
+                 alpha = CV_percent), size = 4, colour = "black", pch = 21,
+             data = CV_HC20_21) +
+  labs(x = "Latitude", y = "Longitude", fill = "Predicted Index
+Percentile", alpha = "Prediction CV") +
+  guides(fill = "none", alpha = "none") + #removes the legend for this plot. I will
+  #specify the legend in the zoomed in plots below instead so that I can have the 
+  #legen positioned properly
+  theme(axis.text = element_text(size = 12)) +
+  theme(axis.title = element_text(size = 13)) +
+  theme(legend.text = element_text(size = 11.5)) +
+  theme(legend.title = element_text(size = 14)) +
+  theme(text=element_text(family="Times New Roman")) +
+  scale_alpha_continuous(range = c(1,0.4)) + #adjusts transparency of alpha (part
+  #of aes() within the two geom_points). You can make the range narrower by changing
+  #the numbers. E.g., the range = c(1,0.5) I have there currently is a narrower 
+  #transparency gradient than range = c(1,0.3)
+  ggspatial::annotation_north_arrow(
+    location = "bl", which_north = "true",
+    pad_x = unit(0.4, "in"), pad_y = unit(0.4, "in"),
+    style = ggspatial::north_arrow_nautical(
+      fill = c("grey40", "white"),
+      line_col = "grey20",
+      text_family = "Times New Roman")) +
+  scale_fill_gradientn(colours = c("#CFE8F3", "#A2D4EC", "#73BFE2",
+                                   "#46ABDB", "#1696D2", "#12719E", "#0A4C6A",
+                                   "#062635"),
+                       values = rescale(c(0,10,25,50,75,200))) + #additional
+  #code here to add rectangles to map to show areas you are zooming into
+  geom_rect(aes(xmin = -135.55,
+                xmax = -134.4,
+                ymin = 58.15,
+                ymax = 58.75),
+            fill = "transparent",
+            color = "black", size = 1) +
+  annotate("text", x = -135.68, y = 58.74, label = "1", fontface = 2, size = 5) +
+  geom_rect(aes(xmin = -135.5,
+                xmax = -134.75,
+                ymin = 56.59,
+                ymax = 57),
+            fill = "transparent",
+            color = "black", size = 1) +
+  annotate("text", x = -135.65, y = 56.95, label = "2", fontface = 2, size = 5) +
+  theme(plot.margin = unit(c(0,-0.5,0,1), "cm"))
+
+strays2021_map1
+
+
+
+
+
+#9. Predict attractiveness near 3 hypothetical release site scenarios ##########
+
+ # 1. Increase in releases from CRAWFISH INLET release site
+ # 2. Increase in releases from PORT ASUMCION release site
+ # 3. Establishment of a release site in FRESHWATER BAY on eastern Chicagof
+ # Island (57.933113, -135.1800125)
+
+### I have verified that all of the streams within 40km of the above release 
+#sites are only within 40km of those sites (i.e., none of the streams are also 
+#within 40km of an additional release site). Hence, I can simply add the increased
+#number of released hatchery fish to the 2021 WMA_Releases_by_Yr value for each
+#of the creeks within 40km of one of the 3 release sites above
+hypothetical_release <- read.csv("Data/Hypothetical_releas.csv")
+colnames(hypothetical_release)[2] <- "Release_site_LAT"
+colnames(hypothetical_release)[3] <- "Release_site_LONG"
+colnames(hypothetical_release)[4] <- "StreamName"
+
+head(X20_21_Chp2)
+hypRel_Master <- inner_join(X20_21_Chp2, hypothetical_release, by = "StreamName")
+length(unique(hypRel_Master$StreamName)) #57 total
+nrow(hypRel_Master) #114 = 57 * 2 (2 years for each stream; this df contains 
+#2020 and 2021)
+
+
+
+
+
 save.image("Making_predictions_objects.RData")
 load("Making_predictions_objects.RData")
-
-
-
-
-#1. Run rnorm( ) for each covariate to specify a distribution for that covariate
-#2. Randomly sample from your rnorm distribution for each covariate 
-#3. Run your model, make predictions, store predictions
-#4. Repeat steps 2 & 3 1000(?) times: resample that same rnorm() distribution
-#for each covariate with replacement
-#5. Calculate CV for each site, e.g., you have 10 predictions for Fish Creek for
-#each of 10 years
 
 
 
