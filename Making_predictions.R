@@ -650,6 +650,8 @@ strays_map3 <- strays_map2 + scalebar(x.min = -137, x.max = -135, y.min = 54.75,
 strays_map3
 
 
+
+
 #6.1. "Zoom-in" region #1: Lynn Canal, Amalga Harbor area ======================
 zoom1_map <- get_stamenmap(location <- c(-135.55, 58.15, -134.41, 58.74), zoom = 9,
                        maptype = "terrain-background", crop = TRUE)
@@ -1047,9 +1049,8 @@ CV_LC20_21[CV_LC20_21$StreamName == "Beardslee River", 2] <- 300
 
 
 
-#8.7. Figures/tables misc for 2020-2021 predictions ============================
-### Top 25, middle 50, bottom 25% of attractiveness table:
-# High confidence streams ##
+#8.7. Top 10, middle 40, bottom 50% of attractiveness table ====================
+### High confidence streams ###
 hc_top10_2021 <- CV_HC20_21 %>% slice_max(order_by = Mean_bs, n = 8) #8 = ~10%
 #of 82
 
@@ -1087,8 +1088,7 @@ write.csv(HC_table2021, "High_confidence_streams2021.csv")
 
 
 
-
-# Low confidence streams ##
+### Low confidence streams ###
 head(CV_LC20_21) #lower confidence mean predictions by stream are in this df
 length(CV_LC20_21$StreamName) #558
 0.10*558 #10% of 558 is 55.8, so take the top 56 streams as most attractive
@@ -1145,6 +1145,7 @@ write.csv(LC_table, "Lower_confidence_streams2021.csv")
 
 
 
+#8.8. W Crawfish NE Arm Hd and W Crawfish N Arm NE table =======================
 ### Data to manually type into W Crawfish table in word doc:
 lowr_conf_junk <-
   lowr_conf_preds[order(lowr_conf_preds$Mean_pred_strays, decreasing = T),]
@@ -1175,21 +1176,107 @@ xx <- X20_21_Chp2 %>% filter(StreamName %in% c("W Crawfish NE Arm Hd",
 
 
 
-### W Crawfish indices over time figure
+
+
+#8.9. W Crawfish indices over time figure ======================================
 #Include obs and predicted attractiveness indices for W Crawfish NE Arm Hd from
 #chapter 1 (barchart) with a line showing the increase in WMA_Releases_by_Yr as
 #well. Include 2020 and 2021 predicted data 
 head(Chp1_Master) #contains obs. attractiveness index for W Crawfish 
-head(Chp1_predictions) #contains pred. index for W Crawfish
+head(Mod1_Chp2_predictions) #contains pred. index for W Crawfish
 
 WCraw_obs <- Chp1_Master %>% filter(StreamName == "W Crawfish NE Arm Hd")
 WCraw_obs <- WCraw_obs[,-c(1,4:8,10:14,16:19)]
+colnames(WCraw_obs)[3] <- "Index"
+surveydat_WCraw18_19 <- read.csv("Data/Chum salmon otolith data in D113.csv") 
+#sent to me by Lorna Wilson (2/10/22 email). Contains # H strays data for 2018
+#and 2019 in W Crawfish. See rows 12-13 (2 surveys in 2018) and 37-38 (2 surveys
+#in 2019) in the "Marked" column
+print(surveydat_WCraw18_19[c(12:13),]) #In 2018, survey #1 found 57 strays and 
+#survey #2 found 86 strays, so the observed attractiveness index in W Crawfish
+#NE Arm Hd in 2018 is 
+(57+86)/2 #71.5
+#And in 2019:
+print(surveydat_WCraw18_19[c(37:38),])
+(5+89)/2 #47
+#Add these attractiveness indices to the observed data for W Crawfish NE Arm Hd:
+newrow2018 <- c("2018", "W Crawfish NE Arm Hd", "71.5", "9.250540365") #9.25 is
+#the WMA_Releases_by_Yr val for W Crawfish NE Arm Hd in 2018. See Chp2_MasterDat
+newrow2019 <- c("2019", "W Crawfish NE Arm Hd", "47", "22.57044722")
+WCraw_obs <- rbind.data.frame(WCraw_obs, newrow2018, newrow2019)
 WCraw_obs$Index_Type <- rep("Observed", length(WCraw_obs$Year))
 
-### CHANGE THIS TO CHP2 PREDICTIONS!!!!
-WCraw_pred <- Chp1_predictions %>% filter(StreamName == "W Crawfish NE Arm Hd")
-WCraw_pred <- WCraw_pred %>% select(-1)
-WCraw_pred$Index_Type <- rep("Predicted", length(WCraw_pred$Year))
+
+
+WCraw_pred <- Mod1_Chp2_predictions %>%
+  filter(StreamName == "W Crawfish NE Arm Hd")
+WCraw_pred <- WCraw_pred[,c(7,3,8)] #the only years that have observed indices 
+#are 2008-2009, 2013-2015, and now 2018-2019 (added above)
+colnames(WCraw_pred)[3] <- "Index"
+WCraw_pred <- WCraw_pred %>% filter(Year %in% c("2008", "2009", "2013", "2014",
+                                                "2015", "2018", "2019"))
+#Add 2020 and 2021 predictions as well
+head(bs_preds_2021HC)
+add_20_21_to_WCraw <- bs_preds_2021HC %>%
+  filter(StreamName == "W Crawfish NE Arm Hd")
+add_20_21_to_WCraw <- add_20_21_to_WCraw[,c(7,3,8)]
+colnames(add_20_21_to_WCraw)[3] <- "Index"
+WCraw_pred2 <- rbind.data.frame(WCraw_pred, add_20_21_to_WCraw)
+WCraw_pred2$Index_Type <- rep("Predicted", length(WCraw_pred2$Year))
+#add WMA_Releases_by_Yr to W Crawfish predicted values (obs. already has)
+head(Chp2_MasterDat)
+head(X20_21_Chp2)
+basura <- rbind.data.frame(Chp2_MasterDat, X20_21_Chp2)
+WCraw_pred3 <- left_join(WCraw_pred2, basura, by = c("StreamName", "Year"))
+WCraw_pred3 <- WCraw_pred3[,c(1:3,11,4)]
+
+
+WCraw_all <- rbind.data.frame(WCraw_obs, WCraw_pred3)
+WCraw_all <- rbind(WCraw_all, rep(WCraw_all[c(15:16),], 1))
+WCraw_all[15,3] <- 0 #change "Index" of the duplicated 2020 and 2021 rows to 0
+#so that there will be a space on the barplot for the observed column
+WCraw_all[16,3] <- 0
+WCraw_all[15,5] <- "Observed"
+WCraw_all[16,5] <- "Observed"
+#reduce number of decimal places for index (there are >10 right now)
+WCraw_all$Index <- round(as.numeric(WCraw_all$Index), 1)
+
+
+#WMA_Releases_by_Yr data:
+Craw_WMA <- WCraw_all[,c(1,4)]
+Craw_WMA <- Craw_WMA[!duplicated(Craw_WMA),]
+str(Craw_WMA)
+Craw_WMA$WMA_Releases_by_Yr <- as.numeric(Craw_WMA$WMA_Releases_by_Yr)
+
+
+#Make barplot:
+WCraw_plot <- ggplot() +
+  geom_bar(aes(x = Year, y = Index, fill = Index_Type), stat = "identity",
+           position = "dodge", data = WCraw_all) +
+  scale_fill_grey() +
+  geom_line(aes(x = Year, y = WMA_Releases_by_Yr, group = 1,
+                linetype = "Releases within
+40 km"), size = 1, col = "red", data = Craw_WMA) +
+  scale_y_continuous(name =
+                       "Index",
+                     sec.axis =
+                       sec_axis(trans = ~.*0.5,
+                                name =
+                                  "Number of fish released within 40 km (in millions)")) +
+  labs(fill = "Index Type", linetype = "") + theme_bw() +
+  theme(axis.text = element_text(size = 12)) +
+  theme(axis.title = element_text(size = 13)) +
+  theme(legend.text = element_text(size = 11.5)) +
+  theme(legend.title = element_text(size = 14)) +
+  theme(text=element_text(family="Times New Roman"))
+WCraw_plot
+
+#Export as high-res figure:
+tiff("WCrawfishNE_barplot.tiff", width = 8, height = 5, pointsize = 12,
+     units = 'in', res = 300)
+WCraw_plot #graph that you want to export
+dev.off( )
+
 
 
 
@@ -1208,8 +1295,9 @@ WCraw_pred$Index_Type <- rep("Predicted", length(WCraw_pred$Year))
 ### I have verified that all of the streams within 40km of the above release 
 #sites are only within 40km of those sites (i.e., none of the streams are also 
 #within 40km of an additional release site). Hence, I can simply add the increased
-#number of released hatchery fish to the 2019 release value for each of the creeks
-#within 40km of one of the 3 release sites above
+#number of released hatchery fish to the 2020 release value for each of the creeks
+#within 40km of one of the 3 release sites above (not 2021 because that AK fish-
+#eries enhancement report has not been released yet)
 hypothetical_release <- read.csv("Data/Hypothetical_releas.csv") #contains all 
 #names of streams within 40km of the release site increases/proposed sites
 colnames(hypothetical_release)[2] <- "Release_site_LAT"
@@ -1219,56 +1307,228 @@ colnames(hypothetical_release)[4] <- "StreamName"
 
 ### Attach df containing releases by site and year and append the 2019 (most
 #recent year in dataset) releases
-releases_by_yr <- read.csv("Data/Releases_thru2019.csv")
-colnames(releases_by_yr)[2] <- "Year"
-releases2019 <- releases_by_yr %>% filter(Year == 2019)
-hypRel <- left_join(hypothetical_release, releases2019, by = "ReleaseSite")
-hypRel$SUM_Releases_in_millions[is.na(hypRel$SUM_Releases_in_millions)] <- 0
+Releases_2020 <- read_csv("Data/Releases_2020.csv")
+hypRel <- left_join(hypothetical_release, Releases_2020, by = "ReleaseSite")
 
 #Increase WMA_Releases_by_Yr by 1 SD for the hypothetical release change streams
-mean(Chp2_MasterDat$WMA_Releases_by_Yr) #8.58
-sd(Chp2_MasterDat$WMA_Releases_by_Yr) #across all 640 Chp2 streams, the mean num-
-#ber of fish released within 40km of all streams is 8.577, and the SD is 20.308.
-#I will increase the number of fish released by 20.308 (million) fish for each
+mean(X20_21_Chp2$WMA_Releases_by_Yr) #10.304
+sd(X20_21_Chp2$WMA_Releases_by_Yr) #across all 640 Chp2 streams, the mean num-
+#ber of fish released within 40km of all streams is 8.577, and the SD is 20.836.
+#I will increase the number of fish released by 20.3836 (million) fish for each
 #stream within a hypothetical release change (Crawfish Inlet, Port Asumcion,
 #and Freshwater Bay) because that seems like a sensible number to increase by
-hypRel$SUM_Releases_in_millions <- hypRel$SUM_Releases_in_millions + 20.308
+hypRel$SUM_Releases_in_millions <- hypRel$SUM_Releases_in_millions + 20.836
 
 
-#Now attach data from other covariates; use 2008-2019 mean values for each stream
-mean_Cons_A <- Chp2_MasterDat %>% group_by(StreamName) %>% #Chp2_MasterDat does
-  #not contain 2020 and 2021 data
+#Now attach data from other covariates; use 2020-2021 mean values for each stream
+mean_Cons_A <- X20_21_Chp2 %>% group_by(StreamName) %>%
   summarise(Mean_Cons_A = mean(Cons_Abundance))
 hypRel2 <- left_join(hypRel, mean_Cons_A, by = "StreamName")
-hypRel3 <- left_join(hypRel2, Chp2_MasterDat, by = "StreamName") #to get CV_flow
-hypRel3 <- hypRel3 %>% select(-c(14:16))
+hypRel3 <- left_join(hypRel2, X20_21_Chp2, by = "StreamName") #to get CV_flow
+hypRel3 <- hypRel3 %>% select(-c(5:6,10:12,15:17))
 hypRel3 <- hypRel3[!duplicated(hypRel3),]
 colnames(hypRel3)[5] <- "Year"
-colnames(hypRel3)[12] <- "Stream_LAT"
-colnames(hypRel3)[13] <- "Stream_LONG"
-hypRel_Master <- hypRel3[,c(9,4,10:13,5,8,7,14,1:3)]
+hypRel_Master <- hypRel3[,c(4,5,8,9,7,6,10)]
+colnames(hypRel_Master)[5] <- "Cons_Abundance"
+colnames(hypRel_Master)[6] <- "WMA_Releases_by_Yr"
 
 
-#Note that increasing releases from 2021 WMA_Releases_by_Yr onward would be based
-#upon the last year of release site that was incorporated (2019), so you can only
-#make inferences for 4 years later (5 yo fish) from 2019. SO, you are making pre-
-#dictions from 2023 onwards assuming that releases have remained constant at 20.308
-#million fish since 2019 within 40km of the given stream 
+#Note that the 2020 releases for the 3 hypothetical sites are not WMA values, so
+#you are making inferences for 4 years later (5 yo fish) from 2020; 2024 onwards
+#assuming that releases have remained constant at 20.836 million fish since 2020
+#within 40km of the given stream 
 
 
-#9.2. 
 
-###
-#8.1. High-confidence 2020-2021 stream attractiveness predictions ==============
-sapply(X20_21_Chp2, function(x) sum(is.na(x))) #only Cons_A has NAs, good
-X2020_2021_HC <- X20_21_Chp2[complete.cases(X20_21_Chp2),]
-rownames(X2020_2021_HC) <- 1:nrow(X2020_2021_HC) #164 total
-sapply(X2020_2021_HC, function(x) sum(is.na(x))) #No NAs
 
-###
-#8.2. Scale covariates for modeling ============================================
-hc20_21 <- apply(X2020_2021_HC[ , c(8:10)], 2, scale.default)
-scaled_20_21hc <- cbind.data.frame(X2020_2021_HC[ , c(1:7)], hc20_21)
+
+#9.2. High-conf. hypothetical release stream attractiveness predictions ========
+sapply(hypRel_Master, function(x) sum(is.na(x))) #Cons_A has NAs for 54 sites.
+#Remove these for the high-confidence predictions
+hypRel_MasterHC <- hypRel_Master[complete.cases(hypRel_Master),]
+rownames(hypRel_MasterHC) <- 1:nrow(hypRel_MasterHC) #57 total
+sapply(hypRel_MasterHC, function(x) sum(is.na(x))) #No NAs
+
+### Scale covariates for modeling ###
+XhypRelHC <- apply(hypRel_MasterHC[ , c(5:7)], 2, scale.default)
+scaled_hypRelHC <- cbind.data.frame(hypRel_MasterHC[ , c(1:4)], XhypRelHC)
+
+
+### Make predictions ###
+#Note that I have a random effect of year in the model. Unfortunately, by pre-
+#dicting into the future, I don't have any way to estimate random intercepts for
+#new years. I will deal with this by bootstrapping predictions around the mean
+#intercept. Use SD of the random intercepts to create my bootstrapping 
+#distribution. Use the objects created above in section 8.3:
+rRE_HC #distribution of possible random intercepts for straying model based on
+#mean and SD of 2008-2019 observed random effects
+
+#distributions of each covariate for the high confidence model:
+rWMA_releas
+rCons_A
+rCV_f
+rCV_f2 
+
+run_mod_hypRelHC <- function(R.Intercept, WMA, CA, CVf, CVf2){ 
+  y <- exp(R.Intercept +  (WMA * scaled_hypRelHC$WMA_Releases_by_Yr) -
+             (CA * scaled_hypRelHC$Cons_Abundance) +
+             (CVf * scaled_hypRelHC$CV_flow) +
+             (CVf2 * (scaled_hypRelHC$CV_flow^2)))
+} 
+
+
+#Create empty df to store predictions from each model iteration
+length(scaled_hypRelHC$StreamName) #3
+mod_preds_hypRelHC <- data.frame(matrix(ncol = 1000, nrow = 3))
+#For loop to run model!
+for (i in 1:1000) {
+  R.Intercept <- sample(rRE_HC, 1, replace = T)
+  WMA <- sample(rWMA_releas, 1, replace = T)
+  CA <- sample(rCons_A, 1, replace = T)
+  CVf <- sample(rCV_f, 1, replace = T)
+  CVf2 <- sample(rCV_f2, 1, replace = T)
+  mod_preds_hypRelHC[,i] <- run_mod_hypRelHC(R.Intercept, WMA, CA, CVf, CVf2)
+}
+mod_preds_hypRelHC
+mod_preds_hypRelHC$Mean_bs <- rowMeans(mod_preds_hypRelHC)
+mod_preds_hypRelHC$SD_bs <- apply(mod_preds_hypRelHC, 1, sd)
+
+
+#Link stream and year information to mean and SD of bootstrapped predictions
+preds_hypRelHC <-
+  cbind.data.frame(scaled_hypRelHC[,c(1:4)], mod_preds_hypRelHC[,c(1001:1002)])
+preds_hypRelHC$CV <- preds_hypRelHC$SD_bs/preds_hypRelHC$Mean_bs
+preds_hypRelHC$CV_percent <- preds_hypRelHC$CV*100
+
+
+
+
+
+#9.3. Low-confidence 2020-2021 stream attractiveness predictions ===============
+hypRel_MasterHC #High-confidence streams are in this df. Remove them from low
+#confidence set:
+hypRel_MasterLC <- anti_join(hypRel_Master, hypRel_MasterHC, by = "StreamName")
+rownames(hypRel_MasterLC) <- 1:nrow(hypRel_MasterLC) 
+sapply(hypRel_MasterLC, function(x) sum(is.na(x))) #No NAs (except for Cons_A)
+hypRel_MasterLC <- hypRel_MasterLC %>% select(-Cons_Abundance)
+
+### Scale covariates for modeling ###
+XhypRelLC <- apply(hypRel_MasterLC[ , c(5:6)], 2, scale.default)
+scaled_hypRelLC <- cbind.data.frame(hypRel_MasterLC[ , c(1:4)], XhypRelLC)
+
+
+
+### Make predictions ###
+rRE_LC #distribution of possible random intercepts for straying model based on
+#mean and SD of 2008-2019 observed random effects
+
+#distributions of each covariate for the low confidence model:
+rWMA_releasLC
+rCV_fLC
+rCV_f2LC 
+
+run_mod_hypRelLC <- function(R.Intercept, WMA, CVf, CVf2){ 
+  y <- exp(R.Intercept +  (WMA * scaled_hypRelLC$WMA_Releases_by_Yr) +
+             (CVf * scaled_hypRelLC$CV_flow) +
+             (CVf2 * (scaled_hypRelLC$CV_flow^2)))
+} 
+
+
+#Create empty df to store predictions from each model iteration
+length(scaled_hypRelLC$StreamName) #54
+mod_preds_hypRelLC <- data.frame(matrix(ncol = 1000, nrow = 54))
+#For loop to run model!
+for (i in 1:1000) {
+  R.Intercept <- sample(rRE_LC, 1, replace = T)
+  WMA <- sample(rWMA_releasLC, 1, replace = T)
+  CVf <- sample(rCV_fLC, 1, replace = T)
+  CVf2 <- sample(rCV_f2LC, 1, replace = T)
+  mod_preds_hypRelLC[,i] <- run_mod_hypRelLC(R.Intercept, WMA, CVf, CVf2)
+}
+mod_preds_hypRelLC
+mod_preds_hypRelLC$Mean_bs <- rowMeans(mod_preds_hypRelLC)
+mod_preds_hypRelLC$SD_bs <- apply(mod_preds_hypRelLC, 1, sd)
+
+
+#Link stream and year information to mean and SD of bootstrapped predictions
+preds_hypRelLC <-
+  cbind.data.frame(scaled_hypRelLC[,c(1:4)], mod_preds_hypRelLC[,c(1001:1002)])
+preds_hypRelLC$CV <- preds_hypRelLC$SD_bs/preds_hypRelLC$Mean_bs
+preds_hypRelLC$CV_percent <- preds_hypRelLC$CV*100
+
+
+
+
+
+#9.4. Visualize effects of hypothetical release scenarios on straying ==========
+### Add on data for other streams in region. Assume status quo from 2021 onwards:
+#High-confidence streams:
+head(CV_HC20_21)
+#In preds_hypRelHC, remove Year column and move Lat & Long to match CV_HC20_21:
+preds_hypRelHC <- preds_hypRelHC %>% select(-Year)
+preds_hypRelHC <- preds_hypRelHC[c(1,4:7,2,3)]
+Final_HC_hypRel <- anti_join(CV_HC20_21, preds_hypRelHC, by = "StreamName")
+Final_HC_hypRel <- rbind.data.frame(preds_hypRelHC, Final_HC_hypRel)
+
+
+#Low confidence streams:
+head(CV_LC20_21)
+#In preds_hypRelLC, remove Year column and move Lat & Long to match CV_LC20_21:
+preds_hypRelLC <- preds_hypRelLC %>% select(-Year)
+preds_hypRelLC <- preds_hypRelLC[c(1,4:7,2,3)]
+Final_LC_hypRel <- anti_join(CV_LC20_21, preds_hypRelLC, by = "StreamName")
+Final_LC_hypRel <- rbind.data.frame(preds_hypRelLC, Final_LC_hypRel)
+
+
+
+#Map!
+Hyp_Release_map <- ggmap(myMap) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
+                                             size = Mean_bs,
+                                             fill = CV_percent),
+                                         colour = "black", pch = 24,
+                                         data = Final_LC_hypRel) +
+  geom_point(aes(x = LONGITUDE, y = LATITUDE, size = Mean_bs,
+                 fill = CV_percent), colour = "black", pch = 21,
+             data = Final_HC_hypRel) +
+  labs(x = "Latitude", y = "Longitude", size = "Predicted Index",
+       fill = "Prediction CV") +
+  guides(fill = "none", size = "none") + #removes the legend for this plot. I will
+  #specify the legend in the zoomed in plots below instead so that I can have the 
+  #legen positioned properly
+  theme(axis.text = element_text(size = 12)) +
+  theme(axis.title = element_text(size = 13)) +
+  theme(legend.text = element_text(size = 11.5)) +
+  theme(legend.title = element_text(size = 14)) +
+  theme(text=element_text(family="Times New Roman")) +
+  ggspatial::annotation_north_arrow(
+    location = "bl", which_north = "true",
+    pad_x = unit(0.4, "in"), pad_y = unit(0.4, "in"),
+    style = ggspatial::north_arrow_nautical(
+      fill = c("grey40", "white"),
+      line_col = "grey20",
+      text_family = "Times New Roman")) +
+  scale_fill_gradientn(colours = c("#062635", "#0A4C6A", "#12719E", "#1696D2",
+                                   "#46ABDB", "#73BFE2", "#A2D4EC", "#CFE8F3"))+
+  #values = rescale(c(0,10,25,50,75,200))) + #additional
+  #code here to add rectangles to map to show areas you are zooming into:
+  geom_rect(aes(xmin = -135.55,
+                xmax = -134.4,
+                ymin = 58.15,
+                ymax = 58.75),
+            fill = "transparent",
+            color = "black", size = 1) +
+  annotate("text", x = -135.68, y = 58.74, label = "1", fontface = 2, size = 5) +
+  geom_rect(aes(xmin = -135.5,
+                xmax = -134.75,
+                ymin = 56.59,
+                ymax = 57),
+            fill = "transparent",
+            color = "black", size = 1) +
+  annotate("text", x = -135.65, y = 56.95, label = "2", fontface = 2, size = 5) +
+  theme(plot.margin = unit(c(0,-0.5,0,1), "cm"))
+
+Hyp_Release_map
+
 
 
 
