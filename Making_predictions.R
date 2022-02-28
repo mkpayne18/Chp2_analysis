@@ -1249,6 +1249,7 @@ head(Mod1_Chp2_predictions) #contains pred. index (and relative attractiveness
 #by extension) for W Crawfish
 
 
+#Collate observed data:
 WCraw_obs <- Chp1_Master %>% filter(StreamName == "W Crawfish NE Arm Hd")
 WCraw_obs <- WCraw_obs[,-c(1,4:8,10:14,16:19)]
 colnames(WCraw_obs)[3] <- "Index"
@@ -1267,8 +1268,18 @@ print(surveydat_WCraw18_19[c(37:38),])
 newrow2018 <- c("2018", "W Crawfish NE Arm Hd", "71.5", "9.250540365") #9.25 is
 #the WMA_Releases_by_Yr val for W Crawfish NE Arm Hd in 2018. See Chp2_MasterDat
 newrow2019 <- c("2019", "W Crawfish NE Arm Hd", "47", "22.57044722")
-WCraw_obs <- rbind.data.frame(WCraw_obs, newrow2018, newrow2019)
-WCraw_obs$Index_Type <- rep("Observed", length(WCraw_obs$Year))
+#add 2020 and 2021 "NA" rows
+newrow2020 <- c("2020", "W Crawfish NE Arm Hd", "NA", "24.86835")
+newrow2021 <- c("2021", "W Crawfish NE Arm Hd", "NA", "25.37685")
+WCraw_obs <- rbind.data.frame(WCraw_obs, newrow2018, newrow2019, newrow2020,
+                              newrow2021)
+WCraw_obs #won't add the 2020 and 2021 cells for some reason
+WCraw_obs$Year <- as.character(WCraw_obs$Year)
+WCraw_obs[8,1] <- "2020"
+WCraw_obs[9,1] <- "2021"
+WCraw_obs$Year <- as.factor(WCraw_obs$Year)
+str(WCraw_obs)
+WCraw_obs$Index <- as.numeric(WCraw_obs$Index)
 
 
 #Determine relative predicted attractiveness by year (i.e., "rank")
@@ -1282,81 +1293,90 @@ WC_pred_rank <- as.data.frame(purrr::map(WC_split, sort_fxn))
 HW_years <- seq(2008, 2019)
 HW_years <- HW_years[-c(5,9)] #remove 2012 and 2016
 WC_pred <- rbind.data.frame(WC_pred_rank, HW_years)
+WC_pred2 <- t(WC_pred)
+WC_pred2 <- as.data.frame(WC_pred2[,c(2,1)])
+rownames(WC_pred2) <- rownames(1:nrow(WC_pred2))
+WC_pred2 <- WC_pred2 %>% rename("Year" = "V1", "Rank" = "V2")
+#only keep years that have observed data to compare to
+WC_pred3 <- WC_pred2 %>% filter(Year %in% c("2008", "2009", "2013", "2014",
+                                            "2015", "2018", "2019"))
 
-
-
-
-
-
-
-
-WCraw_pred <- Mod1_Chp2_predictions %>%
-  filter(StreamName == "W Crawfish NE Arm Hd")
-WCraw_pred <- WCraw_pred[,c(7,3,8)] #the only years that have observed indices 
-#are 2008-2009, 2013-2015, and now 2018-2019 (added above)
-colnames(WCraw_pred)[3] <- "Index"
-WCraw_pred <- WCraw_pred %>% filter(Year %in% c("2008", "2009", "2013", "2014",
-                                                "2015", "2018", "2019"))
 #Add 2020 and 2021 predictions as well
-head(bs_preds_2021HC)
-add_20_21_to_WCraw <- bs_preds_2021HC %>%
-  filter(StreamName == "W Crawfish NE Arm Hd")
-add_20_21_to_WCraw <- add_20_21_to_WCraw[,c(7,3,8)]
-colnames(add_20_21_to_WCraw)[3] <- "Index"
-WCraw_pred2 <- rbind.data.frame(WCraw_pred, add_20_21_to_WCraw)
-WCraw_pred2$Index_Type <- rep("Predicted", length(WCraw_pred2$Year))
-#add WMA_Releases_by_Yr to W Crawfish predicted values (obs. already has)
-head(Chp2_MasterDat)
-head(X20_21_Chp2)
-basura <- rbind.data.frame(Chp2_MasterDat, X20_21_Chp2)
-WCraw_pred3 <- left_join(WCraw_pred2, basura, by = c("StreamName", "Year"))
-WCraw_pred3 <- WCraw_pred3[,c(1:3,11,4)]
+head(bs_preds_2021HC) #2020 and 2021 predictions by year
+#2020:
+WCraw2020 <- bs_preds_2021HC %>% filter(Year == "2020")
+ord_WCraw2020 <- as.data.frame(WCraw2020[order(WCraw2020$Mean,
+                                                decreasing = T),])
+which(ord_WCraw2020$StreamName == "W Crawfish NE Arm Hd") #23rd!
+#2021:
+WCraw2021 <- bs_preds_2021HC %>% filter(Year == "2021")
+ord_WCraw2021 <- as.data.frame(WCraw2021[order(WCraw2021$Mean,
+                                               decreasing = T),])
+which(ord_WCraw2021$StreamName == "W Crawfish NE Arm Hd") #25th!
+
+newrowsWC <- as.data.frame(matrix(data = c("2020", "2021", "23", "25"),
+                                  ncol = 2, nrow = 2))
+newrowsWC <- newrowsWC %>% rename("Year" = "V1", "Rank" = "V2")
+WC_pred4 <- rbind.data.frame(WC_pred3, newrowsWC)
 
 
-WCraw_all <- rbind.data.frame(WCraw_obs, WCraw_pred3)
-WCraw_all <- rbind(WCraw_all, rep(WCraw_all[c(15:16),], 1))
-WCraw_all[15,3] <- 0 #change "Index" of the duplicated 2020 and 2021 rows to 0
-#so that there will be a space on the barplot for the observed column
-WCraw_all[16,3] <- 0
-WCraw_all[15,5] <- "Observed"
-WCraw_all[16,5] <- "Observed"
-#reduce number of decimal places for index (there are >10 right now)
-WCraw_all$Index <- round(as.numeric(WCraw_all$Index), 1)
+#WMA_Releases_by_Yr for W Crawfish NE Arm Hd
+Craw_WMA_2008 <- Chp2_MasterDat %>% filter(StreamName == "W Crawfish NE Arm Hd")
+Craw_WMA_2008 <- Craw_WMA_2008 %>% select(c(7,9))
+Craw_WMA_2020 <- X20_21_Chp2 %>% filter(StreamName == "W Crawfish NE Arm Hd")
+Craw_WMA_2020 <- Craw_WMA_2020 %>% select(c(7,9))
+Craw_WMA <- rbind.data.frame(Craw_WMA_2008, Craw_WMA_2020)
 
 
-#WMA_Releases_by_Yr data:
-Craw_WMA <- WCraw_all[,c(1,4)]
-Craw_WMA <- Craw_WMA[!duplicated(Craw_WMA),]
-str(Craw_WMA)
-Craw_WMA$WMA_Releases_by_Yr <- as.numeric(Craw_WMA$WMA_Releases_by_Yr)
 
-
-#Make barplot:
-WCraw_plot <- ggplot() +
-  geom_bar(aes(x = Year, y = Index, fill = Index_Type), stat = "identity",
-           position = "dodge", data = WCraw_all) +
-  scale_fill_grey() +
-  geom_line(aes(x = Year, y = WMA_Releases_by_Yr, group = 1,
-                linetype = "Releases within
-40 km"), size = 1, col = "red", data = Craw_WMA) +
-  scale_y_continuous(name =
-                       "Index",
-                     sec.axis =
-                       sec_axis(trans = ~.*0.5,
-                                name =
-                                  "Number of fish released within 40 km (in millions)")) +
-  labs(fill = "Index Type", linetype = "") + theme_bw() +
+### Create barplots ###
+#W Crawfish NE Arm Hd OBSERVED values:
+#add small amount to 2009 "0" observed so that a bar will show up
+WCraw_obs[2,3] <- 0.5
+WCraw_obs_plot <- ggplot(WCraw_obs, aes(Year, Index)) +
+  geom_bar(stat = "identity", fill = "gray18") + labs(x = "") + theme_bw() +
   theme(axis.text = element_text(size = 12)) +
   theme(axis.title = element_text(size = 13)) +
   theme(legend.text = element_text(size = 11.5)) +
   theme(legend.title = element_text(size = 14)) +
   theme(text=element_text(family="Times New Roman"))
-WCraw_plot
+WCraw_obs_plot
+
+
+#W Crawfish NE Arm Hd predicted values (rank, i.e., relative attractiveness):
+WCraw_pred_plot <- ggplot(WC_pred4, aes(Year, Rank)) +
+  geom_bar(stat = "identity", fill = "gray35") +
+  scale_y_discrete(limits=rev) +
+  labs(x = "", y = "Rank (Relative Attractiveness)") + theme_bw() +
+  theme(axis.text = element_text(size = 12)) +
+  theme(axis.title = element_text(size = 13)) +
+  theme(legend.text = element_text(size = 11.5)) +
+  theme(legend.title = element_text(size = 14)) +
+  theme(text=element_text(family="Times New Roman"))
+WCraw_pred_plot
+
+#WMA_Releases_by_Yr LINE plot
+Craw_WMA_plot <- ggplot(Craw_WMA, aes(Year, WMA_Releases_by_Yr, group = 1)) +
+  geom_line(size = 1) +
+  labs(y = "Number of fish released
+within 40 km") +
+  theme_bw() +
+  theme(axis.text = element_text(size = 12)) +
+  theme(axis.title = element_text(size = 13)) +
+  theme(legend.text = element_text(size = 11.5)) +
+  theme(legend.title = element_text(size = 14)) +
+  theme(text=element_text(family="Times New Roman"))
+Craw_WMA_plot
+
+
+W_Crawfish_plot <- ggarrange(WCraw_obs_plot, WCraw_pred_plot, Craw_WMA_plot,
+                             ncol = 1)
+W_Crawfish_plot
 
 #Export as high-res figure:
-tiff("WCrawfishNE_barplot.tiff", width = 8, height = 5, pointsize = 12,
+tiff("WCrawfishNE_plot.tiff", width = 7, height = 8, pointsize = 12,
      units = 'in', res = 300)
-WCraw_plot #graph that you want to export
+W_Crawfish_plot #graph that you want to export
 dev.off( )
 
 
@@ -1371,6 +1391,7 @@ dev.off( )
  # 2. Increase in releases from PORT ASUMCION release site
  # 3. Establishment of a release site in FRESHWATER BAY on eastern Chicagof
  # Island (57.933113, -135.1800125)
+
 
 
 #9.1. Create df for modeling ===================================================
@@ -1428,7 +1449,7 @@ colnames(hypRel_Master)[6] <- "WMA_Releases_by_Yr"
 sapply(hypRel_Master, function(x) sum(is.na(x))) #Cons_A has NAs for 54 sites.
 #Remove these for the high-confidence predictions
 hypRel_MasterHC <- hypRel_Master[complete.cases(hypRel_Master),]
-rownames(hypRel_MasterHC) <- 1:nrow(hypRel_MasterHC) #57 total
+rownames(hypRel_MasterHC) <- 1:nrow(hypRel_MasterHC) #3 total
 sapply(hypRel_MasterHC, function(x) sum(is.na(x))) #No NAs
 
 ### Scale covariates for modeling ###
@@ -1474,12 +1495,12 @@ for (i in 1:1000) {
 mod_preds_hypRelHC
 mod_preds_hypRelHC$Mean_bs <- rowMeans(mod_preds_hypRelHC)
 mod_preds_hypRelHC$SD_bs <- apply(mod_preds_hypRelHC, 1, sd)
+mod_preds_hypRelHC$CV <- mod_preds_hypRelHC$SD_bs/mod_preds_hypRelHC$Mean_bs
 
 
 #Link stream and year information to mean and SD of bootstrapped predictions
 preds_hypRelHC <-
-  cbind.data.frame(scaled_hypRelHC[,c(1:4)], mod_preds_hypRelHC[,c(1001:1002)])
-preds_hypRelHC$CV <- preds_hypRelHC$SD_bs/preds_hypRelHC$Mean_bs
+  cbind.data.frame(scaled_hypRelHC[,c(1:4)], mod_preds_hypRelHC[,c(1001:1003)])
 preds_hypRelHC$CV_percent <- preds_hypRelHC$CV*100
 
 
@@ -1530,12 +1551,13 @@ for (i in 1:1000) {
 mod_preds_hypRelLC
 mod_preds_hypRelLC$Mean_bs <- rowMeans(mod_preds_hypRelLC)
 mod_preds_hypRelLC$SD_bs <- apply(mod_preds_hypRelLC, 1, sd)
+mod_preds_hypRelLC$CV <- mod_preds_hypRelLC$SD_bs/mod_preds_hypRelLC$Mean_bs
+
 
 
 #Link stream and year information to mean and SD of bootstrapped predictions
 preds_hypRelLC <-
-  cbind.data.frame(scaled_hypRelLC[,c(1:4)], mod_preds_hypRelLC[,c(1001:1002)])
-preds_hypRelLC$CV <- preds_hypRelLC$SD_bs/preds_hypRelLC$Mean_bs
+  cbind.data.frame(scaled_hypRelLC[,c(1:4)], mod_preds_hypRelLC[,c(1001:1003)])
 preds_hypRelLC$CV_percent <- preds_hypRelLC$CV*100
 
 
@@ -1546,20 +1568,32 @@ preds_hypRelLC$CV_percent <- preds_hypRelLC$CV*100
 ### Add on data for other streams in region. Assume status quo from 2021 onwards:
 #High-confidence streams:
 head(CV_HC20_21)
+CV_HC20_21a <- CV_HC20_21 %>% rename("CV" = "Mean_CV")
 #In preds_hypRelHC, remove Year column and move Lat & Long to match CV_HC20_21:
 preds_hypRelHC <- preds_hypRelHC %>% select(-Year)
-preds_hypRelHC <- preds_hypRelHC[c(1,4:7,2,3)]
-Final_HC_hypRel <- anti_join(CV_HC20_21, preds_hypRelHC, by = "StreamName")
+preds_hypRelHC <- preds_hypRelHC[c(1,4,6,7)]
+Final_HC_hypRel <- anti_join(CV_HC20_21a, preds_hypRelHC, by = "StreamName")
 Final_HC_hypRel <- rbind.data.frame(preds_hypRelHC, Final_HC_hypRel)
 
 
 #Low confidence streams:
 head(CV_LC20_21)
+CV_LC20_21a <- CV_LC20_21 %>% rename("CV" = "Mean_CV")
 #In preds_hypRelLC, remove Year column and move Lat & Long to match CV_LC20_21:
 preds_hypRelLC <- preds_hypRelLC %>% select(-Year)
-preds_hypRelLC <- preds_hypRelLC[c(1,4:7,2,3)]
-Final_LC_hypRel <- anti_join(CV_LC20_21, preds_hypRelLC, by = "StreamName")
+preds_hypRelLC <- preds_hypRelLC[c(1,4,6,7)]
+Final_LC_hypRel <- anti_join(CV_LC20_21a, preds_hypRelLC, by = "StreamName")
 Final_LC_hypRel <- rbind.data.frame(preds_hypRelLC, Final_LC_hypRel)
+
+
+#Attach location data to hypothetical release site predictions
+head(Chp2_MasterDat) #2008-2020 lat & long included here
+llocs_2008_2020 <- Chp2_MasterDat %>% select(StreamName, LATITUDE, LONGITUDE) %>%
+  distinct()
+Final_HC_hypRel <- left_join(Final_HC_hypRel, llocs_2008_2020, by = "StreamName")
+Final_LC_hypRel <- left_join(Final_LC_hypRel, llocs_2008_2020, by = "StreamName")
+sapply(Final_LC_hypRel, function(x) sum(is.na(x)))
+
 
 
 
@@ -1593,13 +1627,13 @@ Hyp_Release_map <- ggmap(myMap) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
                                    "#46ABDB", "#73BFE2", "#A2D4EC", "#CFE8F3"))+
   #values = rescale(c(0,10,25,50,75,200))) + #additional
   #code here to add rectangles to map to show areas you are zooming into:
-  geom_rect(aes(xmin = -135.55,
-                xmax = -134.4,
-                ymin = 58.15,
-                ymax = 58.75),
+  geom_rect(aes(xmin = -135.3,
+                xmax = -134.6,
+                ymin = 57.65,
+                ymax = 58.05),
             fill = "transparent",
             color = "black", size = 1) +
-  annotate("text", x = -135.68, y = 58.74, label = "1", fontface = 2, size = 5) +
+  annotate("text", x = -135.43, y = 58.0, label = "1", fontface = 2, size = 5) +
   geom_rect(aes(xmin = -135.5,
                 xmax = -134.75,
                 ymin = 56.59,
@@ -1611,6 +1645,107 @@ Hyp_Release_map <- ggmap(myMap) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
 
 Hyp_Release_map
 
+
+### Zoom-in region #1 (Freshwater Bay) ###
+#Add hypothetical release site locations
+H_releases_hypothetical <- hypRel %>% select(ReleaseSite, Release_site_LAT,
+                                             Release_site_LONG)
+H_releases_hypothetical <-
+  H_releases_hypothetical[!duplicated(H_releases_hypothetical),]
+
+
+FWBay_map <- get_stamenmap(location <- c(-135.4, 57.65, -134.63, 58.02), zoom = 9,
+                           maptype = "terrain-background", crop = TRUE)
+ggmap(FWBay_map)
+
+Freshwater_map <- ggmap(FWBay_map) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
+                                                    size = Mean_bs,
+                                                    fill = CV_percent),
+                                                colour = "black", pch = 24,
+                                                data = Final_LC_hypRel) +
+  geom_point(aes(x = LONGITUDE, y = LATITUDE, size = Mean_bs,
+                 fill = CV_percent), colour = "black", pch = 21,
+             data = Final_HC_hypRel) +
+  geom_point(aes(x = Release_site_LONG, y = Release_site_LAT), size = 5,
+             shape = 22, fill = "darkred", data = H_releases_hypothetical) +
+  labs(x = "Latitude", y = "Longitude", size = "Predicted
+Index",
+       fill = "Prediction
+CV") +
+  theme(axis.text = element_text(size = 12)) +
+  theme(axis.title = element_text(size = 13)) +
+  theme(legend.text = element_text(size = 11.5)) +
+  theme(legend.title = element_text(size = 14)) +
+  theme(text=element_text(family="Times New Roman")) +
+  annotate("text", x = -135.35, y = 57.98, label = "1", fontface = 2, size = 8) +
+  theme(plot.margin = unit(c(1,0,0,-0.5), "cm")) + #the plot.margin positioning
+  #specified here makes the plot have no margin space at the bottom or on its left
+  #side, and I did that so that it would be closer to the Crawfish_map below it
+  #and the SEAK strays map to its left when I put them together in ggarrange()
+  scalebar(x.min = -135.41, x.max = -134.7, y.min = 57.69, y.max = 57.72,
+           transform = T, dist_unit = "km", dist = 20, height = 0.6,
+           st.dist = 0.6, st.size = 4.5) +
+  scale_fill_gradientn(colours = c("#062635", "#0A4C6A", "#12719E", "#1696D2",
+                                   "#46ABDB", "#73BFE2", "#A2D4EC", "#CFE8F3")) +
+  scale_size_continuous(range = c(3,10))
+#values = rescale(c(0,0.1,0.25,1)))
+Freshwater_map
+
+
+
+### Zoom-in region #2 (Crawfish Inlet) ###
+CF_map <- get_stamenmap(location <- c(-135.53, 56.63, -134.73, 57.03), zoom = 10,
+                           maptype = "terrain-background", crop = TRUE)
+ggmap(CF_map)
+
+Crawfish_map2 <- ggmap(CF_map) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
+                                                    size = Mean_bs,
+                                                    fill = CV_percent),
+                                                colour = "black", pch = 24,
+                                                data = Final_LC_hypRel) +
+  geom_point(aes(x = LONGITUDE, y = LATITUDE, size = Mean_bs,
+                 fill = CV_percent), colour = "black", pch = 21,
+             data = Final_HC_hypRel) +
+  geom_point(aes(x = Release_site_LONG, y = Release_site_LAT), size = 5,
+             shape = 22, fill = "darkred", data = H_releases_hypothetical) +
+  labs(x = "Latitude", y = "Longitude", size = "Predicted
+Index",
+       fill = "Prediction
+CV") +
+  theme(axis.text = element_text(size = 12)) +
+  theme(axis.title = element_text(size = 13)) +
+  theme(legend.text = element_text(size = 11.5)) +
+  theme(legend.title = element_text(size = 14)) +
+  theme(text=element_text(family="Times New Roman")) +
+  annotate("text", x = -135.48, y = 57, label = "2", fontface = 2, size = 8) +
+  theme(plot.margin = unit(c(0,0,1,-0.5), "cm")) + #the plot.margin positioning
+  #specified here makes the plot have no margin space at the top or on its left
+  #side, and I did that so that it would be closer to the Amalga_map above it
+  #and the SEAK strays map to its left when I put them together in ggarrange()
+  scalebar(x.min = -135.5, x.max = -134.83, y.min = 56.66, y.max = 56.68,
+           transform = T, dist_unit = "km", dist = 20, height = 0.6,
+           st.dist = 0.7, st.size = 4.5) +
+  scale_fill_gradientn(colours = c("#062635", "#0A4C6A", "#12719E", "#1696D2",
+                                   "#46ABDB", "#73BFE2", "#A2D4EC", "#CFE8F3")) +
+  scale_size_continuous(range = c(3,10))
+#values = rescale(c(0,0.1,0.25,1)))
+Crawfish_map2
+
+
+
+### Put whole map together
+FW_Craw_together <- ggarrange(Freshwater_map, Crawfish_map2, ncol = 1,
+                        common.legend = T, legend = "right")
+
+whole_map2 <- ggarrange(Hyp_Release_map, FW_Craw_together, align = "v",
+                       common.legend = T, legend = "right")
+whole_map2 
+
+#Export as high-res figure
+tiff("hyp_release_map.tiff", width = 9, height = 6, pointsize = 12, units = 'in',
+     res = 300)
+whole_map2 #graph that you want to export
+dev.off( )
 
 
 
