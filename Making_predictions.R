@@ -81,6 +81,9 @@ bm2u <- glmer.nb(Avg_number_strays ~ (1|Year) + WMA_Releases_by_Yr + CV_flow +
 
 
 
+
+
+
 #2. Make predictions for streams without straying data #########################
 ### For now, remove rows containing NA from new dataframe. This is most of your 
 #rows since there isn't any Cons_Abundance data for most SEAK streams
@@ -91,9 +94,11 @@ rownames(Chp2_MasterDat2) <- 1:nrow(Chp2_MasterDat2) #820 total. There are 87
 sapply(Chp2_MasterDat2, function(x) sum(is.na(x))) #No NAs
 
 
+
 #2.1. Scale covariates for modeling ============================================
 h <- apply(Chp2_MasterDat2[ , c(8:10)], 2, scale.default)
 Chp2_scaled <- cbind.data.frame(Chp2_MasterDat2[ , c(1:7)], h)
+
 
 
 #2.2. Predict for new streams (some old ones as well)! =========================
@@ -115,6 +120,8 @@ colnames(Mod1_Chp2_predictions)[8] <- "Predictions"
  # (Mod2_Chp2_predictions$Predictions*0.37)
 #Chp2_predictions <- cbind.data.frame(Mod1_Chp2_predictions[,c(1:7)], vec2)
 #colnames(Chp2_predictions)[8] <- "Chp2_predictions"
+
+
 
 
 
@@ -182,12 +189,42 @@ for (i in 1:1000) {
 mod_preds
 mod_preds$Mean <- rowMeans(mod_preds)
 mod_preds$SD <- apply(mod_preds, 1, sd)
+mod_preds$CV <- mod_preds$SD/mod_preds$Mean
+
 
 
 ######   Bootstrap step 5)   ######
-#Link stream and year information to bootstrapped predictions
-bs_preds_HC <- cbind.data.frame(Mod1_Chp2_predictions, mod_preds[,c(1001:1002)])
+### Note that you are only trying to get one CV for each stream across time, but
+#you have 10 CVs for each stream (observations in each years). See how mean CV
+#for each stream compares to histogram of CVs from each stream:
 
+#First link stream and year information to bootstrapped predictions
+bs_preds_HC <- cbind.data.frame(Mod1_Chp2_predictions, mod_preds[,c(1001:1003)])
+hists_dat <- bs_preds_HC %>% group_by(StreamName) %>% group_split()
+#check a few histograms visually, compare to CV_HC$Mean_CV for each stream (df
+#created below)
+hist(hists_dat[[1]]$CV) #Admiralty Creek, CV ranges from 0.08-0.13
+CV_HC %>% filter(StreamName == "Admiralty Creek") #mean_CV = 0.112. Seems OK
+
+hist(hists_dat[[14]]$CV) #Donkey Creek, CV ranges from 0.07-0.110
+CV_HC %>% filter(StreamName == "Donkey Creek") #mean_CV = 0.097
+
+hist(hists_dat[[59]]$CV) #Sawmill Creek, CV ranges from 0.32-0.35
+CV_HC %>% filter(StreamName == "Sawmill Creek") #mean_CV = 0.337
+#I think this method of calculating of CV is OK.
+
+
+#bs_preds_HC gives the mean and sd of the 1000 bootstrapped ("bs") model predi-
+#ctions for each individual stream-year prediction. You want to know the CV for
+#each stream overall:
+CV_HC <- bs_preds_HC %>% group_by(StreamName) %>%
+  summarise(Mean_CV = mean(CV)) 
+CV_HC$CV_percent <- CV_HC$Mean_CV*100
+
+
+
+### Previous attempt to calculate CV for each stream using mean and CV across all
+#observations (not grouping by year first). More difficult than I thought
 #summarize mean and sd by stream across time to calculate a CV
 #bsHC_groups <- bs_preds_HC %>% group_split(StreamName)
 #bs2 <- purrr::map(bsHC_groups, ~.x %>% pivot_longer(c(9:1008)))
@@ -197,16 +234,9 @@ bs_preds_HC <- cbind.data.frame(Mod1_Chp2_predictions, mod_preds[,c(1001:1002)])
 #rownames(High_conf_preds) <- 1:nrow(High_conf_preds)
 #head(High_conf_preds) #mean_pred_strays from the model are not even close to
 #the mean I calculated in the 6 steps immediately above this. Not sure how to fix
-#error. I will resume what I did before to calculate the CV:
+#error. I will resume what I did before to calculate the CV (above)
 
 
-#bs_preds_HC gives the mean and sd of the 1000 bootstrapped ("bs") model predi-
-#ctions for each individual stream-year prediction. You want to know the mean
-#and sd for each stream overall:
-CV_HC <- bs_preds_HC %>% group_by(StreamName) %>%
-  summarise(Mean_bs = mean(Mean), SD_bs = mean(SD)) 
-CV_HC$CV <- CV_HC$SD_bs/CV_HC$Mean_bs
-CV_HC$CV_percent <- CV_HC$CV*100
 
 
 
@@ -305,6 +335,8 @@ dev.off( )
 
 
 
+
+
 #3. Visualization of predicted attractiveness for high confidence streams ######
 ### Map of chp2 predictions
 #First find averages by site
@@ -313,7 +345,6 @@ mean_predsChp2 <- Mod1_Chp2_predictions %>% group_by(StreamName) %>%
 mean_predsChp2 <- mean_predsChp2 %>% select(-c(7,8))
 colnames(mean_predsChp2)[7] <- "Mean_pred_strays"
 mean_predsChp2 <- mean_predsChp2[!duplicated(mean_predsChp2$Mean_pred_strays),]
-redsChp2$Mean_pred_strays)))
 
 #Add on the predicted uncertainty column from bootstrapping (section 2.3)
 mean_predsChp2 <- left_join(mean_predsChp2, CV_HC, by = "StreamName")
@@ -330,7 +361,7 @@ strays_map1 <- ggmap(myMap) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
                                              fill = CV_percent),
                                             colour = "black", pch = 21,
                                             data = mean_predsChp2) +
-  labs(x = "Latitude", y = "Longitude", size = "Predicted Index",
+  labs(x = "Longitude", y = "Latitude", size = "Predicted Index",
        fill = "Prediction CV") +
   #guides(size = "none") +
   theme(axis.text = element_text(size = 12)) +
@@ -395,9 +426,12 @@ sapply(Chp2_MasterDat, function(x) sum(is.na(x))) #only Cons_A has NAs, good
 Chp2_MasterDat3 <- Chp2_MasterDat %>% select(-8)
 
 
+
 #4.1. Scale covariates for modeling ============================================
 j <- apply(Chp2_MasterDat3[ , c(8:9)], 2, scale.default)
 Chp2_scaled_all <- cbind.data.frame(Chp2_MasterDat3[ , c(1:7)], j)
+
+
 
 #4.2 Make the predictions! =====================================================
 #Use bm2u model (see section 1.3 above) because it does not contain Cons_Abundance
@@ -481,22 +515,39 @@ for (i in 1:1000) {
 mod_predsLC
 mod_predsLC$Mean <- rowMeans(mod_predsLC)
 mod_predsLC$SD <- apply(mod_predsLC, 1, sd)
+mod_predsLC$CV <- mod_predsLC$SD/mod_predsLC$Mean
 
 
 ######   Bootstrap step 5)   ######
-#Link stream and year information to mean and SD of bootstrapped predictions
-bs_preds_LC <- cbind.data.frame(All_strms_predictions, mod_predsLC[,c(1001:1002)])
-#this^^ gives the mean and sd of the 1000 bootstrapped ("bs") model predictions
-#for each individual stream-year prediction. You want to know the mean and sd for
+#First link stream and year information to bootstrapped predictions
+bs_preds_LC <- cbind.data.frame(All_strms_predictions, mod_predsLC[,c(1001:1003)])
+hists_dat2 <- bs_preds_LC %>% group_by(StreamName) %>% group_split()
+#check a few histograms visually, compare to CV_LC$Mean_CV for each stream (df
+#created below)
+hist(hists_dat2[[2]]$CV) #142F Creek, CV = 0.22 for all years bc WMA_Releas = 0
+
+hist(hists_dat2[[181]]$CV) #Gedney Harbor S Head, CV ranges from 0.09-0.140
+CV_LC %>% filter(StreamName == "Gedney Harbor S Head") #mean_CV = 0.109
+
+hist(hists_dat2[[635]]$CV) #Woewodski Harbor, CV ranges from 0.10-0.24
+CV_LC %>% filter(StreamName == "Woewodski Harbor") #mean_CV = 0.140
+#I think this method of calculating of CV is OK, though note there is a wider 
+#range of CVs for each stream compared to those of the higher confidence predict-
+#ions (Woewodski Harbor range is quite wide, with one CV being 0.24 relative to
+#mean of 0.14)
+
+
+#bs_preds_LC gives the mean and sd of the 1000 bootstrapped ("bs") model predi-
+#ctions for each individual stream-year prediction. You want to know the CV for
 #each stream overall:
 CV_LC <- bs_preds_LC %>% group_by(StreamName) %>%
-  summarise(Mean_bs = mean(Mean), SD_bs = max(SD)) #find the max of the SD, not
-#the mean so that I am showing the maximum possible amount of uncertainty around
-#a mean predicted attractiveness index across time
-CV_LC$CV <- CV_LC$SD_bs/CV_LC$Mean_bs
-CV_LC$CV_percent <- CV_LC$CV*100
+  summarise(Mean_CV = mean(CV)) 
+CV_LC$CV_percent <- CV_LC$Mean_CV*100
+
 #remove duplicated streams between high and low confidence sets:
 CV_LC <- anti_join(CV_LC, CV_HC, by = "StreamName")
+
+
 
 
 
@@ -529,21 +580,15 @@ lowr_conf_preds[lowr_conf_preds$StreamName == "Beardslee River", 7] <- 200
 #Add on the predicted uncertainty column from bootstrapping (section 4.2)
 lowr_conf_preds <- left_join(lowr_conf_preds, CV_LC, by = "StreamName")
 
-### Sidebar: CV is very high (>2) for many of these streams. Explore why:
-plot(lowr_conf_preds$CV_percent ~ lowr_conf_preds$Mean_pred_strays) #while it is
-#not a linear increase, it appears that more (predicted to be) attractive streams
-#have higher CVs. This makes sense bc those streams will have a larger variability
-#across time compared to a stream where only 0-2 strays ever show up
 
 
-
-
+### Map of mean predicted strays by site for low confidence predictions
 strays_map1a <- ggmap(myMap) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
                                               size = Mean_pred_strays,
                                               fill = CV_percent),
                                           colour = "black", pch = 21,
                                           data = lowr_conf_preds) +
-  labs(x = "Latitude", y = "Longitude", size = "Predicted Index",
+  labs(x = "Longitude", y = "Latitude", size = "Predicted Index",
        fill = "Prediction CV") +
   #guides(size = "none") +
   theme(axis.text = element_text(size = 12)) +
@@ -572,10 +617,17 @@ north2(strays_map3a, x = 0.18, y = 0.20, symbol = 3)
 
 
 
+
+
 #6. Create multi-panel map #####################################################
 #Read in hatchery release site location data
 H_Release_Locations <-
-  read_csv("~/Documents/CHUM_THESIS/Data Sources/Release_Sites_Age/H_Release_Locations.csv")
+  read.csv("~/Documents/CHUM_THESIS/Data Sources/Release_Sites_Age/H_Release_Locations.csv")
+#remove Crawfish Inlet release site from df because no fish are released from 
+#there in years that would correspond with years the Crawfish Inlet area streams
+#were surveyed, hence plotting the release site on the 2008-2019 map is misleading
+H_Release_Locations <- H_Release_Locations %>%
+  filter(ReleaseSite != "CRAWFISH INLET 113-33")
 
 ### Here is the code from the overall SE AK map above if you wish to add anything
 #It is paraphrased slightly, i.e., I cut out the part where I wrote all the code
@@ -592,7 +644,7 @@ strays_map1 <- ggmap(myMap) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
   geom_point(aes(x = LONGITUDE, y = LATITUDE, size = Mean_pred_strays,
                  fill = CV_percent), colour = "black", pch = 21,
              data = mean_predsChp2) +
-  labs(x = "Latitude", y = "Longitude", size = "Predicted Index",
+  labs(x = "Longitude", y = "Latitude", size = "Predicted Index",
        fill = "Prediction CV") +
   guides(fill = "none", size = "none") + #removes the legend for this plot. I will
 #specify the legend in the zoomed in plots below instead so that I can have the 
@@ -668,7 +720,8 @@ Amalga_map <- ggmap(zoom1_map) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
   geom_point(aes(x = Longitude, y = Latitude), shape = 22, size = 4,
              fill = "darkred", data = H_Release_Locations) +
   labs(x = "", y = "", size = "Predicted
-Index", fill = "Prediction CV") +
+Index", fill = "Prediction
+CV") +
   theme(axis.text = element_text(size = 12)) +
   theme(axis.title = element_text(size = 13)) +
   theme(legend.text = element_text(size = 11.5)) +
@@ -711,7 +764,8 @@ Crawfish_map <- ggmap(zoom3_map) + geom_point(aes(x = LONGITUDE, y = LATITUDE,
   geom_point(aes(x = Longitude, y = Latitude), shape = 22, size = 4,
              fill = "darkred", data = H_Release_Locations) +
   labs(x = "", y = "", size = "Predicted
-Index", fill = "Prediction CV")  +
+Index", fill = "Prediction
+CV")  +
   theme(axis.text = element_text(size = 12)) +
   theme(axis.title = element_text(size = 13)) +
   theme(legend.text = element_text(size = 11.5)) +
@@ -743,10 +797,11 @@ whole_map <- ggarrange(strays_map3, right_side, align = "v",
 whole_map #hot damn
 
 #Export as high-res figure
-tiff("fig1_v3.tiff", width = 9, height = 6, pointsize = 12, units = 'in',
+tiff("fig1_v4.tiff", width = 9, height = 6, pointsize = 12, units = 'in',
      res = 300)
 whole_map #graph that you want to export
 dev.off( )
+
 
 
 
@@ -916,6 +971,8 @@ rRE_HC <- rnorm(1000, 0.41315, 0.60845)
 
 summary(bm1u) #create random normal distributions using the mean and sd for each
 #model covariate, i.e., the coefficient estimate and standard error
+#No need to rerun these bc they are already defined as objects from section 2.3. 
+#They are just shown here for illustration:
 rWMA_releas <- rnorm(1000, 0.412, 0.086)
 rCons_A <- rnorm(1000, 0.215, 0.120)
 rCV_f <- rnorm(1000, 0.503, 0.091)
@@ -943,18 +1000,18 @@ for (i in 1:1000) {
 mod_preds20_21HC
 mod_preds20_21HC$Mean <- rowMeans(mod_preds20_21HC)
 mod_preds20_21HC$SD <- apply(mod_preds20_21HC, 1, sd)
+mod_preds20_21HC$CV <- mod_preds20_21HC$SD/mod_preds20_21HC$Mean
 
 
 #Link stream and year information to mean and SD of bootstrapped predictions
 bs_preds_2021HC <-
-  cbind.data.frame(scaled_20_21hc[,c(1:7)], mod_preds20_21HC[,c(1001:1002)])
+  cbind.data.frame(scaled_20_21hc[,c(1:7)], mod_preds20_21HC[,c(1001:1003)])
 #this^^ gives the mean and sd of the 1000 bootstrapped ("bs") model predictions
 #for each individual stream-year prediction. You want to know the mean and sd for
 #each stream overall:
 CV_HC20_21 <- bs_preds_2021HC %>% group_by(StreamName) %>%
-  summarise(Mean_bs = mean(Mean), SD_bs = mean(SD)) 
-CV_HC20_21$CV <- CV_HC20_21$SD_bs/CV_HC20_21$Mean_bs
-CV_HC20_21$CV_percent <- CV_HC20_21$CV*100
+  summarise(Mean_bs = mean(Mean), Mean_CV = mean(CV)) 
+CV_HC20_21$CV_percent <- CV_HC20_21$Mean_CV*100
 
 
 ### Are these^^ predictions total garbage? I.e., how do they compare to chp1
@@ -973,6 +1030,7 @@ cor.test(junk$Mean_bs, junk$Mean_prediction) #0.97. Predictions aren't that far
 
 
 
+
 #8.4. LOWER CONFIDENCE 2020-2021 stream attractiveness predictions =============
 X20_21_Chp2 #df with all 2020 and 2021 streams (high and lower confidence together)
 X2020_2021_LC <- X20_21_Chp2[is.na(X20_21_Chp2$Cons_Abundance),]
@@ -982,9 +1040,12 @@ sapply(X2020_2021_LC, function(x) sum(is.na(x))) #No NAs
 
 
 
+
 #8.5. Scale covariates for modeling ============================================
 lc20_21 <- apply(X2020_2021_LC[ , c(8:9)], 2, scale.default)
 scaled_20_21lc <- cbind.data.frame(X2020_2021_LC[ , c(1:7)], lc20_21)
+
+
 
 
 #8.6. Predict for new LOWER CONFIDENCE 2020 and 2021 streams ===================
@@ -996,6 +1057,8 @@ rRE_LC <- rnorm(1000, 0.43488, 0.62495)
 
 summary(bm2u) #create random normal distributions using the mean and sd for each
 #model covariate, i.e., the coefficient estimate and standard error
+#No need to rerun these bc they are already defined as objects from section 4.2. 
+#They are just shown here for illustration:
 rWMA_releasLC <- rnorm(1000, 0.436, 0.086)
 rCV_fLC <- rnorm(1000, 0.564, 0.084)
 rCV_f2LC <- rnorm(1000, 0.616, 0.079)
@@ -1021,18 +1084,18 @@ for (i in 1:1000) {
 mod_preds20_21LC
 mod_preds20_21LC$Mean <- rowMeans(mod_preds20_21LC)
 mod_preds20_21LC$SD <- apply(mod_preds20_21LC, 1, sd)
+mod_preds20_21LC$CV <- mod_preds20_21LC$SD/mod_preds20_21LC$Mean
 
 
 #Link stream and year information to mean and SD of bootstrapped predictions
 bs_preds_2021LC <-
-  cbind.data.frame(scaled_20_21lc[,c(1:7)], mod_preds20_21LC[,c(1001:1002)])
+  cbind.data.frame(scaled_20_21lc[,c(1:7)], mod_preds20_21LC[,c(1001:1003)])
 #this^^ gives the mean and sd of the 1000 bootstrapped ("bs") model predictions
 #for each individual stream-year prediction. You want to know the mean and sd for
 #each stream overall:
 CV_LC20_21 <- bs_preds_2021LC %>% group_by(StreamName) %>%
-  summarise(Mean_bs = mean(Mean), SD_bs = mean(SD)) 
-CV_LC20_21$CV <- CV_LC20_21$SD_bs/CV_LC20_21$Mean_bs
-CV_LC20_21$CV_percent <- CV_LC20_21$CV*100
+  summarise(Mean_bs = mean(Mean), Mean_CV = mean(CV)) 
+CV_LC20_21$CV_percent <- CV_LC20_21$Mean_CV*100
 
 
 range(CV_HC20_21$Mean_bs)
@@ -1094,8 +1157,6 @@ length(CV_LC20_21$StreamName) #558
 0.10*558 #10% of 558 is 55.8, so take the top 56 streams as most attractive
 #and the bottom 279 (50%) as least attractive
 
-lc_top10_2021 <- CV_LC20_21 %>% slice_max(order_by = Mean_bs, n = 56)
-
 #lc_bot50 <- CV_LC20_21 %>% slice_min(order_by = Mean_bs, n = 279)
 #does not work because there are matching values in Mean_pred_strays for several
 #streams (due to streams having the same CV_flow vals). Instead use:
@@ -1103,8 +1164,8 @@ ord_lowr_conf2 <- as.data.frame(CV_LC20_21[order(CV_LC20_21$Mean_bs,
                                                  decreasing = T),])
 rownames(ord_lowr_conf2) <- 1:nrow(ord_lowr_conf2)
 
+lc_top10_2021 <- ord_lowr_conf2 %>% slice_head(n = 56)
 lc_bot50_2021 <- ord_lowr_conf2 %>% slice_tail(n = 279)
-
 lc_mid40_2021 <- ord_lowr_conf2 %>% slice(c(57:279))
 
 
@@ -1147,17 +1208,18 @@ write.csv(LC_table, "Lower_confidence_streams2021.csv")
 
 #8.8. W Crawfish NE Arm Hd and W Crawfish N Arm NE table =======================
 ### Data to manually type into W Crawfish table in word doc:
-lowr_conf_junk <-
+lowr_conf_junk <- #2008-2019 data
   lowr_conf_preds[order(lowr_conf_preds$Mean_pred_strays, decreasing = T),]
 rownames(lowr_conf_junk) <- 1:nrow(lowr_conf_junk)
 which(lowr_conf_junk$StreamName == "W Crawfish N Arm NE") #ranked 134th in rela-
-#tive attractiveness
+#tive attractiveness during 2008-2019
 
-LC20_21_junk <-
-  CV_LC20_21[order(CV_LC20_21$Mean_bs, decreasing = T),]
+ord_lowr_conf2 <- as.data.frame(CV_LC20_21[order(CV_LC20_21$Mean_bs,
+                                                 decreasing = T),])
+rownames(ord_lowr_conf2) <- 1:nrow(ord_lowr_conf2)
 #rownames(LC20_21_junk) <- 1:nrow(LC20_21_junk)
-which(LC20_21_junk$StreamName == "W Crawfish N Arm NE") #ranked 134th in rela-
-#tive attractiveness
+which(LC20_21_junk$StreamName == "W Crawfish N Arm NE") #ranked 79th in rela-
+#tive attractiveness during 2020-2021
 
 #From section 7.1 (contains mean of each covariate for each stream 2008-2019):
 head(hc_covariate_dat)
@@ -1178,12 +1240,14 @@ xx <- X20_21_Chp2 %>% filter(StreamName %in% c("W Crawfish NE Arm Hd",
 
 
 
-#8.9. W Crawfish indices over time figure ======================================
-#Include obs and predicted attractiveness indices for W Crawfish NE Arm Hd from
-#chapter 1 (barchart) with a line showing the increase in WMA_Releases_by_Yr as
-#well. Include 2020 and 2021 predicted data 
+#8.9. W Crawfish NE Arm Hd indices over time figure ============================
+#Include obs attractiveness indices for W Crawfish NE Arm Hd and its predicted
+#relative attractiveness (ranking) from chapter 1 (barchart). Add a line showing 
+#the increase in WMA_Releases_by_Yr as well. Include 2020 and 2021 predicted data 
 head(Chp1_Master) #contains obs. attractiveness index for W Crawfish 
-head(Mod1_Chp2_predictions) #contains pred. index for W Crawfish
+head(Mod1_Chp2_predictions) #contains pred. index (and relative attractiveness
+#by extension) for W Crawfish
+
 
 WCraw_obs <- Chp1_Master %>% filter(StreamName == "W Crawfish NE Arm Hd")
 WCraw_obs <- WCraw_obs[,-c(1,4:8,10:14,16:19)]
@@ -1193,8 +1257,8 @@ surveydat_WCraw18_19 <- read.csv("Data/Chum salmon otolith data in D113.csv")
 #and 2019 in W Crawfish. See rows 12-13 (2 surveys in 2018) and 37-38 (2 surveys
 #in 2019) in the "Marked" column
 print(surveydat_WCraw18_19[c(12:13),]) #In 2018, survey #1 found 57 strays and 
-#survey #2 found 86 strays, so the observed attractiveness index in W Crawfish
-#NE Arm Hd in 2018 is 
+#survey #2 found 86 strays ("Marked" column), so the observed attractiveness in-
+#dex in W Crawfish NE Arm Hd in 2018 is 
 (57+86)/2 #71.5
 #And in 2019:
 print(surveydat_WCraw18_19[c(37:38),])
@@ -1205,6 +1269,24 @@ newrow2018 <- c("2018", "W Crawfish NE Arm Hd", "71.5", "9.250540365") #9.25 is
 newrow2019 <- c("2019", "W Crawfish NE Arm Hd", "47", "22.57044722")
 WCraw_obs <- rbind.data.frame(WCraw_obs, newrow2018, newrow2019)
 WCraw_obs$Index_Type <- rep("Observed", length(WCraw_obs$Year))
+
+
+#Determine relative predicted attractiveness by year (i.e., "rank")
+sort_fxn <- function(dat){
+  dat2 <- as.data.frame(dat[order(dat$Predictions, decreasing = T),])
+  which(dat2$StreamName == "W Crawfish NE Arm Hd")
+}
+
+WC_split <- Mod1_Chp2_predictions %>% group_by(Year) %>% group_split()
+WC_pred_rank <- as.data.frame(purrr::map(WC_split, sort_fxn))
+HW_years <- seq(2008, 2019)
+HW_years <- HW_years[-c(5,9)] #remove 2012 and 2016
+WC_pred <- rbind.data.frame(WC_pred_rank, HW_years)
+
+
+
+
+
 
 
 
