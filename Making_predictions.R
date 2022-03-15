@@ -691,7 +691,7 @@ colnames(hypothetical_release)[3] <- "Release_site_LONG"
 colnames(hypothetical_release)[4] <- "StreamName"
 
 
-### Attach df containing releases by site and year and append the 2019 (most
+### Attach df containing releases by site and year and append the 2020 (most
 #recent year in dataset) releases
 Releases_2020 <- read_csv("Data/Releases_2020.csv")
 hypRel <- left_join(hypothetical_release, Releases_2020, by = "ReleaseSite")

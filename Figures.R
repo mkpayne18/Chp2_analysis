@@ -692,17 +692,14 @@ lc_df <- cbind.data.frame(PercentsHC, lc_n) #use same "PercentsHC" object as abo
 
 
 ### Append mean and range of covariate data to each percentile grouping
-head(Chp2_MasterDat3)
-length(Chp2_MasterDat3$WMA_Releases_by_Yr) #contains 640 streams (6400 rows), 
+length(X2020_2021_LC$WMA_Releases_by_Yr) #contains 558 streams (1116 rows), 
 #including the 82 high-confidence streams. These need to be removed
-use_for_lc_covariate <- anti_join(Chp2_MasterDat3, Chp2_MasterDat2,
-                                  by = c("StreamName", "Year"))
-lc_covariate_dat <- use_for_lc_covariate %>% group_by(StreamName) %>%
+lc_covariate_dat2021 <- X2020_2021_LC %>% group_by(StreamName) %>%
   summarize(across(c(WMA_Releases_by_Yr, CV_flow), mean))
 
-lc_top10_2021a <- left_join(lc_top10_2021, lc_covariate_dat, by = "StreamName")
-lc_mid40_2021a <- left_join(lc_mid40_2021, lc_covariate_dat, by = "StreamName")
-lc_bot50_2021a <- left_join(lc_bot50_2021, lc_covariate_dat, by = "StreamName")
+lc_top10_2021a <- left_join(lc_top10_2021, lc_covariate_dat2021, by = "StreamName")
+lc_mid40_2021a <- left_join(lc_mid40_2021, lc_covariate_dat2021, by = "StreamName")
+lc_bot50_2021a <- left_join(lc_bot50_2021, lc_covariate_dat2021, by = "StreamName")
 
 
 lc_list2021 <- list(lc_top10_2021a, lc_mid40_2021a, lc_bot50_2021a)
@@ -856,6 +853,7 @@ Craw_WMA <- rbind.data.frame(Craw_WMA_2008, Craw_WMA_2020)
 WCraw_obs[2,3] <- 0.5
 #make plot:
 WCraw_obs_plot <- ggplot(WCraw_obs, aes(Year, Index)) +
+  labs(y = "Observed Attractiveness Index") +
   geom_bar(stat = "identity", fill = "gray18") + labs(x = "") + theme_bw() +
   theme(axis.text = element_text(size = 12)) +
   theme(axis.title = element_text(size = 13)) +
@@ -1271,6 +1269,24 @@ dev.off( )
 
 
 
+#7. Table S3 data (all HC streams + obs data for the 56 that have it) ##########
+head(mean_predsChp2)
+head(Chp1_Master)
+means_for_tabS3 <- Chp1_Master %>% group_by(StreamName) %>%
+  summarise(Mean_obs = mean(Avg_number_strays))
+tabS3 <- left_join(mean_predsChp2, means_for_tabS3, by = "StreamName")
+TableS3 <- tabS3[,c(3,5:7,9,10)]
+TableS3 <- TableS3[order(TableS3$Mean_pred_strays,
+                     decreasing = T),]
+rownames(TableS3) <- 1:nrow(TableS3)
+write.csv(TableS3, "TableS3.csv")
+
+
+
+
+
+save.image("Chp2_figures.RData")
+load("Chp2_figures.RData")
 
 
 
