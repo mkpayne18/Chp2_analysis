@@ -427,7 +427,8 @@ colnames(All_strms_predictions)[8] <- "Predicted_strays"
 
 
 #How do these compare to the higher confidence predictions?
-a <- left_join(Mod1_Chp2_predictions, All_strms_predictions, by = c("StreamName", "Year"))
+a <- left_join(Mod1_Chp2_predictions, All_strms_predictions,
+               by = c("StreamName", "Year"))
 plot(a$Predictions ~ a$Predicted_strays, xlab = "Lower confidence predictions",
      ylab = "High confidence predictions") #relationship looks very linear
 cor.test(a$Predictions, a$Predicted_strays) #linear indeed, however it is
@@ -442,8 +443,8 @@ cor.test(a$Predictions, a$Predicted_strays) #linear indeed, however it is
 
 ### Bootstrapping steps
 #1) Run rnorm( ) for each covariate to specify a distribution for that covariate.
-#E.g., if my coefficient estimate is 0.215 and its SE is 0.12, then my 
-#rnorm(1000, mean = 0.215, sd = 0.12)
+#E.g., if my coefficient estimate is 0.436 and its SE is 0.086, then my 
+#rnorm(1000, mean = 0.436, sd = 0.086)
 
 #2) Randomly sample 1 value from rnorm distribution for each covariate (allowing
 #replacement each time). This is your coefficient estimate to use for each model
@@ -881,7 +882,7 @@ preds_hypRelHC$CV_percent <- preds_hypRelHC$CV*100
 
 
 
-#9.3. Low-confidence 2020-2021 stream attractiveness predictions ===============
+#9.3. Low-confidence hypothetical release attractiveness predictions ===========
 hypRel_MasterHC #High-confidence streams are in this df. Remove them from low
 #confidence set:
 hypRel_MasterLC <- anti_join(hypRel_Master, hypRel_MasterHC, by = "StreamName")
