@@ -7,7 +7,8 @@
 #ness indices using WMA_Releases_by_Yr and CV_flow
 
 #Get data to use in maps and figures
-load("Making_predictions_objects.RData")
+load("Making_predictions_objects.RData") ### See section 0 of the Making_
+#predictions.R script for a guide to what the various datasets are
 
 
 

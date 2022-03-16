@@ -8,7 +8,56 @@
 #CV_flow
 
 
-#Read in data
+
+#0. Quick reference for the datasets created in this script ####################
+load("Making_predictions_objects.RData")
+###
+Chp2_MasterDat #contains all streams and covariate data from 2008-2019 (n = 6400)
+Chp2_MasterDat2 #contains stream and covariate data from 2008-2019 for the high-
+#confidence streams (n = 820)
+Chp2_MasterDat3 #same as Chp2_MasterDat except for it excludes Cons_Abundance. 
+#This df is used for making predictions for the 558 low-confidence sites. The
+#820 high confidence stream rows are removed after making the predictions. This
+#does not affect the end result
+
+Mod1_Chp2_predictions #predictions by stream and year for high-confidence sites
+#2008-2019
+All_strms_predictions #predictions by stream and year for low-confidence sites
+#2008-2019. Note that the 820 rows of high-confidence predictions are included
+#(streams which overlap between this df and Mod1_Chp2_predictions)
+mean_predsChp2 #Mean predicted indices for each stream across time for high-conf
+#sites, includes coefficient of variation (uncertainty) around each prediction
+#from CV_HC object
+lowr_conf_preds #Mean predicted indices for each stream across time for low-conf
+#sites, includes coefficient of variation (uncertainty) around each prediction 
+#from CV_LC object
+
+X20_21_Chp2 #contains all streams and covariate data from 2020-2021
+X2020_2021_HC #contains stream and covariate data from 2020-2021 for the high-
+#confidence streams (n = 82)
+X2020_2021_LC #contains stream and covariate data for the low-confidence streams
+#(n = 558) in 2020_2021. Excludes Cons_Abundance
+CV_HC20_21 #mean predictions across years for all 2020-2021 high-confidence
+#sites. "Mean_bs" col indicates the mean predicted index ("_bs" for BootStrap)
+CV_LC20_21 #mean predictions across years for all 2020-2021 low-confidence sites
+#"Mean_bs" col indicates the mean predicted index ("_bs" for BootStrap)
+
+
+hypRel_Master #contains all streams and covariate data for the 57 streams that 
+#are within 40 km of 3 hypothetical release site scenarios (described in greater
+#detail in section 9)
+hypRel_MasterHC #" "^^ for the high-confidence sites only (n = 3)
+hypRel_MasterLC #" "^^ for the low-confidence sites only (n = 54)
+preds_hypRelHC #predicted indices for high-confidence streams within 40 km of 
+#hypothetical release site scenarios. "Mean_bs" col indicates the predicted index
+preds_hypRelLC #predicted indices for low-confidence streams within 40 km of hyp-
+#othetical release site scenarios
+
+
+
+
+
+### Read in data
 getwd()
 Chp2_MasterDat <- read.csv("Chp2_Master_dataset.csv")
 library(tidyverse)
@@ -239,6 +288,18 @@ CV_HC$CV_percent <- CV_HC$Mean_CV*100
 #error. I will resume what I did before to calculate the CV (above)
 
 
+#Overall mean predictions by site across years
+#First find averages by site
+mean_predsChp2 <- Mod1_Chp2_predictions %>% group_by(StreamName) %>%
+  mutate(mean(Predictions)) #%>% ungroup
+mean_predsChp2 <- mean_predsChp2 %>% select(-c(7,8))
+colnames(mean_predsChp2)[7] <- "Mean_pred_strays"
+mean_predsChp2 <- mean_predsChp2[!duplicated(mean_predsChp2$Mean_pred_strays),]
+
+#Add on the predicted uncertainty column from bootstrapping
+mean_predsChp2 <- left_join(mean_predsChp2, CV_HC, by = "StreamName")
+
+
 
 
 
@@ -362,7 +423,7 @@ Chp2_scaled_all <- cbind.data.frame(Chp2_MasterDat3[ , c(1:7)], j)
 #as a covariate
 all_preds <- as.data.frame(predict(bm2u, newdata = Chp2_scaled_all, type = "response"))
 All_strms_predictions <- cbind.data.frame(Chp2_scaled_all[ , c(1:7)], all_preds)
-colnames(All_strms_predictions)[8] <- "Predicted_strays"
+colnames(All_strms_predictions)[8] <- "Predicted_strays" 
 
 
 #How do these compare to the higher confidence predictions?
@@ -470,6 +531,36 @@ CV_LC$CV_percent <- CV_LC$Mean_CV*100
 
 #remove duplicated streams between high and low confidence sets:
 CV_LC <- anti_join(CV_LC, CV_HC, by = "StreamName")
+
+
+
+### View average predicted indices by stream for low confidence sites
+#First find averages by site
+ALLmean_predsChp2 <- All_strms_predictions %>% group_by(StreamName) %>%
+  mutate(mean(Predicted_strays)) #%>% ungroup
+ALLmean_predsChp2 <- ALLmean_predsChp2 %>% select(-c(7:8))
+colnames(ALLmean_predsChp2)[7] <- "Mean_pred_strays"
+#some streams which share watersheds have the same CV_flow data, so their pred-
+#icted number of strays are the same. Hence, using a !duplicated function to 
+#remove the excess rows for each stream based on the Mean_pred_strays column
+#will not work. Use the following line of code instead:
+library(plyr)
+ALLmean_predsChp2 <- ddply(ALLmean_predsChp2, "StreamName", function(x) head(x,1))
+#remove the 82 higher confidence streams so that you aren't making double pred-
+#ictions:
+lowr_conf_preds <- anti_join(ALLmean_predsChp2, mean_predsChp2, by = "StreamName")
+#Sullivan Creek, Barlow Cove W Shore, and Beardslee River all have mean predicted
+#indices in the thousands, compared to <200 for all other sites. As a result, you
+#are unable to see really any variation in the data beyond those 3 streams. I would
+#suggest changing their values to be closer to the range of the data, but still
+#accurately reflect how they are the most predicted attractive streams
+lowr_conf_preds[lowr_conf_preds$StreamName %in%
+                  c("Sullivan Creek", "Barlow Cove W Shore"), 7] <- 250
+lowr_conf_preds[lowr_conf_preds$StreamName == "Beardslee River", 7] <- 200
+#Add on the predicted uncertainty column from bootstrapping
+lowr_conf_preds <- left_join(lowr_conf_preds, CV_LC, by = "StreamName")
+
+
 
 
 
