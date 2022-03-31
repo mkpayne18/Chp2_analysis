@@ -1286,6 +1286,36 @@ write.csv(TableS3, "TableS3.csv")
 
 
 
+#8. Figure S1 (out-of sample vs in-sample predictions for OG 56 streams) #######
+#This code chunk is copied and pasted over from Making_predictions.R at the end 
+#of section 2.4
+
+#It compares the predictions made using chapter 1 methods for WMA_Releases_by_Yr
+#and Cons_Abundance (i.e., the "in-sample predicted indices") and those made using
+#chapter 2 methods
+comp_chp1_chp2 <- ggplot(Combined_preds) + geom_point(aes(Predictions,
+                                                          Chp1_predictions)) +
+  geom_abline(slope = 1, intercept = 0) +
+  labs(x = "In-sample Predicted Indices", y = "Out-of-sample Predicted Indices") +
+  theme_bw() +
+  theme(axis.text = element_text(size = 12)) +
+  theme(axis.title = element_text(size = 13)) +
+  theme(text=element_text(family="Times New Roman")) 
+comp_chp1_chp2
+
+#Conclusions: Chapter 2 predictions are larger than Chp 1 predictions (1.4x on
+#average), but the relationship is very linear, which is to say, the same streams
+#are predicted to be attractive/unattractive as before
+tiff("Outvsin_sample_supple.tiff", width = 7, height = 4, pointsize = 12,
+     units = 'in', res = 300)
+comp_chp1_chp2 #graph that you want to export
+dev.off( )
+
+
+
+
+
+
 save.image("Chp2_figures.RData")
 load("Chp2_figures.RData")
 

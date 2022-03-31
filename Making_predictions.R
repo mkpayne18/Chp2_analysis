@@ -349,6 +349,7 @@ abline(0,1, col = "red")
 #ggplot2 version:
 comp_chp1_chp2 <- ggplot(Combined_preds) + geom_point(aes(Predictions,
                                                           Chp1_predictions)) +
+  geom_abline(slope = 1, intercept = 0) +
   labs(x = "In-sample Predicted Indices", y = "Out-of-sample Predicted Indices") +
   theme_bw() +
   theme(axis.text = element_text(size = 12)) +
