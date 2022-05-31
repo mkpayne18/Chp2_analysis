@@ -1,0 +1,122 @@
+---
+title: "Metadata_explained"
+author: "Molly Payne"
+date: "5/30/2022"
+output: html_document
+---
+
+## Chp2_Master_dataset.csv
+
+----
+
+**Subregion** The management subregion of Southeast Alaska into which each stream falls. There are 3: 1) Northern Southeast Inside (NSE Inside), 2) Northern Southeast Outside (NSE Outside), and 3) Southern Southeast (SSE) <br>
+
+**Year** and **StreamName** = self-explanatory <br>
+
+**AWC_CODE** The anadromous waters catalog number for each stream. You can find the streams on the map here: <https://adfg.maps.arcgis.com/apps/MapSeries/index.html?appid=a05883caa7ef4f7ba17c99274f2c198f> <br>
+
+**Stream_Number** This is closely related, but not identical to the AWC for each stream. For some ridiculous reason, each stream has both an AWC and stream number, both of which ADFG uses depending on the context. In this project, the stream number was mostly for tailoring pink salmon data. You can find more info about this in the Pink_Dens&Abundance folder in "Data Sources" in chp1 <br>
+
+**LATITUDE** and **LONGITUDE** GPS coordinates located at the mouth of each stream <br>
+
+**Pink_Abundance** (COVARIATE) The estimated abundance of pink salmon in the stream <br>
+
+**Cons_Abundance** (COVARIATE) The estimated population abundance of wild chum salmon in the stream, reported in units of individual salmon <br>
+
+**WMA_Releases_in_millions** (COVARIATE) The weighted moving average of the number of hatchery chum salmon released within 40 KM of the stream 2-5 years prior to the year the stream was surveyed. <br>
+
+**CV_flow** (COVARIATE) The coefficient of variation of long-term (1979-2012) FW discharge from the watershed in which each stream falls. The CV was calculated from the mean and SD of all estimated daily discharge values from 1979-2012. See Sergeant et al. 2020 for more info <br>
+
+**This .csv was created in the script called "create_master_data.R" and gives the covariate data values for 640 streams in SEAK from 2008-2021 for predicting stream attractiveness to hatchery strays using the model developed in chp1** <br>
+<br>
+
+## Hypothetical_releas.csv
+
+----
+
+**ReleaseSite** Name of chum salmon hatchery release site in SEAK. Freshwater Bay is made up <br>
+
+**Latitude** and **Longitude** GPS location of release site <br>
+
+**Stream_within_40km** The name of all streams located within 40 hydrographic km of each release site <br>
+
+## Releases_2020.csv
+
+----
+
+**This is the companion .csv to Hypothetical_releas.csv which gives the name, location, and number of hatchery-origin juvenile chum salmon (in millions) released at the 3 release sites of interest in 2020** <br>
+<br>
+
+## Releases_thru2019.csv
+
+----
+
+**ReleaseSite** Name of release site in SEAK releasing hatchery-origin chum salmon between 2008-2019 <br>
+
+**SUM_Releases_in_millions** Gives the number of juvenile hatchery chum salmon releasead at each site in the year indicated in **YearReleased** <br>
+
+**FREQUENCY** The number of releases of hatchery chum salmon within that year, which sum to the number given in **SUM_Releases_in_millions** <br>
+<br>
+
+## Chp2_StreamPoints.csv
+
+----
+
+**Gives the name, stream mouth location (GPS coordinates), AWC and stream numbers for all streams analyzed in chp2. More information about columns in this .csv can be found in "Chp2_Master_dataset.csv" section above** <br>
+<br>
+
+## H_Release_Locations
+
+----
+
+**Gives the names and locations (GPS coordinates) of all hatchery release sites in SEAK that released hatchery chum salmon 2008-2019** <br>
+<br>
+
+## Covariate data .csv files (multiple)
+
+----
+
+**Cons_Abundance_Chp2.csv** Gives the abundance of chum salmon (in units of single individuals) for each year 2008-2021, as well as the stream number. See Chp2_Master_data.csv for explanation of what "Stream_Number" column is <br>
+
+**Flow_dat_Chp2.csv** Gives stream name (and other stream info, see Chp2_Master_data.csv for explanation of these other cols), as well as the Watershed_ID, the watershed size in km^2, the mean watershed discharge (m^3/s), and the CV of watershed discharge. The "Watershed_ID" column indicates the watershed ID given in Sergeant et al. 2020 dataset."Stream_spans_2_WSheds" means that the stream could not be definitively assigned to 1 watershed, so it was assigned to 2 watersheds. In these situations, the mean_flow value was averaged between the 2 and the flashier watershed (higher CV of flow value) were kept. "Scenario A" indicates high confidence in flow data assignment and "Scenario B" indicates less confidence. There is a lot more information about flow data in general in the Chp1_analysis folder (go into "Data Sources" -> "Stream_Hydro_Flow"). I also show that including the lower confidence ("Scenario B") streams does not affect results in Chp1_analysis/scripts/Flow_dat_check.R <br>
+
+**Pink_abundance.csv** Does not make it into chp2 analysis after all, but in this .csv the number of pink salmon in each stream each year is given in units of individual fish <br>
+
+**WMA_Releas_chp2.csv** Gives the number of juvenile hatchery chum salmon released within 40 km of chp2 streams in the "x" column in units of millions of fish. "s_yrs" is the survey year, or the year in which the stream would have hypothetically been surveyed (i.e., the year you will be making predictions for for those streams). Thus, the number in the "x" column is how many fish (in millions) were released 2-5 years prior to the survey year <br>
+
+**These scripts were all tailored and brought together in "scripts/create_master_data.R", which is where I created the Chp2_Master_dataset.csv file that I used to make model predictions in this project**<br>
+
+## Releases_within40km_chp2.csv
+
+----
+
+**Gives the name of all streams within 40 km of each release site releasing juvenile hatchery chum salmon 2008-2021 in SEAK. I used this .csv to create "WMA_Releas_chp2.csv** <br>
+
+## 2008_2019_HW_Data_copy.csv
+
+----
+
+**This is the original dataset from chapter 1 that identifies hatchery strays**.
+I downloaded part of this dataset (2013-2019) from <hatcherywild.org>. It gives the AWC # and stream name of all streams sampled for hatchery chum salmon 2008-2019. The 2008-2011 portion was emailed to me by Andy Piston (bc those data came from Piston and Heinl 2012 paper) and was combined with the 2013-2019 portion to create this .csv. Check out the Stray_Data folder in "Data Sources" in "Chp1_analysis" for more info and to see the original 2008-2011 dataset. <br>
+<br>
+
+Each row in this dataset is a single fish. The **From_H** ("from Hatchery") column has either a 1 to indicate that the fish was hatchery-origin or a 0 to indicate that is was not. **MarkID** indicates the thermal mark for each hatchery fish, which gives their hatchery of origin and brood year <br>
+<br>
+
+## All_SEAK_CH_Strms.csv
+
+----
+
+**This .csv indicates the name, AWC #, and location (GPS coordinates of stream mouth) of all streams with documented chum salmon usage in Southeast Alaska, which I downloaded from the anadromous waters catalog. I initially used this .csv to identify streams to make predictions for in chapter 2. The final set of 640 streams in the Chp2 master dataset were those that had matching stream ID info in Pink_Abundance data** <br>
+
+## Chum salmon otolith data in D113.csv
+
+----
+
+**“Chum salmon otolith data in D113.csv”: file sent to me by Lorna Wilson (2/10/22 email) which contains # H strays data for 2018 and 2019 in W Crawfish NE Arm Hd. See rows 12-13 (2 surveys in 2018) and 37-38 (2 surveys in 2019) in the "Marked" column. I had previously used this to create figure to show additional observed data from W Crawfish streams that I had not included in chapter 1. This .csv is not currently used (as of May 2022) but I've held onto it just in case.** <br>
+
+## Cons_A_RawDat folder
+
+----
+
+**Contains 3 excel spreadsheets for each SEAK subregion and their .csv counterparts which indicate the number (in units of individual fish) of chum salmon in SEAK streams, i.e., estimated escapement. These datasets were emailed to me by Andy Piston. I combined these 3 .csv files in "scripts/Cons_A_create_Chp2.R", which produced "data/Cons_Abundance_Chp2.csv".** <br>

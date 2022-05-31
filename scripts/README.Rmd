@@ -1,0 +1,36 @@
+---
+title: "README"
+author: "Molly Payne"
+date: "5/30/2022"
+output: html_document
+---
+
+## Main scripts
+
+----
+
+**01_load_and_clean_covariate_data.R** Load the dataset containing all covariate data for streams for which you are going to predict stream attractiveness in chapter 2 (this project). Note there is no reponse variable data in this dataset because you are predicting out-of-sample for new streams. <br>
+
+**02_predict_2008_2019.R** Predict stream attractiveness for SEAK streams using 2008-2019 data as model inputs in model developed in chapter 1. <br>
+
+**03_predict_2020_2021.R** Predict stream attractiveness for SEAK streams using 2020-2021 data as model inputs in model developed in chapter 1. <br>
+
+**04_predict_hypothetical_release.R** Predict stream attractiveness for SEAK streams using 2020-2021 data + increased numbers of fish released at 3 new hypothetical release site scenarios. See "docs/Methods_Model_logChp2.docx" for more info. <br>
+
+**05_figures.R** Script to create figures for manuscript + thesis using results from scripts 02-04. <br>
+
+**06_tables.R** Script to create tables for manuscript + thesis using results from scripts 02-04. <br>
+
+## Other scripts
+
+----
+
+**create_master_data.R** Script where I brought together covariate data sources to create the "data/Chp2_Master_dataset.R", i.e., the dataset containing all the info and model inputs for predicting out-of-sample stream attractiveness for chapter 2 streams. <br>
+
+**Releases40km_chp.R** Script where I created "data/WMA_Releas_Chp2.csv", i.e., the number of hatchery chum salmon released within 40 km of each stream 2008-2021. <br>
+
+**run_mod_function.R** and **run_mod2_function.R** were read into scripts 02-04 to facilitate bootstrapping predictions and prediction uncertainty. <br>
+
+**Cons_A_create_Chp2.R** Script where I brought together disjointed conspecific abundance data from aerial survey escapement estimates into one clean dataset ("data/Cons_Abundance_Chp2.csv"). <br>
+
+

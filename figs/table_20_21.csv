@@ -1,0 +1,4 @@
+"","Stream percentile","n","Predicted attractiveness index","pred_index_min","pred_index_max","Number of fish released within 40 km (in millions)","40km_release_min","40km_release_max","CV of streamflow","CV_flow_min","CV_flow_max"
+"1","Top 10%","64",61.6,9.9,700,24.6,0,105.6,0.56,0.39,0.68
+"2","Middle 40%","256",4.5,2.5,9.8,19.7,0,105.6,0.53,0.44,0.6
+"3","Bottom 50%","320",1.8,1.5,2.4,1.4,0,30.1,0.52,0.48,0.56
