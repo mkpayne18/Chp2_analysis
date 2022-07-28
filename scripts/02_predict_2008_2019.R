@@ -150,6 +150,9 @@ for (i in 1:1000) {
     rnegbin(1, theta = 0.9932)
   #add random normal deviate to each prediction so you can generate a prediction 
   #interval instead of just a confidence interval
+  
+  ##I'm not 100% I did this part correctly (specifically, adding the random NB
+  #deviate, so confirm with Curry at a later date on how it should be done)
 }
 
 
