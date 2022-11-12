@@ -23,7 +23,9 @@ rm(Chp2_MasterDat, dat_20_21)
 ### Best model object from chapter 1
 #In 03_fit_NB_model.R script in Chp1_analysis, I outputted the best model object,
 #titled "best_model2.rds" to the output folder here in chapter 2, that way any
-#changes I make to the model in chapter 1 will be reflected here:
+#changes I make to the model in chapter 1 will be reflected here. I used "bm2"
+#instead of "bm1" from chapter 1 because bm2 does not include conspecific
+#abundance
 bm2 <- readRDS("output/best_model2.rds")
 summary(bm2)
 #Define this as a new object in this script in case the "best model" object from
