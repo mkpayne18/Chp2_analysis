@@ -1,0 +1,14 @@
+### Molly Payne
+### 5/30/2022
+
+**best_model2.rds** This is the top candidate model object from Chp1_analysis <br>
+
+**stray_dat.rds** This is the raw data from chapter 1 that was used to develop and fit the predictive straying model. <br>
+
+**mean_preds_08_19.rds** This file was created in "scripts/02_predict_2008_2019.R" and gives the mean predicted number of strays and the CV (coefficient of variation) as a measure of uncertainty around each prediction for 2008-2019. <br>
+
+**mean_preds_20_21.rds** This file was created in "scripts/03_predict_2020_2021.R" and gives the mean predicted number of strays and the CV (coefficient of variation) as a measure of uncertainty around each prediction for 2020-2021. <br>
+
+**mean_preds_hypRel.rds** This file was created in "scripts/04_predict_hypothetical_release.R" and gives the mean predicted number of strays and the CV (coefficient of variation) as a measure of uncertainty around each prediction for streams within 40 km of 3 hypothetical release site scenarios. <br>
+
+**mean_bm1_pred.rds** This file was created in Chp1_analysis and gives the mean predicted and observed attractiveness indices for the 57 streams used to fit the straying model in chapter 1. <br>
