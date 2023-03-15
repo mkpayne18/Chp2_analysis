@@ -16,3 +16,5 @@ Also, "old_stuff" folder is a previous version of the Chp2_analysis folder. I've
 since reorganized this to create the current Chp2_analysis folder and therefore
 the "old_stuff" folder should be rendered obsolete, but I held onto it just in
 case
+
+Update March 2023: The data folder is no longer on Github since I am downgrading to a free (and public) Github account and hatchery data is proprietary. Please contact me to access data to run code

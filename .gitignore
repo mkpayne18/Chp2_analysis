@@ -37,3 +37,7 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# Data file (as of March 2023), since Github account is getting downgraded to
+#free public version and hatchery data is proprietary
+/data
